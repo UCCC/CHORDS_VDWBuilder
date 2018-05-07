@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb384c0cbf2a4b2a89d6a1f2a8e35805" Name="Diagram1">
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ABN_IND_LU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ADMITTING_SOURCE_LU" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.BP_TYPE_LU" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CAUSE_OF_DEATH" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CAUSETYPE_LU" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CENSUS_DEMOG" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CENSUS_LOCATION" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CODETYPE_LU" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.COLORADO_COUNTIES" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.CONFIDENCE_LU" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DEATH" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DEMOGRAPHICS" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DEPARTMENT_LU" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DIAGNOSES" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DISCHARGE_DISPOSITION_LU" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DISCHARGE_STATUS_LU" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DTIMPUTE_LU" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.DX_CODETYPE_LU" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ENCOUNTER_SUBTYPE_LU" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ENCOUNTERS" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ENCTYPE_LU" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ENROLLMENT" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ENROLLMENT_BASIS_LU" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.EVERNDC" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.GENDER_IDENTITY_LU" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.GENDER_LU" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.LAB_RESULTS" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.LANG_USAGE_LU" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.LANGUAGES" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.LANGUAGES_ISO_LU" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.MODIFIER_LU" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.ONC_SMOKING_STATUS_LU" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PHARMACY" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.POSITION_LU" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PRESCRIBING" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PRIMARY_DX_LU" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PRINCIPAL_DX_LU" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PROCEDURES" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PROVIDER_SPECIALTY" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PROVIDER_TYPE_LU" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PT_LOC_LU" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.PX_CODETYPE_LU" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.RACE_LU" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.RESULT_LOC_LU" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.RX_BASIS_LU" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.RX_FREQUENCY_LU" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.RX_QUANTITY_UNIT_LU" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.SEXUAL_ORIENTATION_LU" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.SEXUALLY_ACTV_LU" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.SOCIAL_HISTORY" Width="1.5" PointX="16.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.SPECIMEN_SOURCE_LU" Width="1.5" PointX="18.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.STAT_LU" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.TOBACCO_USER_LU" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.TUMOR" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.VITAL_SIGNS" Width="1.5" PointX="6.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.YNQXU_LU" Width="1.5" PointX="8.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.YNU_LU" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VDW_3_1_BMD_TestModel.YNXU_LU" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

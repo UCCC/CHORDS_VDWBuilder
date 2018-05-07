@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VDW_3_1_BMD_TestModelStoreContainer" CdmEntityContainer="VDW_3_1_Entities">
+    <EntitySetMapping Name="ABN_IND_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ABN_IND_LU">
+        <MappingFragment StoreEntitySet="ABN_IND_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADMITTING_SOURCE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ADMITTING_SOURCE_LU">
+        <MappingFragment StoreEntitySet="ADMITTING_SOURCE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BP_TYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.BP_TYPE_LU">
+        <MappingFragment StoreEntitySet="BP_TYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAUSE_OF_DEATH">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CAUSE_OF_DEATH">
+        <MappingFragment StoreEntitySet="CAUSE_OF_DEATH">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="COD" ColumnName="COD" />
+          <ScalarProperty Name="DX_CODETYPE" ColumnName="DX_CODETYPE" />
+          <ScalarProperty Name="CAUSETYPE" ColumnName="CAUSETYPE" />
+          <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+          <ScalarProperty Name="CONFIDENCE" ColumnName="CONFIDENCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAUSETYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CAUSETYPE_LU">
+        <MappingFragment StoreEntitySet="CAUSETYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CENSUS_DEMOG">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CENSUS_DEMOG">
+        <MappingFragment StoreEntitySet="CENSUS_DEMOG">
+          <ScalarProperty Name="CENSUS_YEAR" ColumnName="CENSUS_YEAR" />
+          <ScalarProperty Name="GEOCODE" ColumnName="GEOCODE" />
+          <ScalarProperty Name="BLOCK" ColumnName="BLOCK" />
+          <ScalarProperty Name="CENSUS_DATA_SRC" ColumnName="CENSUS_DATA_SRC" />
+          <ScalarProperty Name="CHORDS_GEOLEVEL" ColumnName="CHORDS_GEOLEVEL" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="COUNTY" ColumnName="COUNTY" />
+          <ScalarProperty Name="TRACT" ColumnName="TRACT" />
+          <ScalarProperty Name="BLOCKGP" ColumnName="BLOCKGP" />
+          <ScalarProperty Name="HOUSES_N" ColumnName="HOUSES_N" />
+          <ScalarProperty Name="RA_NHS_WH" ColumnName="RA_NHS_WH" />
+          <ScalarProperty Name="RA_NHS_BL" ColumnName="RA_NHS_BL" />
+          <ScalarProperty Name="RA_NHS_AM" ColumnName="RA_NHS_AM" />
+          <ScalarProperty Name="RA_NHS_AS" ColumnName="RA_NHS_AS" />
+          <ScalarProperty Name="RA_NHS_HA" ColumnName="RA_NHS_HA" />
+          <ScalarProperty Name="RA_NHS_OT" ColumnName="RA_NHS_OT" />
+          <ScalarProperty Name="RA_NHS_ML" ColumnName="RA_NHS_ML" />
+          <ScalarProperty Name="RA_HIS_WH" ColumnName="RA_HIS_WH" />
+          <ScalarProperty Name="RA_HIS_BL" ColumnName="RA_HIS_BL" />
+          <ScalarProperty Name="RA_HIS_AM" ColumnName="RA_HIS_AM" />
+          <ScalarProperty Name="RA_HIS_AS" ColumnName="RA_HIS_AS" />
+          <ScalarProperty Name="RA_HIS_HA" ColumnName="RA_HIS_HA" />
+          <ScalarProperty Name="RA_HIS_OT" ColumnName="RA_HIS_OT" />
+          <ScalarProperty Name="RA_HIS_ML" ColumnName="RA_HIS_ML" />
+          <ScalarProperty Name="HOUSES_OCCUPIED" ColumnName="HOUSES_OCCUPIED" />
+          <ScalarProperty Name="HOUSES_OWN" ColumnName="HOUSES_OWN" />
+          <ScalarProperty Name="HOUSES_RENT" ColumnName="HOUSES_RENT" />
+          <ScalarProperty Name="HOUSES_UNOCC_FORRENT" ColumnName="HOUSES_UNOCC_FORRENT" />
+          <ScalarProperty Name="HOUSES_UNOCC_FORSALE" ColumnName="HOUSES_UNOCC_FORSALE" />
+          <ScalarProperty Name="HOUSES_UNOCC_RENTSOLD" ColumnName="HOUSES_UNOCC_RENTSOLD" />
+          <ScalarProperty Name="HOUSES_UNOCC_SEASONAL" ColumnName="HOUSES_UNOCC_SEASONAL" />
+          <ScalarProperty Name="HOUSES_UNOCC_MIGRANT" ColumnName="HOUSES_UNOCC_MIGRANT" />
+          <ScalarProperty Name="HOUSES_UNOCC_OTHER" ColumnName="HOUSES_UNOCC_OTHER" />
+          <ScalarProperty Name="EDUCATION1" ColumnName="EDUCATION1" />
+          <ScalarProperty Name="EDUCATION2" ColumnName="EDUCATION2" />
+          <ScalarProperty Name="EDUCATION3" ColumnName="EDUCATION3" />
+          <ScalarProperty Name="EDUCATION4" ColumnName="EDUCATION4" />
+          <ScalarProperty Name="EDUCATION5" ColumnName="EDUCATION5" />
+          <ScalarProperty Name="EDUCATION6" ColumnName="EDUCATION6" />
+          <ScalarProperty Name="EDUCATION7" ColumnName="EDUCATION7" />
+          <ScalarProperty Name="EDUCATION8" ColumnName="EDUCATION8" />
+          <ScalarProperty Name="MEDFAMINCOME" ColumnName="MEDFAMINCOME" />
+          <ScalarProperty Name="FAMINCOME1" ColumnName="FAMINCOME1" />
+          <ScalarProperty Name="FAMINCOME2" ColumnName="FAMINCOME2" />
+          <ScalarProperty Name="FAMINCOME3" ColumnName="FAMINCOME3" />
+          <ScalarProperty Name="FAMINCOME4" ColumnName="FAMINCOME4" />
+          <ScalarProperty Name="FAMINCOME5" ColumnName="FAMINCOME5" />
+          <ScalarProperty Name="FAMINCOME6" ColumnName="FAMINCOME6" />
+          <ScalarProperty Name="FAMINCOME7" ColumnName="FAMINCOME7" />
+          <ScalarProperty Name="FAMINCOME8" ColumnName="FAMINCOME8" />
+          <ScalarProperty Name="FAMINCOME9" ColumnName="FAMINCOME9" />
+          <ScalarProperty Name="FAMINCOME10" ColumnName="FAMINCOME10" />
+          <ScalarProperty Name="FAMINCOME11" ColumnName="FAMINCOME11" />
+          <ScalarProperty Name="FAMINCOME12" ColumnName="FAMINCOME12" />
+          <ScalarProperty Name="FAMINCOME13" ColumnName="FAMINCOME13" />
+          <ScalarProperty Name="FAMINCOME14" ColumnName="FAMINCOME14" />
+          <ScalarProperty Name="FAMINCOME15" ColumnName="FAMINCOME15" />
+          <ScalarProperty Name="FAMINCOME16" ColumnName="FAMINCOME16" />
+          <ScalarProperty Name="MEDHOUSINCOME" ColumnName="MEDHOUSINCOME" />
+          <ScalarProperty Name="HOUSINCOME1" ColumnName="HOUSINCOME1" />
+          <ScalarProperty Name="HOUSINCOME2" ColumnName="HOUSINCOME2" />
+          <ScalarProperty Name="HOUSINCOME3" ColumnName="HOUSINCOME3" />
+          <ScalarProperty Name="HOUSINCOME4" ColumnName="HOUSINCOME4" />
+          <ScalarProperty Name="HOUSINCOME5" ColumnName="HOUSINCOME5" />
+          <ScalarProperty Name="HOUSINCOME6" ColumnName="HOUSINCOME6" />
+          <ScalarProperty Name="HOUSINCOME7" ColumnName="HOUSINCOME7" />
+          <ScalarProperty Name="HOUSINCOME8" ColumnName="HOUSINCOME8" />
+          <ScalarProperty Name="HOUSINCOME9" ColumnName="HOUSINCOME9" />
+          <ScalarProperty Name="HOUSINCOME10" ColumnName="HOUSINCOME10" />
+          <ScalarProperty Name="HOUSINCOME11" ColumnName="HOUSINCOME11" />
+          <ScalarProperty Name="HOUSINCOME12" ColumnName="HOUSINCOME12" />
+          <ScalarProperty Name="HOUSINCOME13" ColumnName="HOUSINCOME13" />
+          <ScalarProperty Name="HOUSINCOME14" ColumnName="HOUSINCOME14" />
+          <ScalarProperty Name="HOUSINCOME15" ColumnName="HOUSINCOME15" />
+          <ScalarProperty Name="HOUSINCOME16" ColumnName="HOUSINCOME16" />
+          <ScalarProperty Name="POV_LT_50" ColumnName="POV_LT_50" />
+          <ScalarProperty Name="POV_50_74" ColumnName="POV_50_74" />
+          <ScalarProperty Name="POV_75_99" ColumnName="POV_75_99" />
+          <ScalarProperty Name="POV_100_124" ColumnName="POV_100_124" />
+          <ScalarProperty Name="POV_125_149" ColumnName="POV_125_149" />
+          <ScalarProperty Name="POV_150_174" ColumnName="POV_150_174" />
+          <ScalarProperty Name="POV_175_184" ColumnName="POV_175_184" />
+          <ScalarProperty Name="POV_185_199" ColumnName="POV_185_199" />
+          <ScalarProperty Name="POV_GT_200" ColumnName="POV_GT_200" />
+          <ScalarProperty Name="ENGLISH_SPEAKER" ColumnName="ENGLISH_SPEAKER" />
+          <ScalarProperty Name="SPANISH_SPEAKER" ColumnName="SPANISH_SPEAKER" />
+          <ScalarProperty Name="BORNINUS" ColumnName="BORNINUS" />
+          <ScalarProperty Name="MOVEDINLAST12MON" ColumnName="MOVEDINLAST12MON" />
+          <ScalarProperty Name="MARRIED" ColumnName="MARRIED" />
+          <ScalarProperty Name="DIVORCED" ColumnName="DIVORCED" />
+          <ScalarProperty Name="DISABILITY" ColumnName="DISABILITY" />
+          <ScalarProperty Name="UNEMPLOYMENT" ColumnName="UNEMPLOYMENT" />
+          <ScalarProperty Name="UNEMPLOYMENT_MALE" ColumnName="UNEMPLOYMENT_MALE" />
+          <ScalarProperty Name="INS_MEDICARE" ColumnName="INS_MEDICARE" />
+          <ScalarProperty Name="INS_MEDICAID" ColumnName="INS_MEDICAID" />
+          <ScalarProperty Name="HH_NOCAR" ColumnName="HH_NOCAR" />
+          <ScalarProperty Name="HH_PUBLIC_ASSISTANCE" ColumnName="HH_PUBLIC_ASSISTANCE" />
+          <ScalarProperty Name="HMOWNER_COSTS_MORT" ColumnName="HMOWNER_COSTS_MORT" />
+          <ScalarProperty Name="HMOWNER_COSTS_NO_MORT" ColumnName="HMOWNER_COSTS_NO_MORT" />
+          <ScalarProperty Name="HOMES_MEDVALUE" ColumnName="HOMES_MEDVALUE" />
+          <ScalarProperty Name="PCT_CROWDING" ColumnName="PCT_CROWDING" />
+          <ScalarProperty Name="FEMALE_HEAD_OF_HH" ColumnName="FEMALE_HEAD_OF_HH" />
+          <ScalarProperty Name="MGR_FEMALE" ColumnName="MGR_FEMALE" />
+          <ScalarProperty Name="MGR_MALE" ColumnName="MGR_MALE" />
+          <ScalarProperty Name="RESIDENTS_65" ColumnName="RESIDENTS_65" />
+          <ScalarProperty Name="SAME_RESIDENCE" ColumnName="SAME_RESIDENCE" />
+          <ScalarProperty Name="FAMPOVERTY" ColumnName="FAMPOVERTY" />
+          <ScalarProperty Name="HOUSPOVERTY" ColumnName="HOUSPOVERTY" />
+          <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CENSUS_LOCATION">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CENSUS_LOCATION">
+        <MappingFragment StoreEntitySet="CENSUS_LOCATION">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="LOC_START" ColumnName="LOC_START" />
+          <ScalarProperty Name="LOC_END" ColumnName="LOC_END" />
+          <ScalarProperty Name="GEOCODE" ColumnName="GEOCODE" />
+          <ScalarProperty Name="CITY_GEOCODE" ColumnName="CITY_GEOCODE" />
+          <ScalarProperty Name="GEOCODE_BOUNDARY_YEAR" ColumnName="GEOCODE_BOUNDARY_YEAR" />
+          <ScalarProperty Name="GEOLEVEL" ColumnName="GEOLEVEL" />
+          <ScalarProperty Name="MATCH_STRENGTH" ColumnName="MATCH_STRENGTH" />
+          <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+          <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+          <ScalarProperty Name="GEOCODE_APP" ColumnName="GEOCODE_APP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CODETYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CODETYPE_LU">
+        <MappingFragment StoreEntitySet="CODETYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COLORADO_COUNTIES">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.COLORADO_COUNTIES">
+        <MappingFragment StoreEntitySet="COLORADO_COUNTIES">
+          <ScalarProperty Name="FIPS" ColumnName="FIPS" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONFIDENCE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.CONFIDENCE_LU">
+        <MappingFragment StoreEntitySet="CONFIDENCE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEATH">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DEATH">
+        <MappingFragment StoreEntitySet="DEATH">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="DEATHDT" ColumnName="DEATHDT" />
+          <ScalarProperty Name="DTIMPUTE" ColumnName="DTIMPUTE" />
+          <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+          <ScalarProperty Name="CONFIDENCE" ColumnName="CONFIDENCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEMOGRAPHICS">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DEMOGRAPHICS">
+        <MappingFragment StoreEntitySet="DEMOGRAPHICS">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="BIRTH_DATE" ColumnName="BIRTH_DATE" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="PRIMARY_LANGUAGE" ColumnName="PRIMARY_LANGUAGE" />
+          <ScalarProperty Name="NEEDS_INTERPRETER" ColumnName="NEEDS_INTERPRETER" />
+          <ScalarProperty Name="RACE1" ColumnName="RACE1" />
+          <ScalarProperty Name="RACE2" ColumnName="RACE2" />
+          <ScalarProperty Name="RACE3" ColumnName="RACE3" />
+          <ScalarProperty Name="RACE4" ColumnName="RACE4" />
+          <ScalarProperty Name="RACE5" ColumnName="RACE5" />
+          <ScalarProperty Name="HISPANIC" ColumnName="HISPANIC" />
+          <ScalarProperty Name="SEXUAL_ORIENTATION" ColumnName="SEXUAL_ORIENTATION" />
+          <ScalarProperty Name="GENDER_IDENTITY" ColumnName="GENDER_IDENTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENT_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DEPARTMENT_LU">
+        <MappingFragment StoreEntitySet="DEPARTMENT_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIAGNOSES">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DIAGNOSES">
+        <MappingFragment StoreEntitySet="DIAGNOSES">
+          <ScalarProperty Name="DIAGNOSES_ID" ColumnName="DIAGNOSES_ID" />
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="DX" ColumnName="DX" />
+          <ScalarProperty Name="ADATE" ColumnName="ADATE" />
+          <ScalarProperty Name="DIAGPROVIDER" ColumnName="DIAGPROVIDER" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="ENCTYPE" ColumnName="ENCTYPE" />
+          <ScalarProperty Name="PROVIDER" ColumnName="PROVIDER" />
+          <ScalarProperty Name="ORIGDX" ColumnName="ORIGDX" />
+          <ScalarProperty Name="DX_CODETYPE" ColumnName="DX_CODETYPE" />
+          <ScalarProperty Name="PRINCIPAL_DX" ColumnName="PRINCIPAL_DX" />
+          <ScalarProperty Name="PRIMARY_DX" ColumnName="PRIMARY_DX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCHARGE_DISPOSITION_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DISCHARGE_DISPOSITION_LU">
+        <MappingFragment StoreEntitySet="DISCHARGE_DISPOSITION_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCHARGE_STATUS_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DISCHARGE_STATUS_LU">
+        <MappingFragment StoreEntitySet="DISCHARGE_STATUS_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DTIMPUTE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DTIMPUTE_LU">
+        <MappingFragment StoreEntitySet="DTIMPUTE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DX_CODETYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.DX_CODETYPE_LU">
+        <MappingFragment StoreEntitySet="DX_CODETYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENCOUNTER_SUBTYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ENCOUNTER_SUBTYPE_LU">
+        <MappingFragment StoreEntitySet="ENCOUNTER_SUBTYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENCOUNTERS">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ENCOUNTERS">
+        <MappingFragment StoreEntitySet="ENCOUNTERS">
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="ADATE" ColumnName="ADATE" />
+          <ScalarProperty Name="DDATE" ColumnName="DDATE" />
+          <ScalarProperty Name="PROVIDER" ColumnName="PROVIDER" />
+          <ScalarProperty Name="ENC_COUNT" ColumnName="ENC_COUNT" />
+          <ScalarProperty Name="DRG_VERSION" ColumnName="DRG_VERSION" />
+          <ScalarProperty Name="DRG_VALUE" ColumnName="DRG_VALUE" />
+          <ScalarProperty Name="ENCTYPE" ColumnName="ENCTYPE" />
+          <ScalarProperty Name="ENCOUNTER_SUBTYPE" ColumnName="ENCOUNTER_SUBTYPE" />
+          <ScalarProperty Name="FACILITY_CODE" ColumnName="FACILITY_CODE" />
+          <ScalarProperty Name="DISCHARGE_DISPOSITION" ColumnName="DISCHARGE_DISPOSITION" />
+          <ScalarProperty Name="DISCHARGE_STATUS" ColumnName="DISCHARGE_STATUS" />
+          <ScalarProperty Name="ADMITTING_SOURCE" ColumnName="ADMITTING_SOURCE" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENCTYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ENCTYPE_LU">
+        <MappingFragment StoreEntitySet="ENCTYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENROLLMENT">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ENROLLMENT">
+        <MappingFragment StoreEntitySet="ENROLLMENT">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="ENR_START" ColumnName="ENR_START" />
+          <ScalarProperty Name="ENR_END" ColumnName="ENR_END" />
+          <ScalarProperty Name="INS_MEDICAID" ColumnName="INS_MEDICAID" />
+          <ScalarProperty Name="INS_COMMERCIAL" ColumnName="INS_COMMERCIAL" />
+          <ScalarProperty Name="INS_PRIVATEPAY" ColumnName="INS_PRIVATEPAY" />
+          <ScalarProperty Name="INS_STATESUBSIDIZED" ColumnName="INS_STATESUBSIDIZED" />
+          <ScalarProperty Name="INS_SELFFUNDED" ColumnName="INS_SELFFUNDED" />
+          <ScalarProperty Name="INS_HIGHDEDUCTIBLE" ColumnName="INS_HIGHDEDUCTIBLE" />
+          <ScalarProperty Name="INS_MEDICARE" ColumnName="INS_MEDICARE" />
+          <ScalarProperty Name="INS_MEDICARE_A" ColumnName="INS_MEDICARE_A" />
+          <ScalarProperty Name="INS_MEDICARE_B" ColumnName="INS_MEDICARE_B" />
+          <ScalarProperty Name="INS_MEDICARE_C" ColumnName="INS_MEDICARE_C" />
+          <ScalarProperty Name="INS_MEDICARE_D" ColumnName="INS_MEDICARE_D" />
+          <ScalarProperty Name="INS_OTHER" ColumnName="INS_OTHER" />
+          <ScalarProperty Name="PLAN_HMO" ColumnName="PLAN_HMO" />
+          <ScalarProperty Name="PLAN_POS" ColumnName="PLAN_POS" />
+          <ScalarProperty Name="PLAN_PPO" ColumnName="PLAN_PPO" />
+          <ScalarProperty Name="PLAN_INDEMNITY" ColumnName="PLAN_INDEMNITY" />
+          <ScalarProperty Name="DRUGCOV" ColumnName="DRUGCOV" />
+          <ScalarProperty Name="OUTSIDE_UTILIZATION" ColumnName="OUTSIDE_UTILIZATION" />
+          <ScalarProperty Name="ENROLLMENT_BASIS" ColumnName="ENROLLMENT_BASIS" />
+          <ScalarProperty Name="PCC" ColumnName="PCC" />
+          <ScalarProperty Name="PCP" ColumnName="PCP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENROLLMENT_BASIS_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ENROLLMENT_BASIS_LU">
+        <MappingFragment StoreEntitySet="ENROLLMENT_BASIS_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVERNDC">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.EVERNDC">
+        <MappingFragment StoreEntitySet="EVERNDC">
+          <ScalarProperty Name="NDC" ColumnName="NDC" />
+          <ScalarProperty Name="GENERIC" ColumnName="GENERIC" />
+          <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+          <ScalarProperty Name="GPI" ColumnName="GPI" />
+          <ScalarProperty Name="AHFS1" ColumnName="AHFS1" />
+          <ScalarProperty Name="AHFS2" ColumnName="AHFS2" />
+          <ScalarProperty Name="AHFS3" ColumnName="AHFS3" />
+          <ScalarProperty Name="AHFS4" ColumnName="AHFS4" />
+          <ScalarProperty Name="AHFS5" ColumnName="AHFS5" />
+          <ScalarProperty Name="AHFS6" ColumnName="AHFS6" />
+          <ScalarProperty Name="AHFS7" ColumnName="AHFS7" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENDER_IDENTITY_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.GENDER_IDENTITY_LU">
+        <MappingFragment StoreEntitySet="GENDER_IDENTITY_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENDER_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.GENDER_LU">
+        <MappingFragment StoreEntitySet="GENDER_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LAB_RESULTS">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.LAB_RESULTS">
+        <MappingFragment StoreEntitySet="LAB_RESULTS">
+          <ScalarProperty Name="LAB_RESULTS_ID" ColumnName="LAB_RESULTS_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="TEST_TYPE" ColumnName="TEST_TYPE" />
+          <ScalarProperty Name="LAB_DT" ColumnName="LAB_DT" />
+          <ScalarProperty Name="LAB_TM" ColumnName="LAB_TM" />
+          <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+          <ScalarProperty Name="RESULT_DT" ColumnName="RESULT_DT" />
+          <ScalarProperty Name="RESULT_TM" ColumnName="RESULT_TM" />
+          <ScalarProperty Name="LOINC" ColumnName="LOINC" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="PT_LOC" ColumnName="PT_LOC" />
+          <ScalarProperty Name="RESULT_LOC" ColumnName="RESULT_LOC" />
+          <ScalarProperty Name="LOCAL_CD" ColumnName="LOCAL_CD" />
+          <ScalarProperty Name="BATTERY_CD" ColumnName="BATTERY_CD" />
+          <ScalarProperty Name="PX" ColumnName="PX" />
+          <ScalarProperty Name="CODETYPE" ColumnName="CODETYPE" />
+          <ScalarProperty Name="ORDER_DT" ColumnName="ORDER_DT" />
+          <ScalarProperty Name="RESULT_C" ColumnName="RESULT_C" />
+          <ScalarProperty Name="RESULT_NUM" ColumnName="RESULT_NUM" />
+          <ScalarProperty Name="MODIFIER" ColumnName="MODIFIER" />
+          <ScalarProperty Name="RESULT_UNIT" ColumnName="RESULT_UNIT" />
+          <ScalarProperty Name="NORMAL_LOW_C" ColumnName="NORMAL_LOW_C" />
+          <ScalarProperty Name="MODIFIER_LOW" ColumnName="MODIFIER_LOW" />
+          <ScalarProperty Name="NORMAL_HIGH_C" ColumnName="NORMAL_HIGH_C" />
+          <ScalarProperty Name="MODIFIER_HIGH" ColumnName="MODIFIER_HIGH" />
+          <ScalarProperty Name="ABN_IND" ColumnName="ABN_IND" />
+          <ScalarProperty Name="ORDER_PROV" ColumnName="ORDER_PROV" />
+          <ScalarProperty Name="ORDER_DEPT" ColumnName="ORDER_DEPT" />
+          <ScalarProperty Name="FACILITY_CODE" ColumnName="FACILITY_CODE" />
+          <ScalarProperty Name="SPECIMEN_ID" ColumnName="SPECIMEN_ID" />
+          <ScalarProperty Name="SPECIMEN_SOURCE" ColumnName="SPECIMEN_SOURCE" />
+          <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LANG_USAGE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.LANG_USAGE_LU">
+        <MappingFragment StoreEntitySet="LANG_USAGE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LANGUAGES">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.LANGUAGES">
+        <MappingFragment StoreEntitySet="LANGUAGES">
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="LANG_ISO" ColumnName="LANG_ISO" />
+          <ScalarProperty Name="LANG_USAGE" ColumnName="LANG_USAGE" />
+          <ScalarProperty Name="LANG_PRIMARY" ColumnName="LANG_PRIMARY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LANGUAGES_ISO_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.LANGUAGES_ISO_LU">
+        <MappingFragment StoreEntitySet="LANGUAGES_ISO_LU">
+          <ScalarProperty Name="ISO_639_2_CODE" ColumnName="ISO_639-2_CODE" />
+          <ScalarProperty Name="ENGLISH_DESCRIPTION" ColumnName="ENGLISH_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODIFIER_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.MODIFIER_LU">
+        <MappingFragment StoreEntitySet="MODIFIER_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ONC_SMOKING_STATUS_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.ONC_SMOKING_STATUS_LU">
+        <MappingFragment StoreEntitySet="ONC_SMOKING_STATUS_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHARMACY">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PHARMACY">
+        <MappingFragment StoreEntitySet="PHARMACY">
+          <ScalarProperty Name="PHARMACY_ID" ColumnName="PHARMACY_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="RXDATE" ColumnName="RXDATE" />
+          <ScalarProperty Name="NDC" ColumnName="NDC" />
+          <ScalarProperty Name="RXSUP" ColumnName="RXSUP" />
+          <ScalarProperty Name="RXAMT" ColumnName="RXAMT" />
+          <ScalarProperty Name="RXMD" ColumnName="RXMD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSITION_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.POSITION_LU">
+        <MappingFragment StoreEntitySet="POSITION_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRESCRIBING">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PRESCRIBING">
+        <MappingFragment StoreEntitySet="PRESCRIBING">
+          <ScalarProperty Name="PRESCRIBING_ID" ColumnName="PRESCRIBING_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="RXMD" ColumnName="RXMD" />
+          <ScalarProperty Name="RX_ORDER_DATE" ColumnName="RX_ORDER_DATE" />
+          <ScalarProperty Name="RX_ORDER_TIME" ColumnName="RX_ORDER_TIME" />
+          <ScalarProperty Name="RX_START_DATE" ColumnName="RX_START_DATE" />
+          <ScalarProperty Name="RX_END_DATE" ColumnName="RX_END_DATE" />
+          <ScalarProperty Name="RX_QUANTITY" ColumnName="RX_QUANTITY" />
+          <ScalarProperty Name="RX_QUANTITY_NUM" ColumnName="RX_QUANTITY_NUM" />
+          <ScalarProperty Name="RX_QUANTITY_UNIT" ColumnName="RX_QUANTITY_UNIT" />
+          <ScalarProperty Name="RX_REFILLS" ColumnName="RX_REFILLS" />
+          <ScalarProperty Name="RX_DAYS_SUPPLY" ColumnName="RX_DAYS_SUPPLY" />
+          <ScalarProperty Name="RX_FREQUENCY" ColumnName="RX_FREQUENCY" />
+          <ScalarProperty Name="RX_INSTRUCTIONS" ColumnName="RX_INSTRUCTIONS" />
+          <ScalarProperty Name="RX_BASIS" ColumnName="RX_BASIS" />
+          <ScalarProperty Name="RXNORM" ColumnName="RXNORM" />
+          <ScalarProperty Name="GENERIC_MED_NAME" ColumnName="GENERIC_MED_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRIMARY_DX_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PRIMARY_DX_LU">
+        <MappingFragment StoreEntitySet="PRIMARY_DX_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRINCIPAL_DX_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PRINCIPAL_DX_LU">
+        <MappingFragment StoreEntitySet="PRINCIPAL_DX_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROCEDURES">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PROCEDURES">
+        <MappingFragment StoreEntitySet="PROCEDURES">
+          <ScalarProperty Name="PROCEDURES_ID" ColumnName="PROCEDURES_ID" />
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="PROCDATE" ColumnName="PROCDATE" />
+          <ScalarProperty Name="PERFORMINGPROVIDER" ColumnName="PERFORMINGPROVIDER" />
+          <ScalarProperty Name="ORIGPX" ColumnName="ORIGPX" />
+          <ScalarProperty Name="PX" ColumnName="PX" />
+          <ScalarProperty Name="PX_CODETYPE" ColumnName="PX_CODETYPE" />
+          <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="PROVIDER" ColumnName="PROVIDER" />
+          <ScalarProperty Name="ADATE" ColumnName="ADATE" />
+          <ScalarProperty Name="ENCTYPE" ColumnName="ENCTYPE" />
+          <ScalarProperty Name="PXCNT" ColumnName="PXCNT" />
+          <ScalarProperty Name="CPTMOD1" ColumnName="CPTMOD1" />
+          <ScalarProperty Name="CPTMOD2" ColumnName="CPTMOD2" />
+          <ScalarProperty Name="CPTMOD3" ColumnName="CPTMOD3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVIDER_SPECIALTY">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PROVIDER_SPECIALTY">
+        <MappingFragment StoreEntitySet="PROVIDER_SPECIALTY">
+          <ScalarProperty Name="PROVIDER" ColumnName="PROVIDER" />
+          <ScalarProperty Name="SPECIALTY" ColumnName="SPECIALTY" />
+          <ScalarProperty Name="SPECIALTY2" ColumnName="SPECIALTY2" />
+          <ScalarProperty Name="SPECIALTY3" ColumnName="SPECIALTY3" />
+          <ScalarProperty Name="SPECIALTY4" ColumnName="SPECIALTY4" />
+          <ScalarProperty Name="PROVIDER_TYPE" ColumnName="PROVIDER_TYPE" />
+          <ScalarProperty Name="PROVIDER_BIRTH_YEAR" ColumnName="PROVIDER_BIRTH_YEAR" />
+          <ScalarProperty Name="PROVIDER_GENDER" ColumnName="PROVIDER_GENDER" />
+          <ScalarProperty Name="PROVIDER_RACE" ColumnName="PROVIDER_RACE" />
+          <ScalarProperty Name="PROVIDER_HISPANIC" ColumnName="PROVIDER_HISPANIC" />
+          <ScalarProperty Name="YEAR_GRADUATED" ColumnName="YEAR_GRADUATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVIDER_TYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PROVIDER_TYPE_LU">
+        <MappingFragment StoreEntitySet="PROVIDER_TYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PT_LOC_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PT_LOC_LU">
+        <MappingFragment StoreEntitySet="PT_LOC_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PX_CODETYPE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.PX_CODETYPE_LU">
+        <MappingFragment StoreEntitySet="PX_CODETYPE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RACE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.RACE_LU">
+        <MappingFragment StoreEntitySet="RACE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESULT_LOC_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.RESULT_LOC_LU">
+        <MappingFragment StoreEntitySet="RESULT_LOC_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RX_BASIS_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.RX_BASIS_LU">
+        <MappingFragment StoreEntitySet="RX_BASIS_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RX_FREQUENCY_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.RX_FREQUENCY_LU">
+        <MappingFragment StoreEntitySet="RX_FREQUENCY_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RX_QUANTITY_UNIT_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.RX_QUANTITY_UNIT_LU">
+        <MappingFragment StoreEntitySet="RX_QUANTITY_UNIT_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEXUAL_ORIENTATION_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.SEXUAL_ORIENTATION_LU">
+        <MappingFragment StoreEntitySet="SEXUAL_ORIENTATION_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEXUALLY_ACTV_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.SEXUALLY_ACTV_LU">
+        <MappingFragment StoreEntitySet="SEXUALLY_ACTV_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOCIAL_HISTORY">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.SOCIAL_HISTORY">
+        <MappingFragment StoreEntitySet="SOCIAL_HISTORY">
+          <ScalarProperty Name="SOCIAL_HISTORY_ID" ColumnName="SOCIAL_HISTORY_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="CONTACT_DATE" ColumnName="CONTACT_DATE" />
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="TOBACCO_PAK_PER_DY" ColumnName="TOBACCO_PAK_PER_DY" />
+          <ScalarProperty Name="TOBACCO_USED_YEARS" ColumnName="TOBACCO_USED_YEARS" />
+          <ScalarProperty Name="TOBACCO_COMMENT" ColumnName="TOBACCO_COMMENT" />
+          <ScalarProperty Name="UNSPECIFIED_TOBACCO" ColumnName="UNSPECIFIED_TOBACCO" />
+          <ScalarProperty Name="SMOKING_QUIT_DATE" ColumnName="SMOKING_QUIT_DATE" />
+          <ScalarProperty Name="SMOKELESS_QUIT_DATE" ColumnName="SMOKELESS_QUIT_DATE" />
+          <ScalarProperty Name="CIGARETTES_YN" ColumnName="CIGARETTES_YN" />
+          <ScalarProperty Name="PIPES_YN" ColumnName="PIPES_YN" />
+          <ScalarProperty Name="CIGARS_YN" ColumnName="CIGARS_YN" />
+          <ScalarProperty Name="SNUFF_YN" ColumnName="SNUFF_YN" />
+          <ScalarProperty Name="CHEW_YN" ColumnName="CHEW_YN" />
+          <ScalarProperty Name="ALCOHOL_OZ_PER_WK" ColumnName="ALCOHOL_OZ_PER_WK" />
+          <ScalarProperty Name="ALCOHOL_COMMENT" ColumnName="ALCOHOL_COMMENT" />
+          <ScalarProperty Name="IV_DRUG_USER_YN" ColumnName="IV_DRUG_USER_YN" />
+          <ScalarProperty Name="ILLICIT_DRUG_FREQ" ColumnName="ILLICIT_DRUG_FREQ" />
+          <ScalarProperty Name="ILLICIT_DRUG_COMMENT" ColumnName="ILLICIT_DRUG_COMMENT" />
+          <ScalarProperty Name="FEMALE_PARTNER_YN" ColumnName="FEMALE_PARTNER_YN" />
+          <ScalarProperty Name="MALE_PARTNER_YN" ColumnName="MALE_PARTNER_YN" />
+          <ScalarProperty Name="CONDOM_YN" ColumnName="CONDOM_YN" />
+          <ScalarProperty Name="PILL_YN" ColumnName="PILL_YN" />
+          <ScalarProperty Name="DIAPHRAGM_YN" ColumnName="DIAPHRAGM_YN" />
+          <ScalarProperty Name="IUD_YN" ColumnName="IUD_YN" />
+          <ScalarProperty Name="SURGICAL_YN" ColumnName="SURGICAL_YN" />
+          <ScalarProperty Name="SPERMICIDE_YN" ColumnName="SPERMICIDE_YN" />
+          <ScalarProperty Name="IMPLANT_YN" ColumnName="IMPLANT_YN" />
+          <ScalarProperty Name="RHYTHM_YN" ColumnName="RHYTHM_YN" />
+          <ScalarProperty Name="INJECTION_YN" ColumnName="INJECTION_YN" />
+          <ScalarProperty Name="SPONGE_YN" ColumnName="SPONGE_YN" />
+          <ScalarProperty Name="BC_INSERTS_YN" ColumnName="BC_INSERTS_YN" />
+          <ScalarProperty Name="ABSTINENCE_YN" ColumnName="ABSTINENCE_YN" />
+          <ScalarProperty Name="SEX_COMMENT" ColumnName="SEX_COMMENT" />
+          <ScalarProperty Name="YEARS_EDUCATION" ColumnName="YEARS_EDUCATION" />
+          <ScalarProperty Name="TOBACCO_USER" ColumnName="TOBACCO_USER" />
+          <ScalarProperty Name="ALCOHOL_USER" ColumnName="ALCOHOL_USER" />
+          <ScalarProperty Name="ILL_DRUG_USER" ColumnName="ILL_DRUG_USER" />
+          <ScalarProperty Name="SEXUALLY_ACTV" ColumnName="SEXUALLY_ACTV" />
+          <ScalarProperty Name="ONC_SMOKING_STATUS" ColumnName="ONC_SMOKING_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPECIMEN_SOURCE_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.SPECIMEN_SOURCE_LU">
+        <MappingFragment StoreEntitySet="SPECIMEN_SOURCE_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAT_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.STAT_LU">
+        <MappingFragment StoreEntitySet="STAT_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOBACCO_USER_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.TOBACCO_USER_LU">
+        <MappingFragment StoreEntitySet="TOBACCO_USER_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUMOR">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.TUMOR">
+        <MappingFragment StoreEntitySet="TUMOR">
+          <ScalarProperty Name="TUMOR_ID" ColumnName="TUMOR_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+          <ScalarProperty Name="DXDATE" ColumnName="DXDATE" />
+          <ScalarProperty Name="ICDOSITE" ColumnName="ICDOSITE" />
+          <ScalarProperty Name="STAGEGEN" ColumnName="STAGEGEN" />
+          <ScalarProperty Name="SS1977" ColumnName="SS1977" />
+          <ScalarProperty Name="SS2000" ColumnName="SS2000" />
+          <ScalarProperty Name="STAGEAJ" ColumnName="STAGEAJ" />
+          <ScalarProperty Name="AJCC_ED" ColumnName="AJCC_ED" />
+          <ScalarProperty Name="AJCC_GRP" ColumnName="AJCC_GRP" />
+          <ScalarProperty Name="AJCC_FULL_DER" ColumnName="AJCC_FULL_DER" />
+          <ScalarProperty Name="MORPH" ColumnName="MORPH" />
+          <ScalarProperty Name="BEHAV" ColumnName="BEHAV" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="DXYEAR" ColumnName="DXYEAR" />
+          <ScalarProperty Name="DXAGE" ColumnName="DXAGE" />
+          <ScalarProperty Name="BDATE" ColumnName="BDATE" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="RACE1" ColumnName="RACE1" />
+          <ScalarProperty Name="RACE2" ColumnName="RACE2" />
+          <ScalarProperty Name="RACE3" ColumnName="RACE3" />
+          <ScalarProperty Name="RACE4" ColumnName="RACE4" />
+          <ScalarProperty Name="RACE5" ColumnName="RACE5" />
+          <ScalarProperty Name="HISPANIC" ColumnName="HISPANIC" />
+          <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          <ScalarProperty Name="VITAL" ColumnName="VITAL" />
+          <ScalarProperty Name="DCAUSE" ColumnName="DCAUSE" />
+          <ScalarProperty Name="DOD" ColumnName="DOD" />
+          <ScalarProperty Name="DT_FU" ColumnName="DT_FU" />
+          <ScalarProperty Name="LATERALITY" ColumnName="LATERALITY" />
+          <ScalarProperty Name="IDPLAN" ColumnName="IDPLAN" />
+          <ScalarProperty Name="DCNFRM" ColumnName="DCNFRM" />
+          <ScalarProperty Name="DSTZ" ColumnName="DSTZ" />
+          <ScalarProperty Name="DAJC1T_P" ColumnName="DAJC1T_P" />
+          <ScalarProperty Name="DAJC1N_P" ColumnName="DAJC1N_P" />
+          <ScalarProperty Name="DAJC1M_P" ColumnName="DAJC1M_P" />
+          <ScalarProperty Name="DAJC1T_C" ColumnName="DAJC1T_C" />
+          <ScalarProperty Name="DAJC1N_C" ColumnName="DAJC1N_C" />
+          <ScalarProperty Name="DAJC1M_C" ColumnName="DAJC1M_C" />
+          <ScalarProperty Name="DSRG_FAC" ColumnName="DSRG_FAC" />
+          <ScalarProperty Name="DRAD_FAC" ColumnName="DRAD_FAC" />
+          <ScalarProperty Name="DCHM_FAC" ColumnName="DCHM_FAC" />
+          <ScalarProperty Name="DHRM_FAC" ColumnName="DHRM_FAC" />
+          <ScalarProperty Name="DIMM_FAC" ColumnName="DIMM_FAC" />
+          <ScalarProperty Name="DOTH_FAC" ColumnName="DOTH_FAC" />
+          <ScalarProperty Name="DNDI" ColumnName="DNDI" />
+          <ScalarProperty Name="DNDX" ColumnName="DNDX" />
+          <ScalarProperty Name="DTMRK1" ColumnName="DTMRK1" />
+          <ScalarProperty Name="DTMRK2" ColumnName="DTMRK2" />
+          <ScalarProperty Name="DTMRK3" ColumnName="DTMRK3" />
+          <ScalarProperty Name="CLN_STG" ColumnName="CLN_STG" />
+          <ScalarProperty Name="EOD" ColumnName="EOD" />
+          <ScalarProperty Name="DT_SURG" ColumnName="DT_SURG" />
+          <ScalarProperty Name="DT_CHEMO" ColumnName="DT_CHEMO" />
+          <ScalarProperty Name="DT_HORM" ColumnName="DT_HORM" />
+          <ScalarProperty Name="DT_RAD" ColumnName="DT_RAD" />
+          <ScalarProperty Name="DT_BRM" ColumnName="DT_BRM" />
+          <ScalarProperty Name="DT_OTH" ColumnName="DT_OTH" />
+          <ScalarProperty Name="R_N_SURG" ColumnName="R_N_SURG" />
+          <ScalarProperty Name="R_N_CHEMO" ColumnName="R_N_CHEMO" />
+          <ScalarProperty Name="R_N_HORM" ColumnName="R_N_HORM" />
+          <ScalarProperty Name="R_N_RAD" ColumnName="R_N_RAD" />
+          <ScalarProperty Name="R_N_BRM" ColumnName="R_N_BRM" />
+          <ScalarProperty Name="R_N_OTH" ColumnName="R_N_OTH" />
+          <ScalarProperty Name="DSRG_SUM" ColumnName="DSRG_SUM" />
+          <ScalarProperty Name="DRAD_SUM" ColumnName="DRAD_SUM" />
+          <ScalarProperty Name="DCHM_SUM" ColumnName="DCHM_SUM" />
+          <ScalarProperty Name="DHRM_SUM" ColumnName="DHRM_SUM" />
+          <ScalarProperty Name="DIMM_SUM" ColumnName="DIMM_SUM" />
+          <ScalarProperty Name="DOTH_SUM" ColumnName="DOTH_SUM" />
+          <ScalarProperty Name="CS_SZ" ColumnName="CS_SZ" />
+          <ScalarProperty Name="CS_EXT" ColumnName="CS_EXT" />
+          <ScalarProperty Name="CS_NODES" ColumnName="CS_NODES" />
+          <ScalarProperty Name="CS_NODES_EVAL" ColumnName="CS_NODES_EVAL" />
+          <ScalarProperty Name="CS_METS" ColumnName="CS_METS" />
+          <ScalarProperty Name="CS_METS_EVAL" ColumnName="CS_METS_EVAL" />
+          <ScalarProperty Name="SSF1" ColumnName="SSF1" />
+          <ScalarProperty Name="SSF2" ColumnName="SSF2" />
+          <ScalarProperty Name="SSF3" ColumnName="SSF3" />
+          <ScalarProperty Name="SSF4" ColumnName="SSF4" />
+          <ScalarProperty Name="SSF5" ColumnName="SSF5" />
+          <ScalarProperty Name="SSF6" ColumnName="SSF6" />
+          <ScalarProperty Name="SSF7" ColumnName="SSF7" />
+          <ScalarProperty Name="SSF8" ColumnName="SSF8" />
+          <ScalarProperty Name="SSF9" ColumnName="SSF9" />
+          <ScalarProperty Name="SSF10" ColumnName="SSF10" />
+          <ScalarProperty Name="SSF11" ColumnName="SSF11" />
+          <ScalarProperty Name="SSF12" ColumnName="SSF12" />
+          <ScalarProperty Name="SSF13" ColumnName="SSF13" />
+          <ScalarProperty Name="SSF14" ColumnName="SSF14" />
+          <ScalarProperty Name="SSF15" ColumnName="SSF15" />
+          <ScalarProperty Name="SSF16" ColumnName="SSF16" />
+          <ScalarProperty Name="SSF17" ColumnName="SSF17" />
+          <ScalarProperty Name="SSF18" ColumnName="SSF18" />
+          <ScalarProperty Name="SSF19" ColumnName="SSF19" />
+          <ScalarProperty Name="SSF20" ColumnName="SSF20" />
+          <ScalarProperty Name="SSF21" ColumnName="SSF21" />
+          <ScalarProperty Name="SSF22" ColumnName="SSF22" />
+          <ScalarProperty Name="SSF23" ColumnName="SSF23" />
+          <ScalarProperty Name="SSF24" ColumnName="SSF24" />
+          <ScalarProperty Name="SSF25" ColumnName="SSF25" />
+          <ScalarProperty Name="PAL_FAC" ColumnName="PAL_FAC" />
+          <ScalarProperty Name="PAL_SUM" ColumnName="PAL_SUM" />
+          <ScalarProperty Name="DER_T6" ColumnName="DER_T6" />
+          <ScalarProperty Name="DER_T6_D" ColumnName="DER_T6_D" />
+          <ScalarProperty Name="DER_N6" ColumnName="DER_N6" />
+          <ScalarProperty Name="DER_N6_D" ColumnName="DER_N6_D" />
+          <ScalarProperty Name="DER_M6" ColumnName="DER_M6" />
+          <ScalarProperty Name="DER_M6_D" ColumnName="DER_M6_D" />
+          <ScalarProperty Name="DER_T7" ColumnName="DER_T7" />
+          <ScalarProperty Name="DER_T7_D" ColumnName="DER_T7_D" />
+          <ScalarProperty Name="DER_N7" ColumnName="DER_N7" />
+          <ScalarProperty Name="DER_N7_D" ColumnName="DER_N7_D" />
+          <ScalarProperty Name="DER_M7" ColumnName="DER_M7" />
+          <ScalarProperty Name="DER_M7_D" ColumnName="DER_M7_D" />
+          <ScalarProperty Name="DER_SS2000F" ColumnName="DER_SS2000F" />
+          <ScalarProperty Name="RECUR_DT" ColumnName="RECUR_DT" />
+          <ScalarProperty Name="RECUR_TYPE" ColumnName="RECUR_TYPE" />
+          <ScalarProperty Name="RECUR_FL" ColumnName="RECUR_FL" />
+          <ScalarProperty Name="DATA_SOURCE" ColumnName="DATA_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VITAL_SIGNS">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.VITAL_SIGNS">
+        <MappingFragment StoreEntitySet="VITAL_SIGNS">
+          <ScalarProperty Name="VITAL_SIGNS_ID" ColumnName="VITAL_SIGNS_ID" />
+          <ScalarProperty Name="PERSON_ID" ColumnName="PERSON_ID" />
+          <ScalarProperty Name="MEASURE_DATE" ColumnName="MEASURE_DATE" />
+          <ScalarProperty Name="MEASURE_TIME" ColumnName="MEASURE_TIME" />
+          <ScalarProperty Name="ENC_ID" ColumnName="ENC_ID" />
+          <ScalarProperty Name="ENCTYPE" ColumnName="ENCTYPE" />
+          <ScalarProperty Name="HT_RAW" ColumnName="HT_RAW" />
+          <ScalarProperty Name="WT_RAW" ColumnName="WT_RAW" />
+          <ScalarProperty Name="HT" ColumnName="HT" />
+          <ScalarProperty Name="WT" ColumnName="WT" />
+          <ScalarProperty Name="BMI_RAW" ColumnName="BMI_RAW" />
+          <ScalarProperty Name="DIASTOLIC" ColumnName="DIASTOLIC" />
+          <ScalarProperty Name="SYSTOLIC" ColumnName="SYSTOLIC" />
+          <ScalarProperty Name="DIASTOLIC_RAW" ColumnName="DIASTOLIC_RAW" />
+          <ScalarProperty Name="SYSTOLIC_RAW" ColumnName="SYSTOLIC_RAW" />
+          <ScalarProperty Name="BP_TYPE" ColumnName="BP_TYPE" />
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="HEAD_CIR_RAW" ColumnName="HEAD_CIR_RAW" />
+          <ScalarProperty Name="RESPIR_RAW" ColumnName="RESPIR_RAW" />
+          <ScalarProperty Name="TEMP_RAW" ColumnName="TEMP_RAW" />
+          <ScalarProperty Name="PULSE_RAW" ColumnName="PULSE_RAW" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YNQXU_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.YNQXU_LU">
+        <MappingFragment StoreEntitySet="YNQXU_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YNU_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.YNU_LU">
+        <MappingFragment StoreEntitySet="YNU_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YNXU_LU">
+      <EntityTypeMapping TypeName="VDW_3_1_BMD_TestModel.YNXU_LU">
+        <MappingFragment StoreEntitySet="YNXU_LU">
+          <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

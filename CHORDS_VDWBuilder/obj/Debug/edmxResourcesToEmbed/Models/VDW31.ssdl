@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VDW_3_1_BMD_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ABN_IND_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ADMITTING_SOURCE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BP_TYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CAUSE_OF_DEATH">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+      <PropertyRef Name="COD" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="COD" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="DX_CODETYPE" Type="nvarchar" MaxLength="2" />
+    <Property Name="CAUSETYPE" Type="nchar" MaxLength="1" />
+    <Property Name="SOURCE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CONFIDENCE" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="CAUSETYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CENSUS_DEMOG">
+    <Key>
+      <PropertyRef Name="CENSUS_YEAR" />
+      <PropertyRef Name="GEOCODE" />
+    </Key>
+    <Property Name="CENSUS_YEAR" Type="int" Nullable="false" />
+    <Property Name="GEOCODE" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="BLOCK" Type="nvarchar" MaxLength="3" />
+    <Property Name="CENSUS_DATA_SRC" Type="nvarchar" MaxLength="16" />
+    <Property Name="CHORDS_GEOLEVEL" Type="nvarchar" MaxLength="10" />
+    <Property Name="STATE" Type="nvarchar" MaxLength="2" />
+    <Property Name="COUNTY" Type="nvarchar" MaxLength="3" />
+    <Property Name="TRACT" Type="nvarchar" MaxLength="6" />
+    <Property Name="BLOCKGP" Type="nvarchar" MaxLength="1" />
+    <Property Name="HOUSES_N" Type="int" />
+    <Property Name="RA_NHS_WH" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_BL" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_AM" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_AS" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_HA" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_OT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_NHS_ML" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_WH" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_BL" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_AM" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_AS" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_HA" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_OT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RA_HIS_ML" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_OCCUPIED" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_OWN" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_RENT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_FORRENT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_FORSALE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_RENTSOLD" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_SEASONAL" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_MIGRANT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSES_UNOCC_OTHER" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION1" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION2" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION3" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION4" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION5" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION6" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION7" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="EDUCATION8" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MEDFAMINCOME" Type="int" />
+    <Property Name="FAMINCOME1" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME2" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME3" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME4" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME5" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME6" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME7" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME8" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME9" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME10" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME11" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME12" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME13" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME14" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME15" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMINCOME16" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MEDHOUSINCOME" Type="int" />
+    <Property Name="HOUSINCOME1" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME2" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME3" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME4" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME5" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME6" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME7" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME8" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME9" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME10" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME11" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME12" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME13" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME14" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME15" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSINCOME16" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_LT_50" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_50_74" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_75_99" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_100_124" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_125_149" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_150_174" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_175_184" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_185_199" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="POV_GT_200" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="ENGLISH_SPEAKER" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="SPANISH_SPEAKER" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="BORNINUS" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MOVEDINLAST12MON" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MARRIED" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="DIVORCED" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="DISABILITY" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="UNEMPLOYMENT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="UNEMPLOYMENT_MALE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="INS_MEDICARE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="INS_MEDICAID" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HH_NOCAR" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HH_PUBLIC_ASSISTANCE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HMOWNER_COSTS_MORT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HMOWNER_COSTS_NO_MORT" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOMES_MEDVALUE" Type="int" />
+    <Property Name="PCT_CROWDING" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FEMALE_HEAD_OF_HH" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MGR_FEMALE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="MGR_MALE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="RESIDENTS_65" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="SAME_RESIDENCE" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="FAMPOVERTY" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="HOUSPOVERTY" Type="decimal" Precision="11" Scale="10" />
+    <Property Name="ZIP" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="CENSUS_LOCATION">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+      <PropertyRef Name="LOC_START" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="LOC_START" Type="date" Nullable="false" />
+    <Property Name="LOC_END" Type="date" />
+    <Property Name="GEOCODE" Type="nvarchar" MaxLength="15" />
+    <Property Name="CITY_GEOCODE" Type="nvarchar" MaxLength="35" />
+    <Property Name="GEOCODE_BOUNDARY_YEAR" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="GEOLEVEL" Type="nchar" MaxLength="1" />
+    <Property Name="MATCH_STRENGTH" Type="nchar" MaxLength="1" />
+    <Property Name="LATITUDE" Type="decimal" Precision="8" Scale="6" />
+    <Property Name="LONGITUDE" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="GEOCODE_APP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CODETYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COLORADO_COUNTIES">
+    <Key>
+      <PropertyRef Name="FIPS" />
+    </Key>
+    <Property Name="FIPS" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CONFIDENCE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEATH">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="DEATHDT" Type="date" />
+    <Property Name="DTIMPUTE" Type="nchar" MaxLength="1" />
+    <Property Name="SOURCE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CONFIDENCE" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="DEMOGRAPHICS">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="MRN" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="BIRTH_DATE" Type="date" Nullable="false" />
+    <Property Name="GENDER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PRIMARY_LANGUAGE" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="NEEDS_INTERPRETER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="RACE1" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE2" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE3" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE4" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE5" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="HISPANIC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SEXUAL_ORIENTATION" Type="nvarchar" MaxLength="2" />
+    <Property Name="GENDER_IDENTITY" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DIAGNOSES">
+    <Key>
+      <PropertyRef Name="DIAGNOSES_ID" />
+    </Key>
+    <Property Name="DIAGNOSES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DX" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ADATE" Type="date" Nullable="false" />
+    <Property Name="DIAGPROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ORIGDX" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DX_CODETYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="PRINCIPAL_DX" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PRIMARY_DX" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISCHARGE_DISPOSITION_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISCHARGE_STATUS_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DTIMPUTE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DX_CODETYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENCOUNTER_SUBTYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENCOUNTERS">
+    <Key>
+      <PropertyRef Name="ENC_ID" />
+    </Key>
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="ADATE" Type="date" Nullable="false" />
+    <Property Name="DDATE" Type="date" />
+    <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ENC_COUNT" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="DRG_VERSION" Type="nchar" MaxLength="1" />
+    <Property Name="DRG_VALUE" Type="nvarchar" MaxLength="4" />
+    <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="ENCOUNTER_SUBTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="FACILITY_CODE" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DISCHARGE_DISPOSITION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DISCHARGE_STATUS" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="ADMITTING_SOURCE" Type="nvarchar" MaxLength="2" />
+    <Property Name="DEPARTMENT" Type="nvarchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="ENCTYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENROLLMENT">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+      <PropertyRef Name="ENR_START" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="ENR_START" Type="date" Nullable="false" />
+    <Property Name="ENR_END" Type="date" Nullable="false" />
+    <Property Name="INS_MEDICAID" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_COMMERCIAL" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_PRIVATEPAY" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_STATESUBSIDIZED" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_SELFFUNDED" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_HIGHDEDUCTIBLE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_MEDICARE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_MEDICARE_A" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_MEDICARE_B" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_MEDICARE_C" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_MEDICARE_D" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INS_OTHER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PLAN_HMO" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PLAN_POS" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PLAN_PPO" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PLAN_INDEMNITY" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DRUGCOV" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="OUTSIDE_UTILIZATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ENROLLMENT_BASIS" Type="nchar" MaxLength="1" />
+    <Property Name="PCC" Type="nvarchar" MaxLength="4" />
+    <Property Name="PCP" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="ENROLLMENT_BASIS_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EVERNDC">
+    <Key>
+      <PropertyRef Name="NDC" />
+      <PropertyRef Name="GENERIC" />
+    </Key>
+    <Property Name="NDC" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="GENERIC" Type="nvarchar" MaxLength="105" Nullable="false" />
+    <Property Name="BRAND" Type="nvarchar" MaxLength="105" />
+    <Property Name="GPI" Type="nvarchar" MaxLength="14" />
+    <Property Name="AHFS1" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS2" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS3" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS4" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS5" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS6" Type="nvarchar" MaxLength="8" />
+    <Property Name="AHFS7" Type="nvarchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="GENDER_IDENTITY_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GENDER_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LAB_RESULTS">
+    <Key>
+      <PropertyRef Name="LAB_RESULTS_ID" />
+    </Key>
+    <Property Name="LAB_RESULTS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="TEST_TYPE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LAB_DT" Type="date" Nullable="false" />
+    <Property Name="LAB_TM" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ORDER_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="RESULT_DT" Type="date" Nullable="false" />
+    <Property Name="RESULT_TM" Type="time" Precision="7" />
+    <Property Name="LOINC" Type="nvarchar" MaxLength="10" />
+    <Property Name="STAT" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PT_LOC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="RESULT_LOC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="LOCAL_CD" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="BATTERY_CD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PX" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="CODETYPE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ORDER_DT" Type="date" />
+    <Property Name="RESULT_C" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="RESULT_NUM" Type="numeric" Precision="20" Scale="0" />
+    <Property Name="MODIFIER" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RESULT_UNIT" Type="nvarchar" MaxLength="11" />
+    <Property Name="NORMAL_LOW_C" Type="nvarchar" MaxLength="8" />
+    <Property Name="MODIFIER_LOW" Type="nvarchar" MaxLength="2" />
+    <Property Name="NORMAL_HIGH_C" Type="nvarchar" MaxLength="8" />
+    <Property Name="MODIFIER_HIGH" Type="nvarchar" MaxLength="2" />
+    <Property Name="ABN_IND" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="ORDER_PROV" Type="nvarchar" MaxLength="36" />
+    <Property Name="ORDER_DEPT" Type="nvarchar" MaxLength="4" />
+    <Property Name="FACILITY_CODE" Type="nvarchar" MaxLength="36" />
+    <Property Name="SPECIMEN_ID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SPECIMEN_SOURCE" Type="nvarchar" MaxLength="6" />
+    <Property Name="ROW_ID" Type="nvarchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="LANG_USAGE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LANGUAGES">
+    <Key>
+      <PropertyRef Name="PERSON_ID" />
+      <PropertyRef Name="LANG_ISO" />
+    </Key>
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="LANG_ISO" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="LANG_USAGE" Type="nchar" MaxLength="1" />
+    <Property Name="LANG_PRIMARY" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="LANGUAGES_ISO_LU">
+    <Key>
+      <PropertyRef Name="ISO_639-2_CODE" />
+    </Key>
+    <Property Name="ISO_639-2_CODE" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="ENGLISH_DESCRIPTION" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODIFIER_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ONC_SMOKING_STATUS_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHARMACY">
+    <Key>
+      <PropertyRef Name="PHARMACY_ID" />
+    </Key>
+    <Property Name="PHARMACY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="RXDATE" Type="date" Nullable="false" />
+    <Property Name="NDC" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="RXSUP" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="RXAMT" Type="decimal" Precision="16" Scale="10" Nullable="false" />
+    <Property Name="RXMD" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="POSITION_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRESCRIBING">
+    <Key>
+      <PropertyRef Name="PRESCRIBING_ID" />
+    </Key>
+    <Property Name="PRESCRIBING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />
+    <Property Name="RXMD" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="RX_ORDER_DATE" Type="date" Nullable="false" />
+    <Property Name="RX_ORDER_TIME" Type="time" Precision="7" />
+    <Property Name="RX_START_DATE" Type="date" Nullable="false" />
+    <Property Name="RX_END_DATE" Type="date" />
+    <Property Name="RX_QUANTITY" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="RX_QUANTITY_NUM" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="RX_QUANTITY_UNIT" Type="nvarchar" MaxLength="2" />
+    <Property Name="RX_REFILLS" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="RX_DAYS_SUPPLY" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="RX_FREQUENCY" Type="nvarchar" MaxLength="2" />
+    <Property Name="RX_INSTRUCTIONS" Type="nvarchar" MaxLength="100" />
+    <Property Name="RX_BASIS" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RXNORM" Type="nvarchar" MaxLength="8" />
+    <Property Name="GENERIC_MED_NAME" Type="nvarchar" MaxLength="105" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRIMARY_DX_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRINCIPAL_DX_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROCEDURES">
+    <Key>
+      <PropertyRef Name="PROCEDURES_ID" />
+    </Key>
+    <Property Name="PROCEDURES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="PROCDATE" Type="date" Nullable="false" />
+    <Property Name="PERFORMINGPROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ORIGPX" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="PX" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="PX_CODETYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="ROW_ID" Type="nvarchar" MaxLength="8" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ADATE" Type="date" Nullable="false" />
+    <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="PXCNT" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="CPTMOD1" Type="nvarchar" MaxLength="2" />
+    <Property Name="CPTMOD2" Type="nvarchar" MaxLength="2" />
+    <Property Name="CPTMOD3" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="PROVIDER_SPECIALTY">
+    <Key>
+      <PropertyRef Name="PROVIDER" />
+    </Key>
+    <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="SPECIALTY" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="SPECIALTY2" Type="nvarchar" MaxLength="3" />
+    <Property Name="SPECIALTY3" Type="nvarchar" MaxLength="3" />
+    <Property Name="SPECIALTY4" Type="nvarchar" MaxLength="3" />
+    <Property Name="PROVIDER_TYPE" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="PROVIDER_BIRTH_YEAR" Type="numeric" Precision="4" Scale="0" />
+    <Property Name="PROVIDER_GENDER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PROVIDER_RACE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="PROVIDER_HISPANIC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="YEAR_GRADUATED" Type="numeric" Precision="4" Scale="0" />
+  </EntityType>
+  <EntityType Name="PROVIDER_TYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PT_LOC_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PX_CODETYPE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RACE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RESULT_LOC_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RX_BASIS_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RX_FREQUENCY_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RX_QUANTITY_UNIT_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEXUAL_ORIENTATION_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEXUALLY_ACTV_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOCIAL_HISTORY">
+    <Key>
+      <PropertyRef Name="SOCIAL_HISTORY_ID" />
+    </Key>
+    <Property Name="SOCIAL_HISTORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="CONTACT_DATE" Type="date" Nullable="false" />
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TOBACCO_PAK_PER_DY" Type="nvarchar" MaxLength="20" />
+    <Property Name="TOBACCO_USED_YEARS" Type="nvarchar" MaxLength="20" />
+    <Property Name="TOBACCO_COMMENT" Type="nvarchar" MaxLength="255" />
+    <Property Name="UNSPECIFIED_TOBACCO" Type="nchar" MaxLength="1" />
+    <Property Name="SMOKING_QUIT_DATE" Type="datetime" />
+    <Property Name="SMOKELESS_QUIT_DATE" Type="datetime" />
+    <Property Name="CIGARETTES_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PIPES_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CIGARS_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SNUFF_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CHEW_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ALCOHOL_OZ_PER_WK" Type="nvarchar" MaxLength="15" />
+    <Property Name="ALCOHOL_COMMENT" Type="nvarchar" MaxLength="255" />
+    <Property Name="IV_DRUG_USER_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ILLICIT_DRUG_FREQ" Type="nvarchar" MaxLength="5" />
+    <Property Name="ILLICIT_DRUG_COMMENT" Type="nvarchar" MaxLength="255" />
+    <Property Name="FEMALE_PARTNER_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="MALE_PARTNER_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CONDOM_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PILL_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DIAPHRAGM_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IUD_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SURGICAL_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SPERMICIDE_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IMPLANT_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="RHYTHM_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="INJECTION_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SPONGE_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="BC_INSERTS_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ABSTINENCE_YN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SEX_COMMENT" Type="nvarchar" MaxLength="255" />
+    <Property Name="YEARS_EDUCATION" Type="nvarchar" MaxLength="15" />
+    <Property Name="TOBACCO_USER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ALCOHOL_USER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ILL_DRUG_USER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SEXUALLY_ACTV" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="ONC_SMOKING_STATUS" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SPECIMEN_SOURCE_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STAT_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TOBACCO_USER_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TUMOR">
+    <Key>
+      <PropertyRef Name="TUMOR_ID" />
+    </Key>
+    <Property Name="TUMOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="SEQUENCE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DXDATE" Type="date" Nullable="false" />
+    <Property Name="ICDOSITE" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="STAGEGEN" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="SS1977" Type="nchar" MaxLength="1" />
+    <Property Name="SS2000" Type="nchar" MaxLength="1" />
+    <Property Name="STAGEAJ" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="AJCC_ED" Type="nchar" MaxLength="1" />
+    <Property Name="AJCC_GRP" Type="nvarchar" MaxLength="2" />
+    <Property Name="AJCC_FULL_DER" Type="nvarchar" MaxLength="20" />
+    <Property Name="MORPH" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="BEHAV" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="GRADE" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DXYEAR" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="DXAGE" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="BDATE" Type="date" Nullable="false" />
+    <Property Name="GENDER" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="RACE1" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE2" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE3" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE4" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RACE5" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="HISPANIC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="CLASS" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="VITAL" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DCAUSE" Type="nvarchar" MaxLength="6" />
+    <Property Name="DOD" Type="date" />
+    <Property Name="DT_FU" Type="date" />
+    <Property Name="LATERALITY" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IDPLAN" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DCNFRM" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DSTZ" Type="nvarchar" MaxLength="3" />
+    <Property Name="DAJC1T_P" Type="nvarchar" MaxLength="5" />
+    <Property Name="DAJC1N_P" Type="nvarchar" MaxLength="5" />
+    <Property Name="DAJC1M_P" Type="nvarchar" MaxLength="5" />
+    <Property Name="DAJC1T_C" Type="nvarchar" MaxLength="5" />
+    <Property Name="DAJC1N_C" Type="nvarchar" MaxLength="5" />
+    <Property Name="DAJC1M_C" Type="nvarchar" MaxLength="5" />
+    <Property Name="DSRG_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DRAD_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DCHM_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DHRM_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DIMM_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DOTH_FAC" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DNDI" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DNDX" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DTMRK1" Type="nchar" MaxLength="1" />
+    <Property Name="DTMRK2" Type="nchar" MaxLength="1" />
+    <Property Name="DTMRK3" Type="nchar" MaxLength="1" />
+    <Property Name="CLN_STG" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="EOD" Type="nvarchar" MaxLength="12" />
+    <Property Name="DT_SURG" Type="date" />
+    <Property Name="DT_CHEMO" Type="date" />
+    <Property Name="DT_HORM" Type="date" />
+    <Property Name="DT_RAD" Type="date" />
+    <Property Name="DT_BRM" Type="date" />
+    <Property Name="DT_OTH" Type="date" />
+    <Property Name="R_N_SURG" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="R_N_CHEMO" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="R_N_HORM" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="R_N_RAD" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="R_N_BRM" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="R_N_OTH" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DSRG_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DRAD_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DCHM_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DHRM_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DIMM_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="DOTH_SUM" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="CS_SZ" Type="nvarchar" MaxLength="3" />
+    <Property Name="CS_EXT" Type="nvarchar" MaxLength="3" />
+    <Property Name="CS_NODES" Type="nvarchar" MaxLength="3" />
+    <Property Name="CS_NODES_EVAL" Type="nchar" MaxLength="1" />
+    <Property Name="CS_METS" Type="nvarchar" MaxLength="2" />
+    <Property Name="CS_METS_EVAL" Type="nchar" MaxLength="1" />
+    <Property Name="SSF1" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF2" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF3" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF4" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF5" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF6" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF7" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF8" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF9" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF10" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF11" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF12" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF13" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF14" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF15" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF16" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF17" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF18" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF19" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF20" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF21" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF22" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF23" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF24" Type="nvarchar" MaxLength="3" />
+    <Property Name="SSF25" Type="nvarchar" MaxLength="3" />
+    <Property Name="PAL_FAC" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="PAL_SUM" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DER_T6" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_T6_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_N6" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_N6_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_M6" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_M6_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_T7" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_T7_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_N7" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_N7_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_M7" Type="nvarchar" MaxLength="3" />
+    <Property Name="DER_M7_D" Type="nchar" MaxLength="1" />
+    <Property Name="DER_SS2000F" Type="nchar" MaxLength="1" />
+    <Property Name="RECUR_DT" Type="datetime" />
+    <Property Name="RECUR_TYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="RECUR_FL" Type="nvarchar" MaxLength="2" />
+    <Property Name="DATA_SOURCE" Type="nvarchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="VITAL_SIGNS">
+    <Key>
+      <PropertyRef Name="VITAL_SIGNS_ID" />
+    </Key>
+    <Property Name="VITAL_SIGNS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="MEASURE_DATE" Type="date" Nullable="false" />
+    <Property Name="MEASURE_TIME" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" />
+    <Property Name="HT_RAW" Type="nvarchar" MaxLength="10" />
+    <Property Name="WT_RAW" Type="nvarchar" MaxLength="10" />
+    <Property Name="HT" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="WT" Type="decimal" Precision="8" Scale="4" />
+    <Property Name="BMI_RAW" Type="nvarchar" MaxLength="5" />
+    <Property Name="DIASTOLIC" Type="numeric" Precision="3" Scale="0" />
+    <Property Name="SYSTOLIC" Type="numeric" Precision="3" Scale="0" />
+    <Property Name="DIASTOLIC_RAW" Type="nvarchar" MaxLength="7" />
+    <Property Name="SYSTOLIC_RAW" Type="nvarchar" MaxLength="7" />
+    <Property Name="BP_TYPE" Type="nchar" MaxLength="1" />
+    <Property Name="POSITION" Type="nchar" MaxLength="1" />
+    <Property Name="HEAD_CIR_RAW" Type="nvarchar" MaxLength="6" />
+    <Property Name="RESPIR_RAW" Type="nvarchar" MaxLength="6" />
+    <Property Name="TEMP_RAW" Type="nvarchar" MaxLength="6" />
+    <Property Name="PULSE_RAW" Type="nvarchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="YNQXU_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YNU_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YNXU_LU">
+    <Key>
+      <PropertyRef Name="ABBREVIATION" />
+    </Key>
+    <Property Name="ABBREVIATION" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="VDW_3_1_BMD_TestModelStoreContainer">
+    <EntitySet Name="ABN_IND_LU" EntityType="Self.ABN_IND_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADMITTING_SOURCE_LU" EntityType="Self.ADMITTING_SOURCE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BP_TYPE_LU" EntityType="Self.BP_TYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAUSE_OF_DEATH" EntityType="Self.CAUSE_OF_DEATH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAUSETYPE_LU" EntityType="Self.CAUSETYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CENSUS_DEMOG" EntityType="Self.CENSUS_DEMOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CENSUS_LOCATION" EntityType="Self.CENSUS_LOCATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CODETYPE_LU" EntityType="Self.CODETYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COLORADO_COUNTIES" EntityType="Self.COLORADO_COUNTIES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONFIDENCE_LU" EntityType="Self.CONFIDENCE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEATH" EntityType="Self.DEATH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEMOGRAPHICS" EntityType="Self.DEMOGRAPHICS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT_LU" EntityType="Self.DEPARTMENT_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIAGNOSES" EntityType="Self.DIAGNOSES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISCHARGE_DISPOSITION_LU" EntityType="Self.DISCHARGE_DISPOSITION_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISCHARGE_STATUS_LU" EntityType="Self.DISCHARGE_STATUS_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DTIMPUTE_LU" EntityType="Self.DTIMPUTE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DX_CODETYPE_LU" EntityType="Self.DX_CODETYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENCOUNTER_SUBTYPE_LU" EntityType="Self.ENCOUNTER_SUBTYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENCOUNTERS" EntityType="Self.ENCOUNTERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENCTYPE_LU" EntityType="Self.ENCTYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENROLLMENT" EntityType="Self.ENROLLMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENROLLMENT_BASIS_LU" EntityType="Self.ENROLLMENT_BASIS_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVERNDC" EntityType="Self.EVERNDC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENDER_IDENTITY_LU" EntityType="Self.GENDER_IDENTITY_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENDER_LU" EntityType="Self.GENDER_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LAB_RESULTS" EntityType="Self.LAB_RESULTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LANG_USAGE_LU" EntityType="Self.LANG_USAGE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LANGUAGES" EntityType="Self.LANGUAGES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LANGUAGES_ISO_LU" EntityType="Self.LANGUAGES_ISO_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODIFIER_LU" EntityType="Self.MODIFIER_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ONC_SMOKING_STATUS_LU" EntityType="Self.ONC_SMOKING_STATUS_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHARMACY" EntityType="Self.PHARMACY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POSITION_LU" EntityType="Self.POSITION_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRESCRIBING" EntityType="Self.PRESCRIBING" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRIMARY_DX_LU" EntityType="Self.PRIMARY_DX_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRINCIPAL_DX_LU" EntityType="Self.PRINCIPAL_DX_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROCEDURES" EntityType="Self.PROCEDURES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVIDER_SPECIALTY" EntityType="Self.PROVIDER_SPECIALTY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVIDER_TYPE_LU" EntityType="Self.PROVIDER_TYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PT_LOC_LU" EntityType="Self.PT_LOC_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PX_CODETYPE_LU" EntityType="Self.PX_CODETYPE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RACE_LU" EntityType="Self.RACE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESULT_LOC_LU" EntityType="Self.RESULT_LOC_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RX_BASIS_LU" EntityType="Self.RX_BASIS_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RX_FREQUENCY_LU" EntityType="Self.RX_FREQUENCY_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RX_QUANTITY_UNIT_LU" EntityType="Self.RX_QUANTITY_UNIT_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEXUAL_ORIENTATION_LU" EntityType="Self.SEXUAL_ORIENTATION_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEXUALLY_ACTV_LU" EntityType="Self.SEXUALLY_ACTV_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOCIAL_HISTORY" EntityType="Self.SOCIAL_HISTORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPECIMEN_SOURCE_LU" EntityType="Self.SPECIMEN_SOURCE_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STAT_LU" EntityType="Self.STAT_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TOBACCO_USER_LU" EntityType="Self.TOBACCO_USER_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TUMOR" EntityType="Self.TUMOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VITAL_SIGNS" EntityType="Self.VITAL_SIGNS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YNQXU_LU" EntityType="Self.YNQXU_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YNU_LU" EntityType="Self.YNU_LU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YNXU_LU" EntityType="Self.YNXU_LU" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
