@@ -39,7 +39,22 @@ namespace CHORDS_VDWBuilder
             // Build list of Patients and Fill in Demographic Table
             List<Patient> patients = loadPatients(client);
 
-            // Build Death Table
+            // Build Census Location
+            ;
+
+            // Build Death Table and Cause of Death
+            ;
+
+            // Build Diagnosis
+            ;
+
+            // Build Encounters
+            ;
+
+            // 
+            ;
+
+            // 
             ;
 
         }
@@ -86,15 +101,19 @@ namespace CHORDS_VDWBuilder
                             {
                                 demo.GENDER = "F";
                             }
-                            if (p.Gender == AdministrativeGender.Male)
+                            else if (p.Gender == AdministrativeGender.Male)
                             {
                                 demo.GENDER = "M";
                             }
-                            if (p.Gender == AdministrativeGender.Other)
+                            else if (p.Gender == AdministrativeGender.Other)
                             {
                                 demo.GENDER = "O";
                             }
-                            if (p.Gender == AdministrativeGender.Unknown)
+                            else if (p.Gender == AdministrativeGender.Unknown)
+                            {
+                                demo.GENDER = "U";
+                            }
+                            else
                             {
                                 demo.GENDER = "U";
                             }
@@ -102,10 +121,13 @@ namespace CHORDS_VDWBuilder
                             // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
                             if (p.Communication.Count > 0)
                             {
-                                demo.PRIMARY_LANGUAGE = p.Communication.FirstOrDefault().Language.Text;
+                                demo.PRIMARY_LANGUAGE = p.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
                                 if (p.Communication.FirstOrDefault().Preferred != null)
                                 {
                                     demo.NEEDS_INTERPRETER = "S";
+                                } else
+                                {
+                                    demo.NEEDS_INTERPRETER = "";
                                 }
                             }
                             else
@@ -211,7 +233,7 @@ namespace CHORDS_VDWBuilder
 
         private void CHORD_VDWBuilder_Load(object sender, EventArgs e)
         {
-            FHIR_URL.Text = "http://vonk.fire.ly";
+            FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
         }
     }
 }

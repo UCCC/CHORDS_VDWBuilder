@@ -11,7 +11,6 @@ C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.FhirPath.xml
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\System.ValueTuple.xml
-C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csprojResolveAssemblyReference.cache
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.Properties.Resources.resources
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csproj.GenerateResource.cache
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csproj.CoreCompileInputs.cache
@@ -23,3 +22,4 @@ C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.xml
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.CHORD_VDWBuilder.resources
+C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csprojAssemblyReference.cache
