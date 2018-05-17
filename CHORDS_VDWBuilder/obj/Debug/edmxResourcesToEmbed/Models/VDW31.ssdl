@@ -26,7 +26,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="COD" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="COD" Type="nvarchar" MaxLength="6" Nullable="false" />
     <Property Name="DX_CODETYPE" Type="nvarchar" MaxLength="2" />
     <Property Name="CAUSETYPE" Type="nchar" MaxLength="1" />
@@ -160,7 +160,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="LOC_START" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="LOC_START" Type="date" Nullable="false" />
     <Property Name="LOC_END" Type="date" />
     <Property Name="GEOCODE" Type="nvarchar" MaxLength="15" />
@@ -197,7 +197,7 @@
     <Key>
       <PropertyRef Name="PERSON_ID" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="DEATHDT" Type="date" />
     <Property Name="DTIMPUTE" Type="nchar" MaxLength="1" />
     <Property Name="SOURCE" Type="nchar" MaxLength="1" Nullable="false" />
@@ -207,8 +207,8 @@
     <Key>
       <PropertyRef Name="PERSON_ID" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
-    <Property Name="MRN" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="MRN" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="BIRTH_DATE" Type="date" Nullable="false" />
     <Property Name="GENDER" Type="nchar" MaxLength="1" Nullable="false" />
     <Property Name="PRIMARY_LANGUAGE" Type="nvarchar" MaxLength="3" Nullable="false" />
@@ -238,7 +238,7 @@
     <Property Name="DX" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="ADATE" Type="date" Nullable="false" />
     <Property Name="DIAGPROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
     <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ORIGDX" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -286,7 +286,7 @@
       <PropertyRef Name="ENC_ID" />
     </Key>
     <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ADATE" Type="date" Nullable="false" />
     <Property Name="DDATE" Type="date" />
     <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
@@ -313,7 +313,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="ENR_START" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ENR_START" Type="date" Nullable="false" />
     <Property Name="ENR_END" Type="date" Nullable="false" />
     <Property Name="INS_MEDICAID" Type="nchar" MaxLength="1" Nullable="false" />
@@ -425,7 +425,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="LANG_ISO" />
     </Key>
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="LANG_ISO" Type="nvarchar" MaxLength="3" Nullable="false" />
     <Property Name="LANG_USAGE" Type="nchar" MaxLength="1" />
     <Property Name="LANG_PRIMARY" Type="nchar" MaxLength="1" />
@@ -456,7 +456,7 @@
       <PropertyRef Name="PHARMACY_ID" />
     </Key>
     <Property Name="PHARMACY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="RXDATE" Type="date" Nullable="false" />
     <Property Name="NDC" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="RXSUP" Type="numeric" Precision="4" Scale="0" Nullable="false" />
@@ -475,7 +475,7 @@
       <PropertyRef Name="PRESCRIBING_ID" />
     </Key>
     <Property Name="PRESCRIBING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />
     <Property Name="RXMD" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="RX_ORDER_DATE" Type="date" Nullable="false" />
@@ -519,7 +519,7 @@
     <Property Name="PX" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="PX_CODETYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
     <Property Name="ROW_ID" Type="nvarchar" MaxLength="8" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="PROVIDER" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="ADATE" Type="date" Nullable="false" />
     <Property Name="ENCTYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
@@ -619,7 +619,7 @@
       <PropertyRef Name="SOCIAL_HISTORY_ID" />
     </Key>
     <Property Name="SOCIAL_HISTORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="CONTACT_DATE" Type="date" Nullable="false" />
     <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />
     <Property Name="TOBACCO_PAK_PER_DY" Type="nvarchar" MaxLength="20" />
@@ -686,7 +686,7 @@
       <PropertyRef Name="TUMOR_ID" />
     </Key>
     <Property Name="TUMOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="SEQUENCE" Type="nvarchar" MaxLength="2" Nullable="false" />
     <Property Name="DXDATE" Type="date" Nullable="false" />
     <Property Name="ICDOSITE" Type="nvarchar" MaxLength="4" Nullable="false" />
@@ -812,7 +812,7 @@
       <PropertyRef Name="VITAL_SIGNS_ID" />
     </Key>
     <Property Name="VITAL_SIGNS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="PERSON_ID" Type="nvarchar" MaxLength="36" Nullable="false" />
     <Property Name="MEASURE_DATE" Type="date" Nullable="false" />
     <Property Name="MEASURE_TIME" Type="time" Precision="7" Nullable="false" />
     <Property Name="ENC_ID" Type="nvarchar" MaxLength="36" />

@@ -1,0 +1,76 @@
+2018-05-16 16:42:50,712 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-16 17:27:23,343 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-16 17:40:28,669 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 08:57:23,176 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 08:59:59,908 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 09:01:39,711 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:35:58,628 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:41:51,739 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:41:58,775 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 10:42:03,156 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 10:46:55,922 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:47:01,022 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 10:47:05,295 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 10:51:49,133 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:51:54,800 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 10:51:58,697 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 10:55:21,644 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 10:55:27,576 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 10:55:31,007 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 12:11:48,024 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 12:11:53,453 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 12:11:57,106 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 12:16:51,570 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 12:16:58,126 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 12:17:03,219 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 12:28:08,623 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 12:28:14,260 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 12:28:18,273 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 12:30:19,535 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 12:30:23,303 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 12:30:27,021 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 13:11:16,056 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 13:11:20,802 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 13:11:25,707 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 13:17:26,358 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 13:17:29,372 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 13:17:32,685 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 13:19:59,886 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 13:20:03,783 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 13:20:07,402 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 13:55:07,504 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 13:55:12,573 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 13:55:16,253 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:11:49,501 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:21:53,069 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:21:59,105 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:22:02,923 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:24:36,219 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:24:42,665 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:24:46,322 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:24:47,179 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,248 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,314 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,382 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,434 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,487 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,650 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,811 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:47,905 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:48,003 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-05-17 14:24:48,004 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients added: 0
+2018-05-17 14:28:19,908 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:28:24,717 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:28:28,278 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:30:08,100 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:30:23,728 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:30:27,521 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:41:45,316 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:41:53,152 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:41:59,125 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:43:19,457 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:43:24,315 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:43:27,698 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10
+2018-05-17 14:47:26,275 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-17 14:47:31,760 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Loading Patients
+2018-05-17 14:47:35,452 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients: 10

@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 using CHORDS_VDWBuilder.Models;
+using CHORDS_VDWBuilder.CHORDS.FHIRToVDW;
+using log4net;
 
 namespace CHORDS_VDWBuilder
 {
     public partial class CHORD_VDWBuilder : Form
     {
-        
 
         public CHORD_VDWBuilder()
         {
@@ -29,211 +30,53 @@ namespace CHORDS_VDWBuilder
 
         private void Import_FHIR_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             // Connect to FHIR Server
             var client = new FhirClient(FHIR_URL.Text);
             client.PreferredFormat = ResourceFormat.Json;
             client.Timeout = 120000;
 
-            Log_LB.Items.Add("Connected to: " + FHIR_URL.Text);
+            var importer = new FHIRToVDW();
 
-            // Build list of Patients and Fill in Demographic Table
-            List<Patient> patients = loadPatients(client);
+            importer.LoadVDW(client);
 
-            // Build Census Location
-            ;
-
-            // Build Death Table and Cause of Death
-            ;
-
-            // Build Diagnosis
-            ;
-
-            // Build Encounters
-            ;
-
-            // 
-            ;
-
-            // 
-            ;
-
-        }
-
-        // Load Valid Patients
-        private List<Patient> loadPatients(FhirClient iClient)
-        {
-            List<Patient> result = new List<Patient>();
-
-            if(iClient != null)
-            {
-                Bundle patients = iClient.Search<Patient>();
-
-                Log_LB.Items.Add("Number of Patients: " + patients.Entry.Count.ToString());
-
-                int successful = 0;
-
-                using (var context = new VDW_3_1_Entities())
-                {
-                    // Add Patients to VDW
-                    foreach (Bundle.EntryComponent item in patients.Entry)
-                    {
-                        Patient p = (Patient)item.Resource;
-
-                        if (p.Identifier.Count > 0)
-                        {
-                            // build demographics record
-                            DEMOGRAPHICS demo = new DEMOGRAPHICS();
-
-                            // PERSON_ID
-                            demo.PERSON_ID = p.Identifier.FirstOrDefault().Value;
-
-                            // MRN
-                            demo.MRN = p.Identifier.FirstOrDefault().Value;
-
-                            // BIRTH_DATE
-                            if (p.BirthDate != null)
-                            {
-                                demo.BIRTH_DATE = DateTime.ParseExact(p.BirthDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                            }
-
-                            // GENDER
-                            if (p.Gender == AdministrativeGender.Female)
-                            {
-                                demo.GENDER = "F";
-                            }
-                            else if (p.Gender == AdministrativeGender.Male)
-                            {
-                                demo.GENDER = "M";
-                            }
-                            else if (p.Gender == AdministrativeGender.Other)
-                            {
-                                demo.GENDER = "O";
-                            }
-                            else if (p.Gender == AdministrativeGender.Unknown)
-                            {
-                                demo.GENDER = "U";
-                            }
-                            else
-                            {
-                                demo.GENDER = "U";
-                            }
-
-                            // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
-                            if (p.Communication.Count > 0)
-                            {
-                                demo.PRIMARY_LANGUAGE = p.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
-                                if (p.Communication.FirstOrDefault().Preferred != null)
-                                {
-                                    demo.NEEDS_INTERPRETER = "S";
-                                } else
-                                {
-                                    demo.NEEDS_INTERPRETER = "";
-                                }
-                            }
-                            else
-                            {
-                                demo.PRIMARY_LANGUAGE = "";
-                                demo.NEEDS_INTERPRETER = "";
-                            }
-
-                            if (p.Extension.Count() > 0)
-                            {
-                                // RACE1
-                                ;
-
-                                // RACE2
-                                ;
-
-                                // RACE3
-                                ;
-
-                                // RACE4
-                                ;
-
-                                // RACE5
-                                ;
-
-                                // HISPANIC
-                                ;
-
-                                // SEXUAL_ORIENTATION
-                                ;
-
-                                // GENDER_IDENTITY
-                                ;
-                            }
-                            else
-                            {
-                                // RACE1
-                                demo.RACE1 = "UN";
-
-                                // RACE2
-                                demo.RACE2 = "UN";
-
-                                // RACE3
-                                demo.RACE3 = "UN";
-
-                                // RACE4
-                                demo.RACE4 = "UN";
-
-                                // RACE5
-                                demo.RACE5 = "UN";
-
-                                // HISPANIC
-                                demo.HISPANIC = "U";
-
-                                // SEXUAL_ORIENTATION
-                                demo.SEXUAL_ORIENTATION = null;
-
-                                // GENDER_IDENTITY
-                                demo.GENDER_IDENTITY = null;
-                            }
-
-                            try
-                            {
-                                context.DEMOGRAPHICS.Add(demo);
-                                context.SaveChanges();
-
-                                result.Add(p);
-                                successful++;
-                            }
-                            catch (Exception ex)
-                            {
-                                Log_LB.Items.Add("Error: " + ex.Message);
-                            }
-                        }
-                        else
-                        {
-                            Log_LB.Items.Add("Patient missing identifier: " + p.Name.FirstOrDefault().Family);
-                        }
-                    }
-                    Log_LB.Items.Add("Number of Patients added: " + successful.ToString());
-                }
-
-            }
-
-            return result;
-        }
-
-        private int loadDeathTable(FhirClient iClient, List<Patient> iPatients)
-        {
-            int result = 0;
-
-            foreach(Patient p in iPatients)
-            {
-                // check to see if patient is deceased
-                if((FhirBoolean) p.Deceased == new FhirBoolean())
-                {
-                    ;
-                }
-            }
-
-            return result;
+            Cursor.Current = Cursors.Default;
         }
 
         private void CHORD_VDWBuilder_Load(object sender, EventArgs e)
         {
             FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            // Connect to FHIR Server
+            var client = new FhirClient(FHIR_URL.Text);
+            client.PreferredFormat = ResourceFormat.Json;
+            client.Timeout = 120000;
+
+            var importer = new FHIRToVDW();
+
+            int patient_Count = importer.PatientCount(client);
+
+            patientCountTB.Text = patient_Count.ToString();
+
+            int diagnoses_Count = importer.DiagnosesCount(client);
+
+            diagnosesCountTB.Text = diagnoses_Count.ToString();
+
+            int encounter_Count = importer.EncounterCount(client);
+
+            encounterCountTB.Text = encounter_Count.ToString();
+
+            int vitalSign_Count = importer.VitalSignCount(client);
+
+            vitalSignCountTB.Text = vitalSign_Count.ToString();
+
+            Cursor.Current = Cursors.Default;
         }
     }
 }

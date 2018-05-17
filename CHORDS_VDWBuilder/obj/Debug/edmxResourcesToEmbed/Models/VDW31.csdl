@@ -26,7 +26,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="COD" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="COD" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DX_CODETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
     <Property Name="CAUSETYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
@@ -160,7 +160,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="LOC_START" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LOC_START" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="LOC_END" Type="DateTime" Precision="0" />
     <Property Name="GEOCODE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -197,7 +197,7 @@
     <Key>
       <PropertyRef Name="PERSON_ID" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DEATHDT" Type="DateTime" Precision="0" />
     <Property Name="DTIMPUTE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
     <Property Name="SOURCE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
@@ -207,8 +207,8 @@
     <Key>
       <PropertyRef Name="PERSON_ID" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MRN" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MRN" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="BIRTH_DATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="PRIMARY_LANGUAGE" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
@@ -238,7 +238,7 @@
     <Property Name="DX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ADATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DIAGPROVIDER" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ENCTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PROVIDER" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ORIGDX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -286,7 +286,7 @@
       <PropertyRef Name="ENC_ID" />
     </Key>
     <Property Name="ENC_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ADATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DDATE" Type="DateTime" Precision="0" />
     <Property Name="PROVIDER" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
@@ -313,7 +313,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="ENR_START" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ENR_START" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ENR_END" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="INS_MEDICAID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
@@ -425,7 +425,7 @@
       <PropertyRef Name="PERSON_ID" />
       <PropertyRef Name="LANG_ISO" />
     </Key>
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LANG_ISO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LANG_USAGE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
     <Property Name="LANG_PRIMARY" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
@@ -456,7 +456,7 @@
       <PropertyRef Name="PHARMACY_ID" />
     </Key>
     <Property Name="PHARMACY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RXDATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="NDC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RXSUP" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
@@ -475,7 +475,7 @@
       <PropertyRef Name="PRESCRIBING_ID" />
     </Key>
     <Property Name="PRESCRIBING_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ENC_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
     <Property Name="RXMD" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RX_ORDER_DATE" Type="DateTime" Nullable="false" Precision="0" />
@@ -519,7 +519,7 @@
     <Property Name="PX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PX_CODETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ROW_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PROVIDER" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ADATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ENCTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
@@ -619,7 +619,7 @@
       <PropertyRef Name="SOCIAL_HISTORY_ID" />
     </Key>
     <Property Name="SOCIAL_HISTORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CONTACT_DATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ENC_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
     <Property Name="TOBACCO_PAK_PER_DY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -686,7 +686,7 @@
       <PropertyRef Name="TUMOR_ID" />
     </Key>
     <Property Name="TUMOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SEQUENCE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DXDATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ICDOSITE" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
@@ -812,7 +812,7 @@
       <PropertyRef Name="VITAL_SIGNS_ID" />
     </Key>
     <Property Name="VITAL_SIGNS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PERSON_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PERSON_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MEASURE_DATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="MEASURE_TIME" Type="Time" Nullable="false" Precision="7" />
     <Property Name="ENC_ID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />

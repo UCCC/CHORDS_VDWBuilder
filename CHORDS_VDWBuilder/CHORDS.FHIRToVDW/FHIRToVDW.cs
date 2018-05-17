@@ -11,13 +11,330 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 {
     class FHIRToVDW
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public bool LoadVDW(FhirClient iFHIRClient)
         {
             bool result = true;
 
-            ;
+            log.Info("Loading Patients");
+
+            List<Patient> patients = loadPatients(iFHIRClient);
 
             return result;
         }
+
+        public int PatientCount(FhirClient iFHIRClient)
+        {
+            int result = 0;
+
+            Bundle response = iFHIRClient.Search<Patient>();
+
+            result = response.Entry.Count();
+
+            return result;
+        }
+
+        public int DiagnosesCount(FhirClient iFHIRClient)
+        {
+            int result = 0;
+
+            Bundle response = iFHIRClient.Search<Patient>();
+
+            foreach (Bundle.EntryComponent item in response.Entry)
+            {
+                Patient p = (Patient)item.Resource;
+
+                Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+
+                result += d.Entry.Count();
+            }
+
+            return result;
+        }
+
+        public int EncounterCount(FhirClient iFHIRClient)
+        {
+            int result = 0;
+
+            Bundle response = iFHIRClient.Search<Patient>();
+
+            foreach (Bundle.EntryComponent item in response.Entry)
+            {
+                Patient p = (Patient)item.Resource;
+
+                Bundle d = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+
+                result += d.Entry.Count();
+            }
+
+            return result;
+        }
+
+        public int VitalSignCount(FhirClient iFHIRClient)
+        {
+            int result = 0;
+
+            return result;
+        }
+
+        // 
+        private List<Patient> loadPatients(FhirClient iClient)
+        {
+            List<Patient> result = new List<Patient>();
+
+            if (iClient != null)
+            {
+                Bundle patients = iClient.Search<Patient>();
+
+                log.Info("Number of Patients: " + patients.Entry.Count.ToString());
+
+                int successful = 0;
+
+                using (var context = new VDW_3_1_Entities())
+                {
+                    // Add Patients to VDW
+                    foreach (Bundle.EntryComponent item in patients.Entry)
+                    {
+                        Patient p = (Patient)item.Resource;
+
+                        // build and save DEMOGRAPHIC record for patient
+                        DEMOGRAPHICS demo = buildDemographics(p);
+
+                        try
+                        {
+                            context.DEMOGRAPHICS.Add(demo);
+                            context.SaveChanges();
+
+                            result.Add(p);
+                            successful++;
+                        }
+                        catch (Exception ex)
+                        {
+                            log.Info("Error: " + ex.Message);
+                        }
+
+                        // build and save CENSUS_LOCATION record
+                        ;
+
+                        // buid and save DIAGNOSES records for patient
+                        ;
+
+                        // build and save Encounter records for patient
+                        ;
+
+                        // build and save VITAL_SIGN records for patient
+                        ;
+
+                    }
+                    log.Info("Number of Patients added: " + successful.ToString());
+                }
+
+            }
+
+            return result;
+        }
+
+        private DEMOGRAPHICS buildDemographics(Patient iPatient)
+        {
+            DEMOGRAPHICS result = new DEMOGRAPHICS();
+
+            if (iPatient.Identifier.Count > 0)
+            {
+                // PERSON_ID
+                result.PERSON_ID = iPatient.Id;
+
+                // MRN
+                foreach(Identifier i in iPatient.Identifier)
+                {
+                    if(i.Type != null && i.Type.Coding.FirstOrDefault().Code == "MR")
+                    {
+                        result.MRN = iPatient.Identifier.FirstOrDefault().Value;
+                    }
+                }
+
+                // BIRTH_DATE
+                if (iPatient.BirthDate != null)
+                {
+                    result.BIRTH_DATE = DateTime.ParseExact(iPatient.BirthDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                }
+
+                // GENDER
+                if (iPatient.Gender == AdministrativeGender.Female)
+                {
+                    result.GENDER = "F";
+                }
+                else if (iPatient.Gender == AdministrativeGender.Male)
+                {
+                    result.GENDER = "M";
+                }
+                else if (iPatient.Gender == AdministrativeGender.Other)
+                {
+                    result.GENDER = "O";
+                }
+                else if (iPatient.Gender == AdministrativeGender.Unknown)
+                {
+                    result.GENDER = "U";
+                }
+                else
+                {
+                    result.GENDER = "U";
+                }
+
+                // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
+                if (iPatient.Communication.Count > 0)
+                {
+                    result.PRIMARY_LANGUAGE = iPatient.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
+
+                    if (iPatient.Communication.FirstOrDefault().Preferred != null)
+                    {
+                        result.NEEDS_INTERPRETER = "S";
+                    }
+                    else
+                    {
+                        result.NEEDS_INTERPRETER = "";
+                    }
+                }
+                else
+                {
+                    result.PRIMARY_LANGUAGE = "";
+                    result.NEEDS_INTERPRETER = "";
+                }
+
+                // race 
+                result.RACE1 = "UN";
+                result.RACE2 = "UN";
+                result.RACE3 = "UN";
+                result.RACE4 = "UN";
+                result.RACE5 = "UN";
+                result.HISPANIC = "U";
+                result.SEXUAL_ORIENTATION = null;
+                result.GENDER_IDENTITY = null;
+
+                if (iPatient.Extension.Count() > 0)
+                {
+                    int race_count = 0;
+                    foreach(Extension e in iPatient.Extension)
+                    {
+                        if(e.TypeName == "CodeableConcept")
+                        {
+                            CodeableConcept c = (CodeableConcept)e.Value;
+
+                            if (c.Text == "race")
+                            {
+                                if (race_count == 0)
+                                {
+                                    result.RACE1 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    race_count++;
+                                }
+                                else if (race_count == 1)
+                                {
+                                    result.RACE2 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    race_count++;
+                                }
+                                else if (race_count == 2)
+                                {
+                                    result.RACE3 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    race_count++;
+                                }
+                                else if (race_count == 3)
+                                {
+                                    result.RACE4 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    race_count++;
+                                }
+                                else if (race_count == 4)
+                                {
+                                    result.RACE5 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    race_count++;
+                                }
+                            }
+
+                            if (c.Text == "ethnicity")
+                            {
+                                result.HISPANIC = EthnicityAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                            }
+                        }
+                    }
+
+                    // SEXUAL_ORIENTATION
+                    result.SEXUAL_ORIENTATION = null;
+
+                    // GENDER_IDENTITY
+                    result.GENDER_IDENTITY = null;
+                }
+            }
+
+            return result;
+        }
+
+
+        // Helper methods
+
+        // from CDC : https://phinvads.cdc.gov/vads/ViewValueSet.action?id=67D34BBC-617F-DD11-B38D-00188B398520
+        private string RaceAbbreviationGivenConceptCode(string iConceptCode)
+        {
+            string result = "MU";
+
+            if(iConceptCode == "1002-5")
+            {
+                result = "IN";
+            }
+            else if(iConceptCode == "2028-9")
+            {
+                result = "AS";
+            }
+            else if (iConceptCode == "2054-5")
+            {
+                result = "BA";
+            }
+            else if (iConceptCode == "2076-8")
+            {
+                result = "HP";
+            }
+            else if (iConceptCode == "2131-1")
+            {
+                result = "MU";
+            }
+            else if (iConceptCode == "2106-3")
+            {
+                result = "WH";
+            }
+
+            return result;
+        }
+
+        // from CDC : https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.238&code=2135-2
+        private string EthnicityAbbreviationGivenConceptCode(string iConceptCode)
+        {
+            string result = "U";
+
+            if (iConceptCode == "2135-2")
+            {
+                result = "Y";
+            }
+            else if (iConceptCode == "2186-5")
+            {
+                result = "N";
+            }
+
+            return result;
+        }
+
+        private int loadDeathTable(FhirClient iClient, List<Patient> iPatients)
+        {
+            int result = 0;
+
+            foreach (Patient p in iPatients)
+            {
+                // check to see if patient is deceased
+                if ((FhirBoolean)p.Deceased == new FhirBoolean())
+                {
+                    ;
+                }
+            }
+
+            return result;
+        }
+
     }
 }
