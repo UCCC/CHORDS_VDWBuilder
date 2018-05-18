@@ -13,13 +13,15 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public bool LoadVDW(FhirClient iFHIRClient)
+        public int LoadVDW(FhirClient iFHIRClient)
         {
-            bool result = true;
+            int result = 0;
 
             log.Info("Loading Patients");
 
             List<Patient> patients = loadPatients(iFHIRClient);
+
+            result = patients.Count;
 
             return result;
         }
@@ -81,6 +83,10 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
         // 
         private List<Patient> loadPatients(FhirClient iClient)
         {
+            int diagnoses_count = 0;
+            int encounter_count = 0;
+            int vital_sign_count = 0;
+
             List<Patient> result = new List<Patient>();
 
             if (iClient != null)
@@ -99,7 +105,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         Patient p = (Patient)item.Resource;
 
                         // build and save DEMOGRAPHIC record for patient
-                        DEMOGRAPHICS demo = buildDemographics(p);
+                        DEMOGRAPHICS demo = buildDemographic(p);
 
                         try
                         {
@@ -117,17 +123,32 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         // build and save CENSUS_LOCATION record
                         ;
 
-                        // buid and save DIAGNOSES records for patient
-                        ;
-
                         // build and save Encounter records for patient
-                        ;
+                        Bundle encounters = iClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+
+                        foreach(var e_item in  encounters.Entry)
+                        {
+                            ENCOUNTERS tENCOUNTERS = buildEncounter(iClient, (Encounter) e_item.Resource, p);
+
+                            try
+                            {
+                                context.ENCOUNTERS.Add(tENCOUNTERS);
+                                context.SaveChanges();
+
+                                encounter_count++;
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info("Error: " + ex.Message);
+                            }
+                        }
 
                         // build and save VITAL_SIGN records for patient
                         ;
 
                     }
                     log.Info("Number of Patients added: " + successful.ToString());
+                    log.Info("Number of Encounters added: " + encounter_count.ToString()); ; ; ; ;
                 }
 
             }
@@ -135,7 +156,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return result;
         }
 
-        private DEMOGRAPHICS buildDemographics(Patient iPatient)
+        private DEMOGRAPHICS buildDemographic(Patient iPatient)
         {
             DEMOGRAPHICS result = new DEMOGRAPHICS();
 
@@ -184,7 +205,14 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
                 if (iPatient.Communication.Count > 0)
                 {
-                    result.PRIMARY_LANGUAGE = iPatient.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
+                    string lang = iPatient.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
+                    int end = lang.IndexOf('-');
+                    if (end < 0)
+                    {
+                        end = lang.Length < 4 ? lang.Length : 3;
+                    }
+                        
+                    result.PRIMARY_LANGUAGE = lang.Substring(0, end);
 
                     if (iPatient.Communication.FirstOrDefault().Preferred != null)
                     {
@@ -267,6 +295,72 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return result;
         }
 
+        private ENCOUNTERS buildEncounter(FhirClient iClient, Encounter iEncounter, Patient iPatient)
+        {
+            ENCOUNTERS result = new ENCOUNTERS();
+
+            // PERSON_ID
+            result.PERSON_ID = iPatient.Id;
+
+            // ADATE
+            result.ADATE = iEncounter.Period.StartElement.ToDateTime().Value;
+
+            // ENC_ID
+            result.ENC_ID = iEncounter.Id;
+
+            // DDATE
+            result.ADATE = iEncounter.Period.EndElement.ToDateTime().Value;
+
+            // PROVIDER
+            string id = "";
+            Bundle provider = iClient.Search<Organization>(new string[] { "Identifier=" + id });
+            //result.PROVIDER = provider.;
+
+            // ENC_COUNT
+            if(iEncounter.PartOf == null)
+            {
+                result.ENC_COUNT = 1;
+            }
+            else
+            {
+                // get parent encounter to determine order number
+                ;
+            }
+
+            // DRG_VERSION
+            ;
+
+            // DRG_VALUE
+            ;
+
+            // ENCTYPE
+            //result.ENCTYPE = iEncounter.Type;
+
+            // ENCOUNTER_SUBTYPE
+            //result.ENCOUNTER_SUBTYPE = ;
+
+            // FACILITY_CODE
+            string fc = "UNK";
+            foreach(var l in iEncounter.Location)
+            {
+                ;
+            }
+            result.FACILITY_CODE = fc;
+
+            // DISCHARGE_DISPOSITION
+            ;
+
+            // DISCHARGE_STATUS
+            ;
+
+            // ADMITTING_SOURCE
+            ;
+
+            // DEPARTMENT
+            ;
+
+            return result;
+        }
 
         // Helper methods
 

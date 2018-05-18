@@ -39,7 +39,9 @@ namespace CHORDS_VDWBuilder
 
             var importer = new FHIRToVDW();
 
-            importer.LoadVDW(client);
+            int count = importer.LoadVDW(client);
+
+            patientCountTB.Text = count.ToString();
 
             Cursor.Current = Cursors.Default;
         }

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CHORDS.FHIRToVDW\FHIRToVDW.cs" />
+    <Compile Include="CHORDS.FHIRToVDW\ImportSummary.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
