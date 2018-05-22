@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 using CHORDS_VDWBuilder.Models;
+using GoogleMapsApi;
+using GoogleMapsApi.Entities.Common;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
+using GoogleMapsApi.Entities.Geocoding.Request;
+using GoogleMapsApi.Entities.Geocoding.Response;
 
 namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 {
@@ -121,7 +127,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         }
 
                         // build and save CENSUS_LOCATION record
-                        ;
+                        string geocode = buildGeocode(p);
 
                         // build and save Encounter records for patient
                         Bundle encounters = iClient.Search<Encounter>(new string[] { "patient=" + p.Id });
@@ -358,6 +364,23 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
             // DEPARTMENT
             ;
+
+            return result;
+        }
+
+        private string buildGeocode(Patient iPatient)
+        {
+            string result = "";
+            string address = "";
+
+            GeocodingRequest geocodeRequest = new GeocodingRequest()
+            {
+                Address = address,
+            };
+            geocodeRequest.ApiKey = "AIzaSyBE8tKquzQQKyGqbUgfTL5IAJjS8QCXOHw";
+
+            var geocodingEngine = GoogleMaps.Geocode;
+            GeocodingResponse geocode = geocodingEngine.Query(geocodeRequest);
 
             return result;
         }
