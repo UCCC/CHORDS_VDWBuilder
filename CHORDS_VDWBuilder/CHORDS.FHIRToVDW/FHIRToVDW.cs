@@ -35,8 +35,39 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
         {
             List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
-            //
-            ;
+            log.Info("Start Scanning Patients");
+
+            Bundle bundles = iFHIRClient.Search<Patient>();
+            List<Patient> patients = new List<Patient>();
+            foreach (Bundle.EntryComponent item in bundles.Entry)
+            {
+                Patient p = (Patient)item.Resource;
+                patients.Add(p);
+            }
+
+            foreach (var p in patients)
+            {
+                FHIRPatientSummary sum = new FHIRPatientSummary();
+                sum.PERSON_ID = p.Id;
+
+                // Location Count
+                sum.LocationTotalCount = p.Address.Count;
+
+                // Encounter Count
+                Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                sum.EncounterTotalCount = en.Entry.Count;
+
+                // Diagnoses Count
+                Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                sum.DiagnosesTotalCount = d.Entry.Count;
+
+                // Vital Signs
+                ;
+
+                results.Add(sum);
+            }
+
+            log.Info("End Scanning Patients");
 
             return results;
         }

@@ -63,24 +63,34 @@ namespace CHORDS_VDWBuilder
             var client = new FhirClient(FHIR_URL.Text);
             client.PreferredFormat = ResourceFormat.Json;
             client.Timeout = 120000;
-
+            // clear table
+            //while (patientGV.Rows.Count > 0)
+            //{
+            //    patientGV.Rows.RemoveAt(0);
+            //}
             var importer = new FHIRToVDW();
 
-            int patient_Count = importer.PatientCount(client);
+            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client);
+            int loc_count = 0;
+            int encounter_count = 0;
+            int diagnoses_count = 0;
+            int vital_count = 0;
 
+            foreach(FHIRPatientSummary s in plist)
+            {
+                loc_count += s.LocationTotalCount;
+                encounter_count += s.EncounterTotalCount;
+                diagnoses_count += s.DiagnosesTotalCount;
+                vital_count += s.VitalSignTotalCount;
+
+                patientGV.Rows.Add(s.PERSON_ID, s.LocationTotalCount.ToString(), s.EncounterTotalCount.ToString(), s.DiagnosesTotalCount.ToString(), s.VitalSignTotalCount.ToString());
+            }
+
+            int patient_Count = plist.Count;
             patientCountTB.Text = patient_Count.ToString();
-
-            int diagnoses_Count = importer.DiagnosesCount(client);
-
-            diagnosesCountTB.Text = diagnoses_Count.ToString();
-
-            int encounter_Count = importer.EncounterCount(client);
-
-            encounterCountTB.Text = encounter_Count.ToString();
-
-            int vitalSign_Count = importer.VitalSignCount(client);
-
-            vitalSignCountTB.Text = vitalSign_Count.ToString();
+            diagnosesCountTB.Text = diagnoses_count.ToString();
+            encounterCountTB.Text = encounter_count.ToString();
+            vitalSignCountTB.Text = vital_count.ToString();
 
             Cursor.Current = Cursors.Default;
         }
