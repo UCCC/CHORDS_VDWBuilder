@@ -17,9 +17,11 @@ namespace CHORDS_VDWBuilder
 {
     public partial class CHORD_VDWBuilder : Form
     {
+        public List<FHIRPatientSummary> patient_summary;
 
         public CHORD_VDWBuilder()
         {
+            patient_summary = new List<FHIRPatientSummary>();
             InitializeComponent();
         }
 
@@ -38,6 +40,8 @@ namespace CHORDS_VDWBuilder
             client.Timeout = 120000;
 
             var importer = new FHIRToVDW();
+
+            if (clearVDW.Checked) importer.ClearVDW();
 
             int count = importer.LoadVDW(client);
 

@@ -43,7 +43,15 @@
             this.patientCountLBL = new System.Windows.Forms.Label();
             this.patientCountTB = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.patientGV = new System.Windows.Forms.DataGridView();
+            this.Patient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Locations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Encounters = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diagnoses = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VitalSigns = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clearVDW = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientGV)).BeginInit();
             this.SuspendLayout();
             // 
             // FHIR_URL_LBL
@@ -60,7 +68,7 @@
             // 
             this.FHIR_URL.Location = new System.Drawing.Point(78, 17);
             this.FHIR_URL.Name = "FHIR_URL";
-            this.FHIR_URL.Size = new System.Drawing.Size(1122, 20);
+            this.FHIR_URL.Size = new System.Drawing.Size(1018, 20);
             this.FHIR_URL.TabIndex = 1;
             // 
             // progressBar
@@ -92,6 +100,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.patientGV);
             this.groupBox1.Controls.Add(this.vitalSignCountLBL);
             this.groupBox1.Controls.Add(this.encounterCountLBL);
             this.groupBox1.Controls.Add(this.diagnosesCountLBL);
@@ -102,7 +111,7 @@
             this.groupBox1.Controls.Add(this.patientCountTB);
             this.groupBox1.Location = new System.Drawing.Point(15, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1185, 216);
+            this.groupBox1.Size = new System.Drawing.Size(1185, 374);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FHIR Stats";
@@ -177,18 +186,68 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(15, 282);
+            this.groupBox2.Location = new System.Drawing.Point(15, 440);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1185, 215);
+            this.groupBox2.Size = new System.Drawing.Size(1185, 97);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Import Stats";
+            // 
+            // patientGV
+            // 
+            this.patientGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Patient,
+            this.Locations,
+            this.Encounters,
+            this.Diagnoses,
+            this.VitalSigns});
+            this.patientGV.Location = new System.Drawing.Point(239, 19);
+            this.patientGV.Name = "patientGV";
+            this.patientGV.Size = new System.Drawing.Size(925, 337);
+            this.patientGV.TabIndex = 8;
+            // 
+            // Patient
+            // 
+            this.Patient.HeaderText = "Patient";
+            this.Patient.Name = "Patient";
+            // 
+            // Locations
+            // 
+            this.Locations.HeaderText = "Locations";
+            this.Locations.Name = "Locations";
+            // 
+            // Encounters
+            // 
+            this.Encounters.HeaderText = "Encounters";
+            this.Encounters.Name = "Encounters";
+            // 
+            // Diagnoses
+            // 
+            this.Diagnoses.HeaderText = "Diagnoses";
+            this.Diagnoses.Name = "Diagnoses";
+            // 
+            // VitalSigns
+            // 
+            this.VitalSigns.HeaderText = "VItal Signs";
+            this.VitalSigns.Name = "VitalSigns";
+            // 
+            // clearVDW
+            // 
+            this.clearVDW.AutoSize = true;
+            this.clearVDW.Location = new System.Drawing.Point(1121, 20);
+            this.clearVDW.Name = "clearVDW";
+            this.clearVDW.Size = new System.Drawing.Size(79, 17);
+            this.clearVDW.TabIndex = 8;
+            this.clearVDW.Text = "Clear VDW";
+            this.clearVDW.UseVisualStyleBackColor = true;
             // 
             // CHORD_VDWBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 646);
+            this.Controls.Add(this.clearVDW);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -201,6 +260,7 @@
             this.Load += new System.EventHandler(this.CHORD_VDWBuilder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +283,13 @@
         private System.Windows.Forms.Label vitalSignCountLBL;
         private System.Windows.Forms.Label encounterCountLBL;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView patientGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Patient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Locations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Encounters;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diagnoses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VitalSigns;
+        private System.Windows.Forms.CheckBox clearVDW;
     }
 }
 

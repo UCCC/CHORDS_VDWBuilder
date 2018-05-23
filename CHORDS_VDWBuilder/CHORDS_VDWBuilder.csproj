@@ -158,6 +158,7 @@
     <Compile Include="Models\EVERNDC.cs">
       <DependentUpon>VDW31.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FHIRPatientSummary.cs" />
     <Compile Include="Models\GENDER_IDENTITY_LU.cs">
       <DependentUpon>VDW31.tt</DependentUpon>
     </Compile>

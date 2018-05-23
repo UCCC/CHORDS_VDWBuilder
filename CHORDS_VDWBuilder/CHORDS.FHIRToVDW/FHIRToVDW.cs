@@ -7,12 +7,39 @@ using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 using CHORDS_VDWBuilder.Models;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 {
     class FHIRToVDW
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public bool ClearVDW()
+        {
+            bool result = false;
+
+            using (var context = new VDW_3_1_Entities())
+            {
+                context.CENSUS_LOCATION.RemoveRange(context.CENSUS_LOCATION);
+                context.DIAGNOSES.RemoveRange(context.DIAGNOSES);
+                context.ENCOUNTERS.RemoveRange(context.ENCOUNTERS);
+                context.VITAL_SIGNS.RemoveRange(context.VITAL_SIGNS);
+                context.DEMOGRAPHICS.RemoveRange(context.DEMOGRAPHICS);
+            }
+
+            return result;
+        }
+
+        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient)
+        {
+            List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
+
+            //
+            ;
+
+            return results;
+        }
 
         public int LoadVDW(FhirClient iFHIRClient)
         {
@@ -122,19 +149,21 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                             log.Info("Error: " + ex.Message);
                         }
 
-                        // build and save CENSUS_LOCATION record
-
-                        CENSUS_LOCATION loc = buildGeocode(p);
-                        try
+                        // build and save CENSUS_LOCATION records
+                        List<CENSUS_LOCATION> locs = buildGeocode(p);
+                        foreach(var loc in locs)
                         {
-                            context.CENSUS_LOCATION.Add(loc);
-                            context.SaveChanges();
+                            try
+                            {
+                                context.CENSUS_LOCATION.Add(loc);
+                                context.SaveChanges();
 
-                            census_loc_count++;
-                        }
-                        catch (Exception ex)
-                        {
-                            log.Info("Error: " + ex.Message);
+                                census_loc_count++;
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info("Error: " + ex.Message);
+                            }
                         }
 
                         // build and save Encounter records for patient
@@ -380,52 +409,107 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return result;
         }
 
-        private CENSUS_LOCATION buildGeocode(Patient iPatient)
+        private List<CENSUS_LOCATION> buildGeocode(Patient iPatient)
         {
-            CENSUS_LOCATION result = new CENSUS_LOCATION();
+            List<CENSUS_LOCATION> result = new List<CENSUS_LOCATION>();
 
-            string address = "";
-            string street = "";
-            string city = "";
-            string state = "";
-            string postal_code = "";
 
-            int c = 0;
-            foreach(var line in iPatient.Address.FirstOrDefault().Line)
+            foreach(var add in iPatient.Address)
             {
-                if (c == 0) street = line;
-                address = address + line + " ";
-                c++;
+                CENSUS_LOCATION new_location = new CENSUS_LOCATION();
+
+                string address = "";
+                string street = "";
+                string city = "";
+                string state = "";
+                string postal_code = "";
+
+                int c = 0;
+                foreach (var line in add.Line)
+                {
+                    if (c == 0) street = line;
+                    address = address + line + " ";
+                    c++;
+                }
+                address = address + ", " + add.City + ", " + add.State + " " + add.PostalCode;
+                city = add.City;
+                state = add.State;
+                postal_code = add.PostalCode;
+
+                // valid test data - remove
+                address = "382 Kingbird Cir, Highlands Ranch, CO 80129";
+                street = "382 Kingbird Cir";
+                city = "Highlands Ranch";
+                state = "CO";
+                postal_code = "80129";
+
+                // use US Gov Census REST API to get location
+                Uri geocoder = new Uri("https://geocoding.geo.census.gov");
+                var client = new RestClient();
+                client.BaseUrl = geocoder;
+
+                var request = new RestRequest();
+                request.Resource = "/geocoder/locations/onelineaddress?address=" + address + "&benchmark=9&format=json";
+
+                IRestResponse response = client.Execute(request);
+                var r_json = Newtonsoft.Json.JsonConvert.DeserializeObject(response.Content);
+
+                // use US Gov Census API to get Census Tract
+                var geographies_request = new RestRequest();
+                geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layer=14" + "&format=json";
+
+                IRestResponse geographies_response = client.Execute(geographies_request);
+                var g_json = Newtonsoft.Json.JsonConvert.DeserializeObject(geographies_response.Content);
+
+                // fill in CENSUS_LOCATION
+                new_location.PERSON_ID = iPatient.Id;
+                if (add.Period.StartElement.ToDateTime().HasValue)
+                {
+                    new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
+                }
+                if (add.Period.EndElement.ToDateTime().HasValue)
+                {
+                    new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
+                }
+                else
+                {
+                    new_location.LOC_END = null;
+                }
+
+
+                // GEOCODE
+                ;
+
+                // CITY_GEOCODE - using lat/log determine the city
+                ;
+
+                // GEOCODE_BOUNDARY_YEAR
+                new_location.GEOCODE_BOUNDARY_YEAR = 2010;
+
+                // GEOLEVEL - should be based on the size of the GEOCODE
+                new_location.GEOLEVEL = "T";
+
+                // MATCH_STRENGTH
+                new_location.MATCH_STRENGTH = null;
+
+                // LATITUDE
+                ;
+
+                // LONGITUDE
+                ;
+
+                // GEOCODE_APP
+                new_location.GEOCODE_APP = "US Census API";
+
+                try
+                {
+                    result.Add(new_location);
+                }
+                catch(Exception ex)
+                {
+                    log.Info(ex.Message);
+                }
             }
-            address = address + ", " + iPatient.Address.FirstOrDefault().City + ", " + iPatient.Address.FirstOrDefault().State + " " + iPatient.Address.FirstOrDefault().PostalCode;
-            city = iPatient.Address.FirstOrDefault().City;
-            state = iPatient.Address.FirstOrDefault().State;
-            postal_code = iPatient.Address.FirstOrDefault().PostalCode;
-
-            address = "382 Kingbird Cir, Highlands Ranch, CO 80129";
-            street = "382 Kingbird Cir";
-            city = "Highlands Ranch";
-            state = "CO";
-            postal_code = "80129";
-
-            // use US Gov Census REST API to get location
-            Uri geocoder = new Uri("https://geocoding.geo.census.gov");
-            var client = new RestClient();
-            client.BaseUrl = geocoder;
-
-            var request = new RestRequest();
-            request.Resource = "/geocoder/locations/onelineaddress?address=" + address + "&benchmark=9&format=json";
-
-            IRestResponse response = client.Execute(request);
-
-            // use US Gov Census API to get Census Tract
-            var geographies_request = new RestRequest();
-            geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&zip=" + postal_code + "benchmark=Public_AR_Census2010&vintage=Census2010&layer=14" + "&format=json";
-
-            IRestResponse geographies_response = client.Execute(geographies_request);
-
-            // fill in CENSUS_LOCATION
-            result.PERSON_ID = iPatient.Id;
 
             return result;
         }
