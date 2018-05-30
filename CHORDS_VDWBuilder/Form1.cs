@@ -42,9 +42,9 @@ namespace CHORDS_VDWBuilder
 
             var importer = new FHIRToVDW();
 
-            int count = importer.LoadVDW(client);
+            List<FHIRPatientSummary> plist = importer.LoadVDW(client, patientsProgressBar);
 
-            patientCountTB.Text = count.ToString();
+            patientCountTB.Text = plist.Count.ToString();
 
             Cursor.Current = Cursors.Default;
         }

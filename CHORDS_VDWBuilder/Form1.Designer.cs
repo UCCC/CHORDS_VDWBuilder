@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FHIR_URL_LBL = new System.Windows.Forms.Label();
             this.FHIR_URL = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -69,7 +69,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.patientsProgressBar = new System.Windows.Forms.ProgressBar();
             this.statusLB = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -166,32 +166,32 @@
             // 
             // Locations
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Locations.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Locations.DefaultCellStyle = dataGridViewCellStyle1;
             this.Locations.HeaderText = "Addresses";
             this.Locations.Name = "Locations";
             this.Locations.ReadOnly = true;
             // 
             // Encounters
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Encounters.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Encounters.DefaultCellStyle = dataGridViewCellStyle2;
             this.Encounters.HeaderText = "Encounters";
             this.Encounters.Name = "Encounters";
             this.Encounters.ReadOnly = true;
             // 
             // Diagnoses
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Diagnoses.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Diagnoses.DefaultCellStyle = dataGridViewCellStyle3;
             this.Diagnoses.HeaderText = "Diagnoses";
             this.Diagnoses.Name = "Diagnoses";
             this.Diagnoses.ReadOnly = true;
             // 
             // VitalSigns
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.VitalSigns.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.VitalSigns.DefaultCellStyle = dataGridViewCellStyle4;
             this.VitalSigns.HeaderText = "VItal Signs";
             this.VitalSigns.Name = "VitalSigns";
             this.VitalSigns.ReadOnly = true;
@@ -267,7 +267,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.progressBar1);
+            this.groupBox2.Controls.Add(this.patientsProgressBar);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.ClearVDW_BTN);
             this.groupBox2.Controls.Add(this.label2);
@@ -414,12 +414,12 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Patient Count:";
             // 
-            // progressBar1
+            // patientsProgressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(200, 186);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(964, 23);
-            this.progressBar1.TabIndex = 9;
+            this.patientsProgressBar.Location = new System.Drawing.Point(200, 186);
+            this.patientsProgressBar.Name = "patientsProgressBar";
+            this.patientsProgressBar.Size = new System.Drawing.Size(964, 23);
+            this.patientsProgressBar.TabIndex = 9;
             // 
             // statusLB
             // 
@@ -503,7 +503,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Diagnoses;
         private System.Windows.Forms.DataGridViewTextBoxColumn VitalSigns;
         private System.Windows.Forms.ListBox statusLB;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar patientsProgressBar;
         private System.Windows.Forms.Label label5;
     }
 }

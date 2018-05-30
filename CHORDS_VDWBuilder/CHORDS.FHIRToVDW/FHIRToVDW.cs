@@ -110,95 +110,129 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return results;
         }
 
-        public int LoadVDW(FhirClient iFHIRClient)
+        public List<FHIRPatientSummary> LoadVDW(FhirClient iFHIRClient, ProgressBar iPatientProgressBar)
         {
-            int result = 0;
+            List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
-            log.Info("Loading Patients");
+            log.Info("Start Importing Patients");
 
-            List<Patient> patients = loadPatients(iFHIRClient);
-
-            result = patients.Count;
-
-            return result;
-        }
-
-        public int PatientCount(FhirClient iFHIRClient)
-        {
-            int result = 0;
-
-            Bundle response = iFHIRClient.Search<Patient>();
-
-            result = response.Entry.Count();
-
-            return result;
-        }
-
-        public int DiagnosesCount(FhirClient iFHIRClient)
-        {
-            int result = 0;
-
-            Bundle response = iFHIRClient.Search<Patient>();
-
-            foreach (Bundle.EntryComponent item in response.Entry)
+            using (var context = new VDW_3_1_Entities())
             {
-                Patient p = (Patient)item.Resource;
-
-                Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
-
-                result += d.Entry.Count();
-            }
-
-            return result;
-        }
-
-        public int EncounterCount(FhirClient iFHIRClient)
-        {
-            int result = 0;
-
-            Bundle response = iFHIRClient.Search<Patient>();
-
-            foreach (Bundle.EntryComponent item in response.Entry)
-            {
-                Patient p = (Patient)item.Resource;
-
-                Bundle d = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
-
-                result += d.Entry.Count();
-            }
-
-            return result;
-        }
-
-        public int VitalSignCount(FhirClient iFHIRClient)
-        {
-            int result = 0;
-
-            Bundle response = iFHIRClient.Search<Patient>();
-
-            foreach (Bundle.EntryComponent item in response.Entry)
-            {
-                Patient p = (Patient)item.Resource;
-
-                Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
-                foreach (var tempD in o.Entry)
+                try
                 {
-                    Observation obs = (Observation)tempD.Resource;
+                    Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
 
-                    foreach (CodeableConcept cc in obs.Category)
+                    List<Patient> patients = new List<Patient>();
+                    foreach (Bundle.EntryComponent item in bundles.Entry)
                     {
-                        foreach (var code in cc.Coding)
+                        Patient p = (Patient)item.Resource;
+                        patients.Add(p);
+                    }
+
+                    int total = patients.Count;
+                    int cur = 1;
+
+                    foreach (var p in patients)
+                    {
+
+                        FHIRPatientSummary sum = new FHIRPatientSummary();
+                        sum.PERSON_ID = p.Id;
+
+                        // build and save DEMOGRAPHIC record for patient
+                        DEMOGRAPHICS demo = buildDemographic(p);
+
+                        try
                         {
-                            if (code.Code == "vital-signs")
+                            context.DEMOGRAPHICS.Add(demo);
+                            context.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            log.Info("Error: " + ex.Message);
+                        }
+
+                        // build and save CENSUS_LOCATION records
+                        List<CENSUS_LOCATION> locs = buildGeocode(p);
+                        foreach (var loc in locs)
+                        {
+                            try
                             {
-                                result++;
+                                context.CENSUS_LOCATION.Add(loc);
+                                context.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info("Error: " + ex.Message);
                             }
                         }
+
+                        // build and save Encounter records for patient
+                        Bundle encounters = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+
+                        foreach (var e_item in encounters.Entry)
+                        {
+                            ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
+
+                            try
+                            {
+                                context.ENCOUNTERS.Add(tENCOUNTERS);
+                                context.SaveChanges();
+
+                                // build and save Diagnoses records associated with this encounter
+                                ;
+
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info("Error: " + ex.Message);
+                            }
+                        }
+
+                        // build and save VITAL_SIGN records for patient
+                        Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                        foreach (var tempD in o.Entry)
+                        {
+                            Observation obs = (Observation)tempD.Resource;
+
+                            foreach (CodeableConcept cc in obs.Category)
+                            {
+                                foreach (var code in cc.Coding)
+                                {
+                                    if (code.Code == "vital-signs")
+                                    {
+                                        sum.VitalSignTotalCount++;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Location Count
+                        sum.LocationTotalCount = p.Address.Count;
+
+                        // Encounter Count
+                        Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                        sum.EncounterTotalCount = en.Entry.Count;
+
+                        // Diagnoses Count
+                        Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                        sum.DiagnosesTotalCount = d.Entry.Count;
+
+                        results.Add(sum);
+
+                        cur++;
                     }
+
+                    log.Info("Number of Patients " + results.Count.ToString());
+
+                    log.Info("End Importing Patients");
+                }
+                catch (Exception ex)
+                {
+                    log.Info("Error: " + ex.Message);
                 }
             }
 
-            return result;
+            return results;
         }
 
         // 
