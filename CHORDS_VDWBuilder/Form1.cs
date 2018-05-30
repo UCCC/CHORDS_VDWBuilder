@@ -41,8 +41,6 @@ namespace CHORDS_VDWBuilder
 
             var importer = new FHIRToVDW();
 
-            if (clearVDW.Checked) importer.ClearVDW();
-
             int count = importer.LoadVDW(client);
 
             patientCountTB.Text = count.ToString();
@@ -91,6 +89,22 @@ namespace CHORDS_VDWBuilder
             diagnosesCountTB.Text = diagnoses_count.ToString();
             encounterCountTB.Text = encounter_count.ToString();
             vitalSignCountTB.Text = vital_count.ToString();
+
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearVDW_BTN_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            var importer = new FHIRToVDW();
+
+            importer.ClearVDW();
 
             Cursor.Current = Cursors.Default;
         }

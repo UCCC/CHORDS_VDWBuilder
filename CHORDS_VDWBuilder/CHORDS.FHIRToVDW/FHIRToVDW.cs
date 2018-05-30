@@ -61,8 +61,23 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
                 sum.DiagnosesTotalCount = d.Entry.Count;
 
-                // Vital Signs
-                ;
+                // Vital Signs Count
+                Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                foreach (var tempD in o.Entry)
+                {
+                    Observation obs = (Observation)tempD.Resource;
+
+                    foreach(CodeableConcept cc in obs.Category)
+                    {
+                        foreach(var code in cc.Coding)
+                        {
+                            if (code.Code == "vital-signs")
+                            {
+                                sum.VitalSignTotalCount++;
+                            }
+                        }
+                    }
+                }
 
                 results.Add(sum);
             }
@@ -135,6 +150,30 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
         public int VitalSignCount(FhirClient iFHIRClient)
         {
             int result = 0;
+
+            Bundle response = iFHIRClient.Search<Patient>();
+
+            foreach (Bundle.EntryComponent item in response.Entry)
+            {
+                Patient p = (Patient)item.Resource;
+
+                Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                foreach (var tempD in o.Entry)
+                {
+                    Observation obs = (Observation)tempD.Resource;
+
+                    foreach (CodeableConcept cc in obs.Category)
+                    {
+                        foreach (var code in cc.Coding)
+                        {
+                            if (code.Code == "vital-signs")
+                            {
+                                result++;
+                            }
+                        }
+                    }
+                }
+            }
 
             return result;
         }
@@ -222,7 +261,14 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         }
 
                         // build and save VITAL_SIGN records for patient
-                        ;
+                        Bundle o = iClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                        foreach (var tempD in o.Entry)
+                        {
+                            Observation obs = (Observation)tempD.Resource;
+
+                            ;
+
+                        }
 
                     }
                     log.Info("Number of Patients added: " + successful.ToString());
@@ -543,6 +589,33 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             }
 
             return result;
+        }
+
+        private List<VITAL_SIGNS> buildVitalSigns(FhirClient iClient, Patient iPatient)
+        {
+            List<VITAL_SIGNS> results = new List<VITAL_SIGNS>();
+
+            Bundle o = iClient.Search<Observation>(new string[] { "patient=" + iPatient.Id });
+            foreach (var tempD in o.Entry)
+            {
+                Observation obs = (Observation)tempD.Resource;
+
+                foreach (CodeableConcept cc in obs.Category)
+                {
+                    foreach (var code in cc.Coding)
+                    {
+                        if (code.Code == "vital-signs")
+                        {
+                            // build VITAL_SIGNS rec
+                            ;
+
+                            ;
+                        }
+                    }
+                }
+            }
+
+            return results;
         }
 
         // Helper methods
