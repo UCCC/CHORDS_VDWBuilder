@@ -27,3 +27,32 @@ C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\log4net.config
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\RestSharp.dll
 C:\Users\Doylebr\Documents\Visual Studio 2017\Projects\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csprojAssemblyReference.cache
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\log4net.config
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\CHORDS_VDWBuilder.exe.config
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\CHORDS_VDWBuilder.exe
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\CHORDS_VDWBuilder.pdb
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.Fhir.STU3.Core.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.Fhir.Support.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.FhirPath.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\log4net.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\RestSharp.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\System.ValueTuple.dll
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.Fhir.STU3.Core.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.Fhir.Support.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Hl7.FhirPath.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\log4net.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\bin\Debug\System.ValueTuple.xml
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csprojAssemblyReference.cache
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.CHORD_VDWBuilder.resources
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.Properties.Resources.resources
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csproj.GenerateResource.cache
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csproj.CoreCompileInputs.cache
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.csproj.CopyComplete
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.exe
+C:\Users\Bryant Doyle\Documents\GitHub\CHORDS_VDWBuilder\CHORDS_VDWBuilder\obj\Debug\CHORDS_VDWBuilder.pdb

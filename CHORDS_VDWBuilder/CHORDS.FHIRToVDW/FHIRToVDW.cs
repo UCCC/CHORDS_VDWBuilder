@@ -8,6 +8,7 @@ using Hl7.Fhir.Model;
 using CHORDS_VDWBuilder.Models;
 using RestSharp;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 {
@@ -31,58 +32,80 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return result;
         }
 
-        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient)
+        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient, ListBox iStatus)
         {
             List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
             log.Info("Start Scanning Patients");
+            iStatus.Items.Add("Start Scanning Patients");
 
-            Bundle bundles = iFHIRClient.Search<Patient>();
-            List<Patient> patients = new List<Patient>();
-            foreach (Bundle.EntryComponent item in bundles.Entry)
+            try
             {
-                Patient p = (Patient)item.Resource;
-                patients.Add(p);
-            }
-
-            foreach (var p in patients)
-            {
-                FHIRPatientSummary sum = new FHIRPatientSummary();
-                sum.PERSON_ID = p.Id;
-
-                // Location Count
-                sum.LocationTotalCount = p.Address.Count;
-
-                // Encounter Count
-                Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
-                sum.EncounterTotalCount = en.Entry.Count;
-
-                // Diagnoses Count
-                Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
-                sum.DiagnosesTotalCount = d.Entry.Count;
-
-                // Vital Signs Count
-                Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
-                foreach (var tempD in o.Entry)
+                Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
+                List<Patient> patients = new List<Patient>();
+                foreach (Bundle.EntryComponent item in bundles.Entry)
                 {
-                    Observation obs = (Observation)tempD.Resource;
+                    Patient p = (Patient)item.Resource;
+                    patients.Add(p);
+                }
+                iStatus.Items.Add("Loading " + patients.Count.ToString() + " patients.");
 
-                    foreach(CodeableConcept cc in obs.Category)
+                int total = patients.Count;
+                int cur = 1;
+
+                foreach (var p in patients)
+                {
+                    iStatus.Items.Add("  Loading Patient " + cur.ToString() + " out of " + total.ToString());
+                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
+
+                    FHIRPatientSummary sum = new FHIRPatientSummary();
+                    sum.PERSON_ID = p.Id;
+
+                    // Location Count
+                    sum.LocationTotalCount = p.Address.Count;
+
+                    // Encounter Count
+                    Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                    sum.EncounterTotalCount = en.Entry.Count;
+
+                    // Diagnoses Count
+                    Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                    sum.DiagnosesTotalCount = d.Entry.Count;
+
+                    // Vital Signs Count
+                    Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                    foreach (var tempD in o.Entry)
                     {
-                        foreach(var code in cc.Coding)
+                        Observation obs = (Observation)tempD.Resource;
+
+                        foreach (CodeableConcept cc in obs.Category)
                         {
-                            if (code.Code == "vital-signs")
+                            foreach (var code in cc.Coding)
                             {
-                                sum.VitalSignTotalCount++;
+                                if (code.Code == "vital-signs")
+                                {
+                                    sum.VitalSignTotalCount++;
+                                }
                             }
                         }
                     }
+
+                    results.Add(sum);
+
+                    cur++;
                 }
 
-                results.Add(sum);
-            }
+                log.Info("Number of Patients " + results.Count.ToString());
 
-            log.Info("End Scanning Patients");
+                log.Info("End Scanning Patients");
+
+                iStatus.Items.Add("End Scanning Patients");
+                iStatus.SelectedIndex = iStatus.Items.Count - 1;
+            }
+            catch (Exception ex)
+            {
+                log.Info("Error: " + ex.Message);
+            }
 
             return results;
         }

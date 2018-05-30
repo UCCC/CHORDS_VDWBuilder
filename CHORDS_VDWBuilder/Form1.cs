@@ -30,6 +30,7 @@ namespace CHORDS_VDWBuilder
 
         }
 
+        // Import FHIR to a CHORDS VDW
         private void Import_FHIR_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -53,6 +54,7 @@ namespace CHORDS_VDWBuilder
             FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
         }
 
+        // Scan FHIR Source
         private void button1_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -61,14 +63,11 @@ namespace CHORDS_VDWBuilder
             var client = new FhirClient(FHIR_URL.Text);
             client.PreferredFormat = ResourceFormat.Json;
             client.Timeout = 120000;
-            // clear table
-            //while (patientGV.Rows.Count > 0)
-            //{
-            //    patientGV.Rows.RemoveAt(0);
-            //}
+
             var importer = new FHIRToVDW();
 
-            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client);
+            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client, statusLB);
+
             int loc_count = 0;
             int encounter_count = 0;
             int diagnoses_count = 0;
@@ -93,11 +92,13 @@ namespace CHORDS_VDWBuilder
             Cursor.Current = Cursors.Default;
         }
 
+        // 
         private void button2_Click(object sender, EventArgs e)
         {
 
         }
 
+        // Clear the VDW
         private void ClearVDW_BTN_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -107,6 +108,11 @@ namespace CHORDS_VDWBuilder
             importer.ClearVDW();
 
             Cursor.Current = Cursors.Default;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

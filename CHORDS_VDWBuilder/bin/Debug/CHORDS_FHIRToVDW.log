@@ -196,3 +196,75 @@
 2018-05-23 21:33:20,832 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
 2018-05-23 21:33:26,728 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
 2018-05-23 21:33:39,562 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 09:15:55,006 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 09:16:08,045 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 09:16:14,220 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 09:36:34,772 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 09:36:52,908 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 09:36:59,088 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 09:41:11,020 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 09:42:04,525 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 09:58:47,596 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 09:59:31,593 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 09:59:42,678 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 09:59:52,596 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:00:37,838 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:00:38,990 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (Unauthorized). OperationOutcome: Overall result: FAILURE (1 errors and 0 warnings)
+
+[ERROR] (no details)(further diagnostics: Endpoint said it returned 'application/json', but the body is not recognized as either xml or json.).
+2018-05-30 10:04:36,139 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:05:04,448 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:05:06,669 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (Unauthorized). OperationOutcome: <div xmlns="http://www.w3.org/1999/xhtml"><p>You must authenticate before you can use this service</p></div>.
+2018-05-30 10:05:16,672 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:07:58,797 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:08:00,872 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (Unauthorized). Body has no content.
+2018-05-30 10:08:29,344 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:08:50,456 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Unable to connect to the remote server
+2018-05-30 10:10:59,585 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:11:01,545 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The specified content type is invalid.
+2018-05-30 10:11:14,410 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:11:27,118 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:11:28,510 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The specified content type is invalid.
+2018-05-30 10:13:39,636 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:13:44,549 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:13:46,435 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (NotFound). Body has no content.
+2018-05-30 10:18:15,349 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:18:23,845 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:18:24,645 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (NotFound). Body has no content.
+2018-05-30 10:19:41,429 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:19:47,541 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:19:54,517 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 10:23:07,006 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:23:09,766 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:23:11,679 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (BadRequest). OperationOutcome: <div xmlns="http://www.w3.org/1999/xhtml"><h1>Operation Outcome</h1><table border="0"><tr><td style="font-weight: bold;">ERROR</td><td>[]</td><td><pre>Unknown search parameter &quot;count &quot;. Value search parameters for this search are: [_id, _language, active, address, address-city, address-country, address-postalcode, address-state, address-use, animal-breed, animal-species, birthdate, death-date, deceased, email, family, gender, general-practitioner, given, identifier, language, link, name, organization, phone, phonetic, telecom]</pre></td>
+					
+				
+			</tr>
+		</table>
+	</div>.
+2018-05-30 10:23:57,421 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:24:00,219 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:24:22,050 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 10:25:56,471 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:26:02,333 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:26:23,987 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 10:52:29,978 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 10:52:32,965 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 10:52:54,931 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 10:52:54,932 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 11:12:26,223 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 11:12:35,011 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 11:15:20,390 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 500
+2018-05-30 11:15:20,390 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 13:22:39,724 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 13:22:51,304 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 13:23:24,356 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 13:23:24,356 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 13:28:21,324 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 13:28:28,115 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 13:28:49,400 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 13:28:49,401 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 13:32:29,460 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 13:32:36,310 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 13:32:57,912 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 13:32:57,912 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
