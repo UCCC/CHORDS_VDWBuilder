@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CHORDS.FHIRToVDW\Census.cs" />
     <Compile Include="CHORDS.FHIRToVDW\CHORDS_DiagnosesHelper.cs" />
     <Compile Include="CHORDS.FHIRToVDW\CHORDS_EncounterHelper.cs" />
     <Compile Include="CHORDS.FHIRToVDW\CHORDS_PatientHelper.cs" />

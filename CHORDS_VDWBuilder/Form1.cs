@@ -44,7 +44,26 @@ namespace CHORDS_VDWBuilder
 
             List<FHIRPatientSummary> plist = importer.LoadVDW(client, patientsProgressBar);
 
-            patientCountTB.Text = plist.Count.ToString();
+            int loc_count = 0;
+            int encounter_count = 0;
+            int diagnoses_count = 0;
+            int vital_count = 0;
+
+            foreach (FHIRPatientSummary s in plist)
+            {
+                loc_count += s.LocationTotalCount;
+                encounter_count += s.EncounterTotalCount;
+                diagnoses_count += s.DiagnosesTotalCount;
+                vital_count += s.VitalSignTotalCount;
+
+                patientGV.Rows.Add(s.PERSON_ID, s.LocationTotalCount.ToString(), s.EncounterTotalCount.ToString(), s.DiagnosesTotalCount.ToString(), s.VitalSignTotalCount.ToString());
+            }
+
+            int patient_Count = plist.Count;
+            patientCountTB.Text = patient_Count.ToString();
+            diagnosesCountTB.Text = diagnoses_count.ToString();
+            encounterCountTB.Text = encounter_count.ToString();
+            vitalSignCountTB.Text = vital_count.ToString();
 
             Cursor.Current = Cursors.Default;
         }

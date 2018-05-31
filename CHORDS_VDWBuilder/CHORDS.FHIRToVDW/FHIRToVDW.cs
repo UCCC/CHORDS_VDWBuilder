@@ -9,6 +9,8 @@ using CHORDS_VDWBuilder.Models;
 using RestSharp;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 {
@@ -122,6 +124,10 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 {
                     Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
 
+                    iPatientProgressBar.Maximum = bundles.Entry.Count;
+                    iPatientProgressBar.Step = 1;
+                    iPatientProgressBar.Value = 0;
+
                     List<Patient> patients = new List<Patient>();
                     foreach (Bundle.EntryComponent item in bundles.Entry)
                     {
@@ -171,12 +177,12 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
                         foreach (var e_item in encounters.Entry)
                         {
-                            ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
+                            //ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
 
                             try
                             {
-                                context.ENCOUNTERS.Add(tENCOUNTERS);
-                                context.SaveChanges();
+                                //context.ENCOUNTERS.Add(tENCOUNTERS);
+                                //context.SaveChanges();
 
                                 // build and save Diagnoses records associated with this encounter
                                 ;
@@ -220,6 +226,8 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         results.Add(sum);
 
                         cur++;
+
+                        iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
                     }
 
                     log.Info("Number of Patients " + results.Count.ToString());
@@ -302,8 +310,8 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
                             try
                             {
-                                context.ENCOUNTERS.Add(tENCOUNTERS);
-                                context.SaveChanges();
+                                //context.ENCOUNTERS.Add(tENCOUNTERS);
+                                //context.SaveChanges();
 
                                 encounter_count++;
 
@@ -582,26 +590,32 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 var client = new RestClient();
                 client.BaseUrl = geocoder;
 
-                var request = new RestRequest();
-                request.Resource = "/geocoder/locations/onelineaddress?address=" + address + "&benchmark=9&format=json";
-
-                IRestResponse response = client.Execute(request);
-                var r_json = Newtonsoft.Json.JsonConvert.DeserializeObject(response.Content);
+                //var request = new RestRequest();
+                //request.Resource = "/geocoder/locations/onelineaddress?address=" + address + "&benchmark=9&format=json";
+                //IRestResponse response = client.Execute(request);
+                //dynamic r_json = Newtonsoft.Json.JsonConvert.DeserializeObject(response.Content);
 
                 // use US Gov Census API to get Census Tract
                 var geographies_request = new RestRequest();
                 geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layer=14" + "&format=json";
-
                 IRestResponse geographies_response = client.Execute(geographies_request);
-                var g_json = Newtonsoft.Json.JsonConvert.DeserializeObject(geographies_response.Content);
+
+                Census json = null;
+                json = JsonConvert.DeserializeObject<Census>(geographies_response.Content);
+
 
                 // fill in CENSUS_LOCATION
                 new_location.PERSON_ID = iPatient.Id;
-                if (add.Period.StartElement.ToDateTime().HasValue)
+                if (add.Period != null && add.Period.StartElement.ToDateTime().HasValue)
                 {
                     new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
                 }
-                if (add.Period.EndElement.ToDateTime().HasValue)
+                else
+                {
+                    new_location.LOC_START = DateTime.Now;
+                }
+
+                if (add.Period != null && add.Period.EndElement.ToDateTime().HasValue)
                 {
                     new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
                 }
@@ -612,7 +626,10 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
 
                 // GEOCODE
-                ;
+                if (json != null)
+                {
+                    new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
+                }
 
                 // CITY_GEOCODE - using lat/log determine the city
                 ;
@@ -627,10 +644,16 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 new_location.MATCH_STRENGTH = null;
 
                 // LATITUDE
-                ;
+                if (json != null)
+                {
+                    new_location.LATITUDE = Convert.ToDecimal( json.result.addressMatches[0].coordinates.x );
+                }
 
                 // LONGITUDE
-                ;
+                if (json != null)
+                {
+                    new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
+                }
 
                 // GEOCODE_APP
                 new_location.GEOCODE_APP = "US Census API";

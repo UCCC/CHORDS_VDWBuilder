@@ -273,3 +273,84 @@
 2018-05-30 15:31:57,410 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
 2018-05-30 15:31:57,410 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
 2018-05-30 16:36:52,728 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 16:53:55,083 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 16:54:12,973 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 16:54:53,755 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 16:54:53,755 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 17:05:09,833 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 17:05:39,880 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 17:05:52,676 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-30 17:06:27,724 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-30 17:06:27,724 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-30 17:06:35,865 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-30 17:06:40,552 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-30 17:06:43,646 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Object reference not set to an instance of an object.
+2018-05-30 17:10:26,473 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-30 17:13:46,616 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 17:14:01,774 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-30 17:18:32,005 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 17:18:42,974 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-30 17:26:54,286 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-30 17:27:18,489 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-30 17:29:36,255 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (BadRequest). OperationOutcome: <div xmlns="http://www.w3.org/1999/xhtml"><h1>Operation Outcome</h1><table border="0"><tr><td style="font-weight: bold;">ERROR</td><td>[]</td><td><pre>Unknown search parameter &quot;Identifier&quot;. Value search parameters for this search are: [_id, _language, active, address, address-city, address-country, address-postalcode, address-state, address-use, endpoint, identifier, name, partof, phonetic, type]</pre></td>
+					
+				
+			</tr>
+		</table>
+	</div>.
+2018-05-31 08:30:58,234 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 08:31:56,214 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-31 08:32:16,793 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-31 08:32:16,793 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-31 08:41:49,852 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 08:42:14,196 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 09:03:12,822 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 09:03:41,066 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 09:23:42,149 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 09:23:54,868 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 09:29:50,523 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 09:30:01,555 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 09:31:22,164 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 09:31:43,915 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 10:59:17,857 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 10:59:25,966 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 10:59:34,029 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-31 11:03:20,513 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 11:03:28,660 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 11:10:03,068 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 11:10:18,323 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:28:15,769 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:28:36,973 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:28:45,260 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-31 12:30:13,324 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-31 12:30:41,703 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (BadRequest). OperationOutcome: <div xmlns="http://www.w3.org/1999/xhtml"><h1>Operation Outcome</h1><table border="0"><tr><td style="font-weight: bold;">ERROR</td><td>[]</td><td><pre>Unknown search parameter &quot;Identifier&quot;. Value search parameters for this search are: [_id, _language, active, address, address-city, address-country, address-postalcode, address-state, address-use, endpoint, identifier, name, partof, phonetic, type]</pre></td>
+					
+				
+			</tr>
+		</table>
+	</div>.
+2018-05-31 12:34:26,853 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:34:46,417 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:35:35,903 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (BadRequest). OperationOutcome: <div xmlns="http://www.w3.org/1999/xhtml"><h1>Operation Outcome</h1><table border="0"><tr><td style="font-weight: bold;">ERROR</td><td>[]</td><td><pre>Unknown search parameter &quot;Identifier&quot;. Value search parameters for this search are: [_id, _language, active, address, address-city, address-country, address-postalcode, address-state, address-use, endpoint, identifier, name, partof, phonetic, type]</pre></td>
+					
+				
+			</tr>
+		</table>
+	</div>.
+2018-05-31 12:36:30,184 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:36:45,493 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-31 12:37:03,680 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-05-31 12:38:31,371 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:39:35,910 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:39:44,308 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:41:05,327 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:41:12,582 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:42:45,064 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-31 12:42:45,064 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Importing Patients
+2018-05-31 12:42:54,906 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-05-31 12:43:11,984 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-31 12:43:11,984 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-05-31 12:47:14,486 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-05-31 12:47:32,605 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-05-31 12:48:49,360 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-05-31 12:48:49,360 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Importing Patients
