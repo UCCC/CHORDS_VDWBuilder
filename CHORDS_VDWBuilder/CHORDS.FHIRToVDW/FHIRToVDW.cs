@@ -18,25 +18,50 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public bool ClearVDW()
+        public bool ClearVDW(ListBox iStatus, ProgressBar iPatientProgressBar)
         {
             bool result = false;
+            iPatientProgressBar.Maximum = 5;
+            iPatientProgressBar.Step = 1;
+            iPatientProgressBar.Value = 0;
 
             using (var context = new VDW_3_1_Entities())
             {
-                context.CENSUS_LOCATION.RemoveRange(context.CENSUS_LOCATION);
-                context.DIAGNOSES.RemoveRange(context.DIAGNOSES);
-                context.ENCOUNTERS.RemoveRange(context.ENCOUNTERS);
-                context.VITAL_SIGNS.RemoveRange(context.VITAL_SIGNS);
-                context.DEMOGRAPHICS.RemoveRange(context.DEMOGRAPHICS);
+                try
+                {
+                    // clean priority 1 tables
+                    context.CENSUS_LOCATION.RemoveRange(context.CENSUS_LOCATION);
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
 
-                context.SaveChanges();
+                    context.DIAGNOSES.RemoveRange(context.DIAGNOSES);
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+
+                    context.ENCOUNTERS.RemoveRange(context.ENCOUNTERS);
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+
+                    context.VITAL_SIGNS.RemoveRange(context.VITAL_SIGNS);
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+
+                    context.DEMOGRAPHICS.RemoveRange(context.DEMOGRAPHICS);
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    log.Info("Error: " + ex.Message);
+                    iStatus.Items.Add("Error: " + ex.Message);
+                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
+                }
+
             }
 
+            iStatus.Items.Add("VDW Cleared.");
+            iStatus.SelectedIndex = iStatus.Items.Count - 1;
             return result;
         }
 
-        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient, ListBox iStatus)
+        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient, ListBox iStatus, ProgressBar iPatientProgressBar)
         {
             List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
@@ -45,7 +70,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
             try
             {
-                Bundle bundles = iFHIRClient.Search<Patient>();
+                Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=100" });
 
                 // get all the patients from all the pages
                 List<Patient> patients = new List<Patient>();
@@ -62,6 +87,9 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 }
 
                 iStatus.Items.Add("Loading " + patients.Count.ToString() + " patients.");
+                iPatientProgressBar.Maximum = patients.Count;
+                iPatientProgressBar.Step = 1;
+                iPatientProgressBar.Value = 0;
 
                 int total = patients.Count;
                 int cur = 1;
@@ -106,6 +134,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                     results.Add(sum);
 
                     cur++;
+                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
                 }
 
                 log.Info("Number of Patients " + results.Count.ToString());
@@ -136,8 +165,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             {
                 try
                 {
-                    //Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
-                    Bundle bundles = iFHIRClient.Search<Patient>();
+                    Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=100" });
 
                     // get all the patients from all the pages
                     List<Patient> patients = new List<Patient>();

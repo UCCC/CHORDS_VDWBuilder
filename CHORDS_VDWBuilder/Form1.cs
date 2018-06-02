@@ -35,6 +35,8 @@ namespace CHORDS_VDWBuilder
         {
             Cursor.Current = Cursors.WaitCursor;
 
+            clear();
+
             // Connect to FHIR Server
             var client = new FhirClient(FHIR_URL.Text);
             client.PreferredFormat = ResourceFormat.Json;
@@ -70,14 +72,28 @@ namespace CHORDS_VDWBuilder
 
         private void CHORD_VDWBuilder_Load(object sender, EventArgs e)
         {
-            //FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
-            FHIR_URL.Text = "http://hapi.fhir.org/baseDstu3";
+            //FHIR_URL.Text = "http://hapi.fhir.org/baseDstu3";
+            FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
+            using (var context = new VDW_3_1_Entities())
+            {
+                try
+                {
+                    vdwServerTB.Text = context.Database.Connection.ConnectionString;
+                }
+                catch (Exception ex)
+                {
+                    vdwServerTB.Text = ex.Message;
+                }
+
+            }
         }
 
         // Scan FHIR Source
         private void button1_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+
+            clear();
 
             // Connect to FHIR Server
             var client = new FhirClient(FHIR_URL.Text);
@@ -86,7 +102,7 @@ namespace CHORDS_VDWBuilder
 
             var importer = new FHIRToVDW();
 
-            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client, statusLB);
+            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client, statusLB, patientsProgressBar);
 
             int loc_count = 0;
             int encounter_count = 0;
@@ -125,7 +141,7 @@ namespace CHORDS_VDWBuilder
 
             var importer = new FHIRToVDW();
 
-            importer.ClearVDW();
+            importer.ClearVDW(statusLB, patientsProgressBar);
 
             Cursor.Current = Cursors.Default;
         }
@@ -133,6 +149,19 @@ namespace CHORDS_VDWBuilder
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clear()
+        {
+            patientCountTB.Text = "";
+            diagnosesCountTB.Text = "";
+            encounterCountTB.Text = "";
+            vitalSignCountTB.Text = "";
+
+            patientGV.DataSource = null;
+            patientGV.Rows.Clear();
+
+            return;
         }
     }
 }
