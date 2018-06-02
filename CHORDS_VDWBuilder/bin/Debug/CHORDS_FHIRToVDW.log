@@ -354,3 +354,79 @@
 2018-05-31 12:47:32,605 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
 2018-05-31 12:48:49,360 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
 2018-05-31 12:48:49,360 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Importing Patients
+2018-06-01 08:56:57,011 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 08:59:41,431 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:09:06,856 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:09:27,044 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 50
+2018-06-01 09:09:27,044 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-01 09:12:40,075 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:12:41,199 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Unable to cast object of type 'Hl7.Fhir.Model.OperationOutcome' to type 'Hl7.Fhir.Model.Observation'.
+2018-06-01 09:17:45,106 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:18:25,934 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:18:29,716 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful because of a client error (NotAcceptable). OperationOutcome: Overall result: FAILURE (1 errors and 0 warnings)
+
+[ERROR] (no details)(further diagnostics: Endpoint returned a body with contentType 'text/plain', while a valid FHIR xml/json body type was expected. Is this a FHIR endpoint?).
+2018-06-01 09:18:44,993 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:20:33,419 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:21:50,130 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:22:21,529 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:23:39,559 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:24:11,803 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:24:27,816 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:32:06,854 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:32:26,339 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:36:43,214 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:39:18,918 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:39:40,324 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The specified content type is invalid.
+2018-06-01 09:39:52,824 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:52:20,511 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:53:14,464 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 09:53:59,839 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 100
+2018-06-01 09:53:59,839 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-01 09:57:55,230 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 09:58:07,226 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 10:00:40,323 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 500
+2018-06-01 10:00:40,323 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-01 10:38:57,164 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 10:39:58,398 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 10:43:05,008 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 500
+2018-06-01 10:43:05,008 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-01 14:08:14,685 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:08:25,495 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:09:55,716 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:10:07,845 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:14:51,252 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:15:02,434 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:25:43,898 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:25:51,430 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:49:52,720 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:50:02,181 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:51:10,186 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:51:17,545 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:52:17,264 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:52:31,026 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:55:15,823 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:55:26,838 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:56:07,182 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Object reference not set to an instance of an object.
+2018-06-01 14:58:08,459 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 14:58:17,568 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 14:59:28,354 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Operation was unsuccessful, and returned status GatewayTimeout. OperationOutcome: Overall result: FAILURE (1 errors and 0 warnings)
+
+[ERROR] (no details)(further diagnostics: Endpoint returned a body with contentType 'text/html', while a valid FHIR xml/json body type was expected. Is this a FHIR endpoint?).
+2018-06-01 14:59:50,100 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 15:07:56,650 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 15:08:26,348 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 15:09:50,914 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 15:10:00,167 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-01 15:18:56,484 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 1628
+2018-06-01 15:18:56,484 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-01 15:27:56,551 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 15:28:31,129 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-01 15:28:49,270 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Object reference not set to an instance of an object.
+2018-06-01 15:29:43,688 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 15:29:47,989 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-01 15:32:06,018 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-01 15:32:15,097 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-01 16:09:35,437 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 1628
+2018-06-01 16:09:35,437 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Importing Patients
+2018-06-01 16:28:17,628 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.

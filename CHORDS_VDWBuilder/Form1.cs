@@ -70,7 +70,8 @@ namespace CHORDS_VDWBuilder
 
         private void CHORD_VDWBuilder_Load(object sender, EventArgs e)
         {
-            FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
+            //FHIR_URL.Text = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
+            FHIR_URL.Text = "http://hapi.fhir.org/baseDstu3";
         }
 
         // Scan FHIR Source

@@ -29,6 +29,8 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 context.ENCOUNTERS.RemoveRange(context.ENCOUNTERS);
                 context.VITAL_SIGNS.RemoveRange(context.VITAL_SIGNS);
                 context.DEMOGRAPHICS.RemoveRange(context.DEMOGRAPHICS);
+
+                context.SaveChanges();
             }
 
             return result;
@@ -43,13 +45,22 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
             try
             {
-                Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
+                Bundle bundles = iFHIRClient.Search<Patient>();
+
+                // get all the patients from all the pages
                 List<Patient> patients = new List<Patient>();
-                foreach (Bundle.EntryComponent item in bundles.Entry)
+                while( bundles != null)
                 {
-                    Patient p = (Patient)item.Resource;
-                    patients.Add(p);
+                    foreach (Bundle.EntryComponent item in bundles.Entry)
+                    {
+                        Patient p = (Patient)item.Resource;
+                        patients.Add(p);
+                    }
+                    bundles = iFHIRClient.Continue(bundles);
+                    iStatus.Items.Add("Getting Patients: " + patients.Count.ToString());
+                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
                 }
+
                 iStatus.Items.Add("Loading " + patients.Count.ToString() + " patients.");
 
                 int total = patients.Count;
@@ -107,6 +118,9 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             catch (Exception ex)
             {
                 log.Info("Error: " + ex.Message);
+
+                iStatus.Items.Add("Error: " + ex.Message);
+                iStatus.Items.Add("End Scanning Patients");
             }
 
             return results;
@@ -122,18 +136,24 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             {
                 try
                 {
-                    Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
+                    //Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=10000" });
+                    Bundle bundles = iFHIRClient.Search<Patient>();
 
-                    iPatientProgressBar.Maximum = bundles.Entry.Count;
+                    // get all the patients from all the pages
+                    List<Patient> patients = new List<Patient>();
+                    while (bundles != null)
+                    {
+                        foreach (Bundle.EntryComponent item in bundles.Entry)
+                        {
+                            Patient p = (Patient)item.Resource;
+                            patients.Add(p);
+                        }
+                        bundles = iFHIRClient.Continue(bundles);
+                    }
+
+                    iPatientProgressBar.Maximum = patients.Count;
                     iPatientProgressBar.Step = 1;
                     iPatientProgressBar.Value = 0;
-
-                    List<Patient> patients = new List<Patient>();
-                    foreach (Bundle.EntryComponent item in bundles.Entry)
-                    {
-                        Patient p = (Patient)item.Resource;
-                        patients.Add(p);
-                    }
 
                     int total = patients.Count;
                     int cur = 1;
@@ -151,65 +171,66 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         {
                             context.DEMOGRAPHICS.Add(demo);
                             context.SaveChanges();
+
+                            // build and save CENSUS_LOCATION records
+                            List<CENSUS_LOCATION> locs = buildGeocode(p);
+                            foreach (var loc in locs)
+                            {
+                                try
+                                {
+                                    context.CENSUS_LOCATION.Add(loc);
+                                    context.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    log.Info("Error: " + ex.Message);
+                                }
+                            }
+
+                            // build and save Encounter records for patient
+                            Bundle encounters = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+
+                            foreach (var e_item in encounters.Entry)
+                            {
+                                //ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
+
+                                try
+                                {
+                                    //context.ENCOUNTERS.Add(tENCOUNTERS);
+                                    //context.SaveChanges();
+
+                                    // build and save Diagnoses records associated with this encounter
+                                    ;
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    log.Info("Error: " + ex.Message);
+                                }
+                            }
+
+                            // build and save VITAL_SIGN records for patient
+                            Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                            foreach (var tempD in o.Entry)
+                            {
+                                Observation obs = (Observation)tempD.Resource;
+
+                                foreach (CodeableConcept cc in obs.Category)
+                                {
+                                    foreach (var code in cc.Coding)
+                                    {
+                                        if (code.Code == "vital-signs")
+                                        {
+                                            sum.VitalSignTotalCount++;
+                                        }
+                                    }
+                                }
+                            }
+
                         }
                         catch (Exception ex)
                         {
                             log.Info("Error: " + ex.Message);
-                        }
-
-                        // build and save CENSUS_LOCATION records
-                        List<CENSUS_LOCATION> locs = buildGeocode(p);
-                        foreach (var loc in locs)
-                        {
-                            try
-                            {
-                                context.CENSUS_LOCATION.Add(loc);
-                                context.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                log.Info("Error: " + ex.Message);
-                            }
-                        }
-
-                        // build and save Encounter records for patient
-                        Bundle encounters = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
-
-                        foreach (var e_item in encounters.Entry)
-                        {
-                            //ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
-
-                            try
-                            {
-                                //context.ENCOUNTERS.Add(tENCOUNTERS);
-                                //context.SaveChanges();
-
-                                // build and save Diagnoses records associated with this encounter
-                                ;
-
-                            }
-                            catch (Exception ex)
-                            {
-                                log.Info("Error: " + ex.Message);
-                            }
-                        }
-
-                        // build and save VITAL_SIGN records for patient
-                        Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
-                        foreach (var tempD in o.Entry)
-                        {
-                            Observation obs = (Observation)tempD.Resource;
-
-                            foreach (CodeableConcept cc in obs.Category)
-                            {
-                                foreach (var code in cc.Coding)
-                                {
-                                    if (code.Code == "vital-signs")
-                                    {
-                                        sum.VitalSignTotalCount++;
-                                    }
-                                }
-                            }
                         }
 
                         // Location Count
@@ -579,92 +600,95 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 postal_code = add.PostalCode;
 
                 // valid test data - remove
-                address = "382 Kingbird Cir, Highlands Ranch, CO 80129";
-                street = "382 Kingbird Cir";
-                city = "Highlands Ranch";
-                state = "CO";
-                postal_code = "80129";
+                //address = "382 Kingbird Cir, Highlands Ranch, CO 80129";
+                //street = "382 Kingbird Cir";
+                //city = "Highlands Ranch";
+                //state = "CO";
+                //postal_code = "80129";
 
                 // use US Gov Census REST API to get location
                 Uri geocoder = new Uri("https://geocoding.geo.census.gov");
                 var client = new RestClient();
                 client.BaseUrl = geocoder;
 
-                //var request = new RestRequest();
-                //request.Resource = "/geocoder/locations/onelineaddress?address=" + address + "&benchmark=9&format=json";
-                //IRestResponse response = client.Execute(request);
-                //dynamic r_json = Newtonsoft.Json.JsonConvert.DeserializeObject(response.Content);
-
                 // use US Gov Census API to get Census Tract
                 var geographies_request = new RestRequest();
                 geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layer=14" + "&format=json";
                 IRestResponse geographies_response = client.Execute(geographies_request);
 
-                Census json = null;
-                json = JsonConvert.DeserializeObject<Census>(geographies_response.Content);
-
-
-                // fill in CENSUS_LOCATION
-                new_location.PERSON_ID = iPatient.Id;
-                if (add.Period != null && add.Period.StartElement.ToDateTime().HasValue)
+                if(geographies_response.IsSuccessful)
                 {
-                    new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
+                    Census json = null;
+                    json = JsonConvert.DeserializeObject<Census>(geographies_response.Content);
+
+
+                    // fill in CENSUS_LOCATION
+                    new_location.PERSON_ID = iPatient.Id;
+                    if (add.Period != null && add.Period.StartElement.ToDateTime().HasValue)
+                    {
+                        new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
+                    }
+                    else
+                    {
+                        new_location.LOC_START = DateTime.Now;
+                    }
+
+                    if (add.Period != null && add.Period.EndElement.ToDateTime().HasValue)
+                    {
+                        new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
+                    }
+                    else
+                    {
+                        new_location.LOC_END = null;
+                    }
+
+
+                    // GEOCODE
+                    if (json != null)
+                    {
+                        new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
+                    }
+
+                    // CITY_GEOCODE - using lat/log determine the city
+                    ;
+
+                    // GEOCODE_BOUNDARY_YEAR
+                    new_location.GEOCODE_BOUNDARY_YEAR = 2010;
+
+                    // GEOLEVEL - should be based on the size of the GEOCODE
+                    new_location.GEOLEVEL = "T";
+
+                    // MATCH_STRENGTH
+                    new_location.MATCH_STRENGTH = null;
+
+                    // LATITUDE
+                    if (json != null)
+                    {
+                        new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.x);
+                    }
+
+                    // LONGITUDE
+                    if (json != null)
+                    {
+                        new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
+                    }
+
+                    // GEOCODE_APP
+                    new_location.GEOCODE_APP = "US Census API";
+
+                    try
+                    {
+                        result.Add(new_location);
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Info(ex.Message);
+                    }
                 }
                 else
                 {
-                    new_location.LOC_START = DateTime.Now;
-                }
-
-                if (add.Period != null && add.Period.EndElement.ToDateTime().HasValue)
-                {
-                    new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
-                }
-                else
-                {
-                    new_location.LOC_END = null;
-                }
-
-
-                // GEOCODE
-                if (json != null)
-                {
-                    new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
-                }
-
-                // CITY_GEOCODE - using lat/log determine the city
-                ;
-
-                // GEOCODE_BOUNDARY_YEAR
-                new_location.GEOCODE_BOUNDARY_YEAR = 2010;
-
-                // GEOLEVEL - should be based on the size of the GEOCODE
-                new_location.GEOLEVEL = "T";
-
-                // MATCH_STRENGTH
-                new_location.MATCH_STRENGTH = null;
-
-                // LATITUDE
-                if (json != null)
-                {
-                    new_location.LATITUDE = Convert.ToDecimal( json.result.addressMatches[0].coordinates.x );
-                }
-
-                // LONGITUDE
-                if (json != null)
-                {
-                    new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
-                }
-
-                // GEOCODE_APP
-                new_location.GEOCODE_APP = "US Census API";
-
-                try
-                {
-                    result.Add(new_location);
-                }
-                catch(Exception ex)
-                {
-                    log.Info(ex.Message);
+                    // not able to geocode location
+                    log.Info("Error: Not able to geocode '" + address + "'");
                 }
             }
 
