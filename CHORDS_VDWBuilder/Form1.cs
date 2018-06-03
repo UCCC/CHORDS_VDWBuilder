@@ -19,10 +19,14 @@ namespace CHORDS_VDWBuilder
     {
         public List<FHIRPatientSummary> patient_summary;
 
+        private FHIRToVDW mFHIRToVDW = null;
+        private FhirClient mFHIRClient = null;
+
         public CHORD_VDWBuilder()
         {
             patient_summary = new List<FHIRPatientSummary>();
             InitializeComponent();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -42,9 +46,9 @@ namespace CHORDS_VDWBuilder
             client.PreferredFormat = ResourceFormat.Json;
             client.Timeout = 120000;
 
-            var importer = new FHIRToVDW();
+            //var importer = new FHIRToVDW();
 
-            List<FHIRPatientSummary> plist = importer.LoadVDW(client, patientsProgressBar);
+            List<FHIRPatientSummary> plist = mFHIRToVDW.LoadVDW();
 
             int loc_count = 0;
             int encounter_count = 0;
@@ -86,6 +90,8 @@ namespace CHORDS_VDWBuilder
                 }
 
             }
+            mFHIRClient = new FhirClient(FHIR_URL.Text);
+            mFHIRToVDW = new FHIRToVDW(mFHIRClient, statusLB, patientsProgressBar);
         }
 
         // Scan FHIR Source
@@ -100,9 +106,7 @@ namespace CHORDS_VDWBuilder
             client.PreferredFormat = ResourceFormat.Json;
             client.Timeout = 120000;
 
-            var importer = new FHIRToVDW();
-
-            List<FHIRPatientSummary> plist = importer.ScanFHIRDB(client, statusLB, patientsProgressBar);
+            List<FHIRPatientSummary> plist = mFHIRToVDW.ScanFHIRDB();
 
             int loc_count = 0;
             int encounter_count = 0;
@@ -139,9 +143,7 @@ namespace CHORDS_VDWBuilder
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            var importer = new FHIRToVDW();
-
-            importer.ClearVDW(statusLB, patientsProgressBar);
+            mFHIRToVDW.ClearVDW();
 
             Cursor.Current = Cursors.Default;
         }

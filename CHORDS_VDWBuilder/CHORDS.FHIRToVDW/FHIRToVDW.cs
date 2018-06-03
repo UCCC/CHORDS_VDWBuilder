@@ -18,59 +18,80 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public bool ClearVDW(ListBox iStatus, ProgressBar iPatientProgressBar)
+        private FhirClient m_FhirClient = null;
+        private ProgressBar m_ProgressBar = null;
+        private ListBox m_Status = null;
+
+        public FHIRToVDW(FhirClient iFhirClient, ListBox iStatus = null, ProgressBar iPatientProgressBar = null)
+        {
+            m_FhirClient = iFhirClient;
+            m_ProgressBar = iPatientProgressBar;
+            m_Status = iStatus;
+        }
+
+        public bool ClearVDW()
         {
             bool result = false;
-            iPatientProgressBar.Maximum = 5;
-            iPatientProgressBar.Step = 1;
-            iPatientProgressBar.Value = 0;
+            m_ProgressBar.Maximum = 5;
+            m_ProgressBar.Step = 1;
+            m_ProgressBar.Value = 0;
 
             using (var context = new VDW_3_1_Entities())
             {
                 try
                 {
-                    // clean priority 1 tables
+                    // clear priority 1 tables
                     context.CENSUS_LOCATION.RemoveRange(context.CENSUS_LOCATION);
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
 
                     context.DIAGNOSES.RemoveRange(context.DIAGNOSES);
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
 
                     context.ENCOUNTERS.RemoveRange(context.ENCOUNTERS);
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
 
                     context.VITAL_SIGNS.RemoveRange(context.VITAL_SIGNS);
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
 
                     context.DEMOGRAPHICS.RemoveRange(context.DEMOGRAPHICS);
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
+
+                    // clear priority 2 tables
+                    ;
+
+                    // clear priority 3 tables
+                    ;
 
                     context.SaveChanges();
+                    result = true;
                 }
                 catch (Exception ex)
                 {
                     log.Info("Error: " + ex.Message);
-                    iStatus.Items.Add("Error: " + ex.Message);
-                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
+                    m_Status.Items.Add("Error: " + ex.Message);
+                    m_Status.SelectedIndex = m_Status.Items.Count - 1;
                 }
 
             }
 
-            iStatus.Items.Add("VDW Cleared.");
-            iStatus.SelectedIndex = iStatus.Items.Count - 1;
+            if(result)
+            {
+                m_Status.Items.Add("VDW Cleared.");
+                m_Status.SelectedIndex = m_Status.Items.Count - 1;
+            }
             return result;
         }
 
-        public List<FHIRPatientSummary> ScanFHIRDB(FhirClient iFHIRClient, ListBox iStatus, ProgressBar iPatientProgressBar)
+        public List<FHIRPatientSummary> ScanFHIRDB()
         {
             List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
             log.Info("Start Scanning Patients");
-            iStatus.Items.Add("Start Scanning Patients");
+            m_Status.Items.Add("Start Scanning Patients");
 
             try
             {
-                Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=100" });
+                Bundle bundles = m_FhirClient.Search<Patient>(new string[] { "_count=100" });
 
                 // get all the patients from all the pages
                 List<Patient> patients = new List<Patient>();
@@ -81,23 +102,23 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         Patient p = (Patient)item.Resource;
                         patients.Add(p);
                     }
-                    bundles = iFHIRClient.Continue(bundles);
-                    iStatus.Items.Add("Getting Patients: " + patients.Count.ToString());
-                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
+                    bundles = m_FhirClient.Continue(bundles);
+                    m_Status.Items.Add("Getting Patients: " + patients.Count.ToString());
+                    m_Status.SelectedIndex = m_Status.Items.Count - 1;
                 }
 
-                iStatus.Items.Add("Loading " + patients.Count.ToString() + " patients.");
-                iPatientProgressBar.Maximum = patients.Count;
-                iPatientProgressBar.Step = 1;
-                iPatientProgressBar.Value = 0;
+                m_Status.Items.Add("Loading " + patients.Count.ToString() + " patients.");
+                m_ProgressBar.Maximum = patients.Count;
+                m_ProgressBar.Step = 1;
+                m_ProgressBar.Value = 0;
 
                 int total = patients.Count;
                 int cur = 1;
 
                 foreach (var p in patients)
                 {
-                    iStatus.Items.Add("  Loading Patient " + cur.ToString() + " out of " + total.ToString());
-                    iStatus.SelectedIndex = iStatus.Items.Count - 1;
+                    m_Status.Items.Add("  Loading Patient " + cur.ToString() + " out of " + total.ToString());
+                    m_Status.SelectedIndex = m_Status.Items.Count - 1;
 
                     FHIRPatientSummary sum = new FHIRPatientSummary();
                     sum.PERSON_ID = p.Id;
@@ -106,15 +127,15 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                     sum.LocationTotalCount = p.Address.Count;
 
                     // Encounter Count
-                    Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                    Bundle en = m_FhirClient.Search<Encounter>(new string[] { "patient=" + p.Id });
                     sum.EncounterTotalCount = en.Entry.Count;
 
                     // Diagnoses Count
-                    Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                    Bundle d = m_FhirClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
                     sum.DiagnosesTotalCount = d.Entry.Count;
 
                     // Vital Signs Count
-                    Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                    Bundle o = m_FhirClient.Search<Observation>(new string[] { "patient=" + p.Id });
                     foreach (var tempD in o.Entry)
                     {
                         Observation obs = (Observation)tempD.Resource;
@@ -134,28 +155,28 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                     results.Add(sum);
 
                     cur++;
-                    iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                    m_ProgressBar.Value = m_ProgressBar.Value + 1;
                 }
 
                 log.Info("Number of Patients " + results.Count.ToString());
 
                 log.Info("End Scanning Patients");
 
-                iStatus.Items.Add("End Scanning Patients");
-                iStatus.SelectedIndex = iStatus.Items.Count - 1;
+                m_Status.Items.Add("End Scanning Patients");
+                m_Status.SelectedIndex = m_Status.Items.Count - 1;
             }
             catch (Exception ex)
             {
                 log.Info("Error: " + ex.Message);
 
-                iStatus.Items.Add("Error: " + ex.Message);
-                iStatus.Items.Add("End Scanning Patients");
+                m_Status.Items.Add("Error: " + ex.Message);
+                m_Status.Items.Add("End Scanning Patients");
             }
 
             return results;
         }
 
-        public List<FHIRPatientSummary> LoadVDW(FhirClient iFHIRClient, ProgressBar iPatientProgressBar)
+        public List<FHIRPatientSummary> LoadVDW()
         {
             List<FHIRPatientSummary> results = new List<FHIRPatientSummary>();
 
@@ -165,7 +186,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             {
                 try
                 {
-                    Bundle bundles = iFHIRClient.Search<Patient>(new string[] { "_count=100" });
+                    Bundle bundles = m_FhirClient.Search<Patient>(new string[] { "_count=100" });
 
                     // get all the patients from all the pages
                     List<Patient> patients = new List<Patient>();
@@ -176,12 +197,12 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                             Patient p = (Patient)item.Resource;
                             patients.Add(p);
                         }
-                        bundles = iFHIRClient.Continue(bundles);
+                        bundles = m_FhirClient.Continue(bundles);
                     }
 
-                    iPatientProgressBar.Maximum = patients.Count;
-                    iPatientProgressBar.Step = 1;
-                    iPatientProgressBar.Value = 0;
+                    m_ProgressBar.Maximum = patients.Count;
+                    m_ProgressBar.Step = 1;
+                    m_ProgressBar.Value = 0;
 
                     int total = patients.Count;
                     int cur = 1;
@@ -216,11 +237,11 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                             }
 
                             // build and save Encounter records for patient
-                            Bundle encounters = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                            Bundle encounters = m_FhirClient.Search<Encounter>(new string[] { "patient=" + p.Id });
 
                             foreach (var e_item in encounters.Entry)
                             {
-                                //ENCOUNTERS tENCOUNTERS = buildEncounter(iFHIRClient, (Encounter)e_item.Resource, p);
+                                ENCOUNTERS tENCOUNTERS = buildEncounter((Encounter)e_item.Resource, p);
 
                                 try
                                 {
@@ -238,7 +259,7 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                             }
 
                             // build and save VITAL_SIGN records for patient
-                            Bundle o = iFHIRClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                            Bundle o = m_FhirClient.Search<Observation>(new string[] { "patient=" + p.Id });
                             foreach (var tempD in o.Entry)
                             {
                                 Observation obs = (Observation)tempD.Resource;
@@ -265,18 +286,18 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         sum.LocationTotalCount = p.Address.Count;
 
                         // Encounter Count
-                        Bundle en = iFHIRClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+                        Bundle en = m_FhirClient.Search<Encounter>(new string[] { "patient=" + p.Id });
                         sum.EncounterTotalCount = en.Entry.Count;
 
                         // Diagnoses Count
-                        Bundle d = iFHIRClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                        Bundle d = m_FhirClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
                         sum.DiagnosesTotalCount = d.Entry.Count;
 
                         results.Add(sum);
 
                         cur++;
 
-                        iPatientProgressBar.Value = iPatientProgressBar.Value + 1;
+                        m_ProgressBar.Value = m_ProgressBar.Value + 1;
                     }
 
                     log.Info("Number of Patients " + results.Count.ToString());
@@ -355,22 +376,25 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
                         foreach(var e_item in  encounters.Entry)
                         {
-                            ENCOUNTERS tENCOUNTERS = buildEncounter(iClient, (Encounter) e_item.Resource, p);
+                            ENCOUNTERS tENCOUNTERS = buildEncounter((Encounter) e_item.Resource, p);
 
-                            try
+                            if(tENCOUNTERS != null)
                             {
-                                //context.ENCOUNTERS.Add(tENCOUNTERS);
-                                //context.SaveChanges();
+                                try
+                                {
+                                    context.ENCOUNTERS.Add(tENCOUNTERS);
+                                    context.SaveChanges();
 
-                                encounter_count++;
+                                    encounter_count++;
 
-                                // build and save Diagnoses records associated with this encounter
-                                ;
+                                    // build and save Diagnoses records associated with this encounter
+                                    ;
 
-                            }
-                            catch (Exception ex)
-                            {
-                                log.Info("Error: " + ex.Message);
+                                }
+                                catch (Exception ex)
+                                {
+                                    log.Info("Error: " + ex.Message);
+                                }
                             }
                         }
 
@@ -533,69 +557,96 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return result;
         }
 
-        private ENCOUNTERS buildEncounter(FhirClient iClient, Encounter iEncounter, Patient iPatient)
+        private ENCOUNTERS buildEncounter(Encounter iEncounter, Patient iPatient)
         {
             ENCOUNTERS result = new ENCOUNTERS();
 
-            // PERSON_ID
-            result.PERSON_ID = iPatient.Id;
-
-            // ADATE
-            result.ADATE = iEncounter.Period.StartElement.ToDateTime().Value;
-
-            // ENC_ID
-            result.ENC_ID = iEncounter.Id;
-
-            // DDATE
-            result.ADATE = iEncounter.Period.EndElement.ToDateTime().Value;
-
-            // PROVIDER
-            string id = "";
-            Bundle provider = iClient.Search<Organization>(new string[] { "Identifier=" + id });
-            //result.PROVIDER = provider.;
-
-            // ENC_COUNT
-            if(iEncounter.PartOf == null)
+            if(iPatient.Id.Length > 0)
             {
-                result.ENC_COUNT = 1;
+                // PERSON_ID
+                result.PERSON_ID = iPatient.Id;
+
+                // ADATE
+                if(iEncounter.Period != null && iEncounter.Period.StartElement != null && iEncounter.Period.StartElement.ToDateTime() != null)
+                {
+                    result.ADATE = iEncounter.Period.StartElement.ToDateTime().Value;
+
+                    // ENC_ID
+                    result.ENC_ID = iEncounter.Id;
+
+                    // DDATE
+                    if(iEncounter.Period != null && iEncounter.Period.EndElement != null && iEncounter.Period.EndElement.ToDateTime() != null)
+                    {
+                        result.DDATE = iEncounter.Period.EndElement.ToDateTime().Value;
+                    }
+                    else
+                    {
+                        result.DDATE = null;
+                    }
+
+                    // PROVIDER
+                    string id = "";
+                    Bundle provider = m_FhirClient.Search<Organization>(new string[] { "Identifier=" + id });
+                    result.PROVIDER = provider.Id;
+
+                    // ENC_COUNT
+                    if (iEncounter.PartOf == null)
+                    {
+                        result.ENC_COUNT = 1;
+                    }
+                    else
+                    {
+                        // get parent encounter to determine order number
+                        ;
+                    }
+
+                    // DRG_VERSION
+                    ;
+
+                    // DRG_VALUE
+                    ;
+
+                    // ENCTYPE
+                    //result.ENCTYPE = iEncounter.Type;
+
+                    // ENCOUNTER_SUBTYPE
+                    //result.ENCOUNTER_SUBTYPE = ;
+
+                    // FACILITY_CODE
+                    string fc = "UNK";
+                    foreach (var l in iEncounter.Location)
+                    {
+                        //if(l.Location.Identifier.;
+                        ;
+                    }
+                    result.FACILITY_CODE = fc;
+
+                    // DISCHARGE_DISPOSITION
+                    ;
+
+                    // DISCHARGE_STATUS
+                    ;
+
+                    // ADMITTING_SOURCE
+                    ;
+
+                    // DEPARTMENT
+                    ;
+                }
+                else
+                {
+                    // error this date is required
+                    log.Info("Patient: " + iPatient.Id + " encounter date is missing.");
+                    result = null;
+                }
+
             }
             else
             {
-                // get parent encounter to determine order number
-                ;
+                // Invalid Patient ID
+                log.Info("Error: Missing Patient ID");
+                result = null;
             }
-
-            // DRG_VERSION
-            ;
-
-            // DRG_VALUE
-            ;
-
-            // ENCTYPE
-            //result.ENCTYPE = iEncounter.Type;
-
-            // ENCOUNTER_SUBTYPE
-            //result.ENCOUNTER_SUBTYPE = ;
-
-            // FACILITY_CODE
-            string fc = "UNK";
-            foreach(var l in iEncounter.Location)
-            {
-                ;
-            }
-            result.FACILITY_CODE = fc;
-
-            // DISCHARGE_DISPOSITION
-            ;
-
-            // DISCHARGE_STATUS
-            ;
-
-            // ADMITTING_SOURCE
-            ;
-
-            // DEPARTMENT
-            ;
 
             return result;
         }
@@ -626,13 +677,6 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 city = add.City;
                 state = add.State;
                 postal_code = add.PostalCode;
-
-                // valid test data - remove
-                //address = "382 Kingbird Cir, Highlands Ranch, CO 80129";
-                //street = "382 Kingbird Cir";
-                //city = "Highlands Ranch";
-                //state = "CO";
-                //postal_code = "80129";
 
                 // use US Gov Census REST API to get location
                 Uri geocoder = new Uri("https://geocoding.geo.census.gov");
@@ -672,46 +716,51 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
 
 
                     // GEOCODE
-                    if (json != null)
+                    if (json != null && json.result != null && json.result.addressMatches != null && json.result.addressMatches.Count() > 0)
                     {
                         new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
+                        // CITY_GEOCODE - using lat/log determine the city
+                        ;
+
+                        // GEOCODE_BOUNDARY_YEAR
+                        new_location.GEOCODE_BOUNDARY_YEAR = 2010;
+
+                        // GEOLEVEL - should be based on the size of the GEOCODE
+                        new_location.GEOLEVEL = "T";
+
+                        // MATCH_STRENGTH
+                        new_location.MATCH_STRENGTH = null;
+
+                        // LATITUDE
+                        if (json != null)
+                        {
+                            new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.x);
+                        }
+
+                        // LONGITUDE
+                        if (json != null)
+                        {
+                            new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
+                        }
+
+                        // GEOCODE_APP
+                        new_location.GEOCODE_APP = "US Census API";
+
+                        try
+                        {
+                            result.Add(new_location);
+                        }
+                        catch (Exception ex)
+                        {
+                            log.Info(ex.Message);
+                        }
                     }
-
-                    // CITY_GEOCODE - using lat/log determine the city
-                    ;
-
-                    // GEOCODE_BOUNDARY_YEAR
-                    new_location.GEOCODE_BOUNDARY_YEAR = 2010;
-
-                    // GEOLEVEL - should be based on the size of the GEOCODE
-                    new_location.GEOLEVEL = "T";
-
-                    // MATCH_STRENGTH
-                    new_location.MATCH_STRENGTH = null;
-
-                    // LATITUDE
-                    if (json != null)
+                    else
                     {
-                        new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.x);
+                        // not able to geocode location
+                        log.Info("Error: Patient (" + iPatient.Id + ") Not able to geocode '" + address + "'");
                     }
 
-                    // LONGITUDE
-                    if (json != null)
-                    {
-                        new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
-                    }
-
-                    // GEOCODE_APP
-                    new_location.GEOCODE_APP = "US Census API";
-
-                    try
-                    {
-                        result.Add(new_location);
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Info(ex.Message);
-                    }
                 }
                 else
                 {

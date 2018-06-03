@@ -2071,3 +2071,30 @@
 2018-06-02 12:29:02,922 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: Not able to geocode ', ,  2155'
 2018-06-02 12:29:03,703 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 1628
 2018-06-02 12:29:03,703 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Importing Patients
+2018-06-02 17:58:43,792 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 18:00:22,786 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 18:00:46,649 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 18:02:22,625 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 18:02:44,355 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 18:03:06,620 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Scanning Patients
+2018-06-02 18:13:44,683 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Number of Patients 1628
+2018-06-02 18:13:44,683 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - End Scanning Patients
+2018-06-02 19:05:55,511 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 19:06:01,465 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-02 19:06:31,684 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:32,449 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:32,996 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:33,606 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:34,215 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:34,824 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:35,481 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:06:36,136 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: The underlying provider failed on Open.
+2018-06-02 19:08:38,866 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 19:08:44,043 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-02 19:09:17,371 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Error: An error occurred while updating the entries. See the inner exception for details.
+2018-06-02 19:10:08,519 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 19:13:31,652 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-02 19:22:03,808 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 19:22:21,323 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
+2018-06-02 19:25:52,651 [1] INFO CHORDS_VDWBuilder.Program - CHORDS VDW Builder Starting up.
+2018-06-02 19:26:06,729 [1] INFO CHORDS_VDWBuilder.CHORDS.FHIRToVDW.FHIRToVDW - Start Importing Patients
