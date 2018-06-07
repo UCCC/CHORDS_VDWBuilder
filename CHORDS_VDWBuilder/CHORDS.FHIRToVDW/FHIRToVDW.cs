@@ -131,8 +131,14 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                     sum.EncounterTotalCount = en.Entry.Count;
 
                     // Diagnoses Count
-                    Bundle d = m_FhirClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
-                    sum.DiagnosesTotalCount = d.Entry.Count;
+                    //Bundle d = m_FhirClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+                    //sum.DiagnosesTotalCount = d.Entry.Count;
+                    Bundle c = m_FhirClient.Search<Condition>(new string[] { "patient=" + p.Id });
+                    foreach(var c_item in c.Entry)
+                    {
+                        Condition tCondition = (Condition) c_item.Resource;
+                        //if(tCondition.Category.) sum.DiagnosesTotalCount += 1;
+                    }
 
                     // Vital Signs Count
                     Bundle o = m_FhirClient.Search<Observation>(new string[] { "patient=" + p.Id });
@@ -216,70 +222,115 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                         // build and save DEMOGRAPHIC record for patient
                         DEMOGRAPHICS demo = buildDemographic(p);
 
-                        try
+                        if(demo!= null)
                         {
-                            context.DEMOGRAPHICS.Add(demo);
-                            context.SaveChanges();
-
-                            // build and save CENSUS_LOCATION records
-                            List<CENSUS_LOCATION> locs = buildGeocode(p);
-                            foreach (var loc in locs)
+                            try
                             {
-                                try
+                                context.DEMOGRAPHICS.Add(demo);
+                                context.SaveChanges();
+
+                                // build and save CENSUS_LOCATION records
+                                List<CENSUS_LOCATION> locs = buildGeocode(p);
+                                foreach (var loc in locs)
                                 {
-                                    context.CENSUS_LOCATION.Add(loc);
-                                    context.SaveChanges();
-                                }
-                                catch (Exception ex)
-                                {
-                                    log.Info("Error: " + ex.Message);
-                                }
-                            }
-
-                            // build and save Encounter records for patient
-                            Bundle encounters = m_FhirClient.Search<Encounter>(new string[] { "patient=" + p.Id });
-
-                            foreach (var e_item in encounters.Entry)
-                            {
-                                ENCOUNTERS tENCOUNTERS = buildEncounter((Encounter)e_item.Resource, p);
-
-                                try
-                                {
-                                    //context.ENCOUNTERS.Add(tENCOUNTERS);
-                                    //context.SaveChanges();
-
-                                    // build and save Diagnoses records associated with this encounter
-                                    ;
-
-                                }
-                                catch (Exception ex)
-                                {
-                                    log.Info("Error: " + ex.Message);
-                                }
-                            }
-
-                            // build and save VITAL_SIGN records for patient
-                            Bundle o = m_FhirClient.Search<Observation>(new string[] { "patient=" + p.Id });
-                            foreach (var tempD in o.Entry)
-                            {
-                                Observation obs = (Observation)tempD.Resource;
-
-                                foreach (CodeableConcept cc in obs.Category)
-                                {
-                                    foreach (var code in cc.Coding)
+                                    try
                                     {
-                                        if (code.Code == "vital-signs")
+                                        context.CENSUS_LOCATION.Add(loc);
+                                        context.SaveChanges();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        log.Info("Error Census Location: " + ex.Message);
+                                    }
+                                }
+
+                                // build and save Encounter records for patient
+                                try
+                                {
+                                    Bundle encounters = m_FhirClient.Search<Encounter>(new string[] { "patient=" + p.Id });
+
+                                    foreach (var e_item in encounters.Entry)
+                                    {
+                                        Encounter e_temp = (Encounter) e_item.Resource;
+
+                                        ENCOUNTERS tENCOUNTERS = buildEncounter(e_temp, p);
+
+                                        if(tENCOUNTERS != null)
                                         {
-                                            sum.VitalSignTotalCount++;
+                                            try
+                                            {
+                                                context.ENCOUNTERS.Add(tENCOUNTERS);
+                                                context.SaveChanges();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                log.Info("Error Encounter: " + ex.Message);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            log.Info("Error Encounter: bad encounter record for patient " + p.Id);
                                         }
                                     }
                                 }
-                            }
+                                catch (Exception ex)
+                                {
+                                    log.Info("Error Encounter: " + ex.Message);
+                                }
 
+                                // build and save Diagnose records for patient
+
+                                try
+                                {
+                                    Bundle diagnosis = m_FhirClient.Search<DiagnosticReport>(new string[] { "patient=" + p.Id });
+
+                                    foreach (var d_item in diagnosis.Entry)
+                                    {
+                                        DiagnosticReport tDiagnoses = null;
+
+                                        ;
+                                    }
+                                }
+                                catch(Exception ex)
+                                {
+                                    log.Info("Error Diagnosis: " + ex.Message);
+                                }
+
+                                // build and save VITAL_SIGN records for patient
+
+                                try
+                                {
+                                    Bundle o = m_FhirClient.Search<Observation>(new string[] { "patient=" + p.Id });
+                                    foreach (var tempD in o.Entry)
+                                    {
+                                        Observation obs = (Observation)tempD.Resource;
+
+                                        foreach (CodeableConcept cc in obs.Category)
+                                        {
+                                            foreach (var code in cc.Coding)
+                                            {
+                                                if (code.Code == "vital-signs")
+                                                {
+                                                    sum.VitalSignTotalCount++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                catch(Exception ex)
+                                {
+                                    log.Info("Error Vital Sign: " + ex.Message);
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info("Error: " + ex.Message);
+                            }
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            log.Info("Error: " + ex.Message);
+                            log.Info("Error in patient: " + p.Id);
                         }
 
                         // Location Count
@@ -313,111 +364,6 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             return results;
         }
 
-        // 
-        private List<Patient> loadPatients(FhirClient iClient)
-        {
-            int diagnoses_count = 0;
-            int encounter_count = 0;
-            int vital_sign_count = 0;
-            int census_loc_count = 0;
-
-            List<Patient> result = new List<Patient>();
-
-            if (iClient != null)
-            {
-                Bundle patients = iClient.Search<Patient>();
-
-                log.Info("Number of Patients: " + patients.Entry.Count.ToString());
-
-                int successful = 0;
-
-                using (var context = new VDW_3_1_Entities())
-                {
-                    // Add Patients to VDW
-                    foreach (Bundle.EntryComponent item in patients.Entry)
-                    {
-                        Patient p = (Patient)item.Resource;
-
-                        // build and save DEMOGRAPHIC record for patient
-                        DEMOGRAPHICS demo = buildDemographic(p);
-
-                        try
-                        {
-                            context.DEMOGRAPHICS.Add(demo);
-                            context.SaveChanges();
-
-                            result.Add(p);
-                            successful++;
-                        }
-                        catch (Exception ex)
-                        {
-                            log.Info("Error: " + ex.Message);
-                        }
-
-                        // build and save CENSUS_LOCATION records
-                        List<CENSUS_LOCATION> locs = buildGeocode(p);
-                        foreach(var loc in locs)
-                        {
-                            try
-                            {
-                                context.CENSUS_LOCATION.Add(loc);
-                                context.SaveChanges();
-
-                                census_loc_count++;
-                            }
-                            catch (Exception ex)
-                            {
-                                log.Info("Error: " + ex.Message);
-                            }
-                        }
-
-                        // build and save Encounter records for patient
-                        Bundle encounters = iClient.Search<Encounter>(new string[] { "patient=" + p.Id });
-
-                        foreach(var e_item in  encounters.Entry)
-                        {
-                            ENCOUNTERS tENCOUNTERS = buildEncounter((Encounter) e_item.Resource, p);
-
-                            if(tENCOUNTERS != null)
-                            {
-                                try
-                                {
-                                    context.ENCOUNTERS.Add(tENCOUNTERS);
-                                    context.SaveChanges();
-
-                                    encounter_count++;
-
-                                    // build and save Diagnoses records associated with this encounter
-                                    ;
-
-                                }
-                                catch (Exception ex)
-                                {
-                                    log.Info("Error: " + ex.Message);
-                                }
-                            }
-                        }
-
-                        // build and save VITAL_SIGN records for patient
-                        Bundle o = iClient.Search<Observation>(new string[] { "patient=" + p.Id });
-                        foreach (var tempD in o.Entry)
-                        {
-                            Observation obs = (Observation)tempD.Resource;
-
-                            ;
-
-                        }
-
-                    }
-                    log.Info("Number of Patients added: " + successful.ToString());
-                    log.Info("Number of Encounters added: " + encounter_count.ToString()); ; ; ; ;
-                }
-
-            }
-
-            return result;
-        }
-
         private DEMOGRAPHICS buildDemographic(Patient iPatient)
         {
             DEMOGRAPHICS result = new DEMOGRAPHICS();
@@ -430,9 +376,15 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 // MRN
                 foreach(Identifier i in iPatient.Identifier)
                 {
-                    if(i.Type != null && i.Type.Coding.FirstOrDefault().Code == "MR")
+                    if (i.Type != null)
                     {
-                        result.MRN = iPatient.Identifier.FirstOrDefault().Value;
+                        foreach (var code in i.Type.Coding)
+                        {
+                            if (code.Code == "MR")
+                            {
+                                result.MRN = iPatient.Identifier.FirstOrDefault().Value;
+                            }
+                        }
                     }
                 }
 
@@ -440,118 +392,135 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 if (iPatient.BirthDate != null)
                 {
                     result.BIRTH_DATE = DateTime.ParseExact(iPatient.BirthDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                }
 
-                // GENDER
-                if (iPatient.Gender == AdministrativeGender.Female)
-                {
-                    result.GENDER = "F";
-                }
-                else if (iPatient.Gender == AdministrativeGender.Male)
-                {
-                    result.GENDER = "M";
-                }
-                else if (iPatient.Gender == AdministrativeGender.Other)
-                {
-                    result.GENDER = "O";
-                }
-                else if (iPatient.Gender == AdministrativeGender.Unknown)
-                {
-                    result.GENDER = "U";
-                }
-                else
-                {
-                    result.GENDER = "U";
-                }
-
-                // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
-                if (iPatient.Communication.Count > 0)
-                {
-                    string lang = iPatient.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
-                    int end = lang.IndexOf('-');
-                    if (end < 0)
+                    // GENDER
+                    if(iPatient.Gender != null)
                     {
-                        end = lang.Length < 4 ? lang.Length : 3;
-                    }
-                        
-                    result.PRIMARY_LANGUAGE = lang.Substring(0, end);
+                        if (iPatient.Gender == AdministrativeGender.Female)
+                        {
+                            result.GENDER = "F";
+                        }
+                        else if (iPatient.Gender == AdministrativeGender.Male)
+                        {
+                            result.GENDER = "M";
+                        }
+                        else if (iPatient.Gender == AdministrativeGender.Other)
+                        {
+                            result.GENDER = "O";
+                        }
+                        else if (iPatient.Gender == AdministrativeGender.Unknown)
+                        {
+                            result.GENDER = "U";
+                        }
+                        else
+                        {
+                            result.GENDER = "U";
+                        }
 
-                    if (iPatient.Communication.FirstOrDefault().Preferred != null)
-                    {
-                        result.NEEDS_INTERPRETER = "S";
+                        // PRIMARY_LANGUAGE and NEEDS_INTERPRETER
+                        if (iPatient.Communication.Count > 0)
+                        {
+                            string lang = iPatient.Communication.FirstOrDefault().Language.Coding.FirstOrDefault().Code;
+                            int end = lang.IndexOf('-');
+                            if (end < 0)
+                            {
+                                end = lang.Length < 4 ? lang.Length : 3;
+                            }
+
+                            result.PRIMARY_LANGUAGE = lang.Substring(0, end);
+
+                            if (iPatient.Communication.FirstOrDefault().Preferred != null)
+                            {
+                                result.NEEDS_INTERPRETER = "S";
+                            }
+                            else
+                            {
+                                result.NEEDS_INTERPRETER = "";
+                            }
+                        }
+                        else
+                        {
+                            result.PRIMARY_LANGUAGE = "";
+                            result.NEEDS_INTERPRETER = "";
+                        }
+
+                        // race 
+                        result.RACE1 = "UN";
+                        result.RACE2 = "UN";
+                        result.RACE3 = "UN";
+                        result.RACE4 = "UN";
+                        result.RACE5 = "UN";
+                        result.HISPANIC = "U";
+                        result.SEXUAL_ORIENTATION = null;
+                        result.GENDER_IDENTITY = null;
+
+                        if (iPatient.Extension.Count() > 0)
+                        {
+                            int race_count = 0;
+                            foreach (Extension e in iPatient.Extension)
+                            {
+                                if (e.TypeName == "CodeableConcept")
+                                {
+                                    CodeableConcept c = (CodeableConcept)e.Value;
+
+                                    if (c.Text == "race")
+                                    {
+                                        if (race_count == 0)
+                                        {
+                                            result.RACE1 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                            race_count++;
+                                        }
+                                        else if (race_count == 1)
+                                        {
+                                            result.RACE2 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                            race_count++;
+                                        }
+                                        else if (race_count == 2)
+                                        {
+                                            result.RACE3 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                            race_count++;
+                                        }
+                                        else if (race_count == 3)
+                                        {
+                                            result.RACE4 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                            race_count++;
+                                        }
+                                        else if (race_count == 4)
+                                        {
+                                            result.RACE5 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                            race_count++;
+                                        }
+                                    }
+
+                                    if (c.Text == "ethnicity")
+                                    {
+                                        result.HISPANIC = EthnicityAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
+                                    }
+                                }
+                            }
+
+                            // SEXUAL_ORIENTATION
+                            result.SEXUAL_ORIENTATION = null;
+
+                            // GENDER_IDENTITY
+                            result.GENDER_IDENTITY = null;
+                        }
                     }
                     else
                     {
-                        result.NEEDS_INTERPRETER = "";
+                        // missing gender
+                        log.Info("Error: Missing gender for " + iPatient.Id);
+                        result = null;
                     }
+
                 }
                 else
                 {
-                    result.PRIMARY_LANGUAGE = "";
-                    result.NEEDS_INTERPRETER = "";
+                    // Invalid Birth Date
+                    log.Info("Error: Missing Birthdate for " + iPatient.Id);
+                    result = null;
                 }
 
-                // race 
-                result.RACE1 = "UN";
-                result.RACE2 = "UN";
-                result.RACE3 = "UN";
-                result.RACE4 = "UN";
-                result.RACE5 = "UN";
-                result.HISPANIC = "U";
-                result.SEXUAL_ORIENTATION = null;
-                result.GENDER_IDENTITY = null;
-
-                if (iPatient.Extension.Count() > 0)
-                {
-                    int race_count = 0;
-                    foreach(Extension e in iPatient.Extension)
-                    {
-                        if(e.TypeName == "CodeableConcept")
-                        {
-                            CodeableConcept c = (CodeableConcept)e.Value;
-
-                            if (c.Text == "race")
-                            {
-                                if (race_count == 0)
-                                {
-                                    result.RACE1 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                                    race_count++;
-                                }
-                                else if (race_count == 1)
-                                {
-                                    result.RACE2 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                                    race_count++;
-                                }
-                                else if (race_count == 2)
-                                {
-                                    result.RACE3 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                                    race_count++;
-                                }
-                                else if (race_count == 3)
-                                {
-                                    result.RACE4 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                                    race_count++;
-                                }
-                                else if (race_count == 4)
-                                {
-                                    result.RACE5 = RaceAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                                    race_count++;
-                                }
-                            }
-
-                            if (c.Text == "ethnicity")
-                            {
-                                result.HISPANIC = EthnicityAbbreviationGivenConceptCode(c.Coding.FirstOrDefault().Code);
-                            }
-                        }
-                    }
-
-                    // SEXUAL_ORIENTATION
-                    result.SEXUAL_ORIENTATION = null;
-
-                    // GENDER_IDENTITY
-                    result.GENDER_IDENTITY = null;
-                }
             }
 
             return result;
@@ -571,67 +540,101 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 {
                     result.ADATE = iEncounter.Period.StartElement.ToDateTime().Value;
 
-                    // ENC_ID
-                    result.ENC_ID = iEncounter.Id;
-
-                    // DDATE
-                    if(iEncounter.Period != null && iEncounter.Period.EndElement != null && iEncounter.Period.EndElement.ToDateTime() != null)
+                    // Check Encounter ID
+                    if(iEncounter.Id.Length > 0)
                     {
-                        result.DDATE = iEncounter.Period.EndElement.ToDateTime().Value;
-                    }
-                    else
-                    {
-                        result.DDATE = null;
-                    }
+                        // ENC_ID 
+                        result.ENC_ID = iEncounter.Id;
 
-                    // PROVIDER
-                    string id = "";
-                    Bundle provider = m_FhirClient.Search<Organization>(new string[] { "Identifier=" + id });
-                    result.PROVIDER = provider.Id;
+                        // DDATE
+                        if (iEncounter.Period != null && iEncounter.Period.EndElement != null && iEncounter.Period.EndElement.ToDateTime() != null)
+                        {
+                            result.DDATE = iEncounter.Period.EndElement.ToDateTime().Value;
+                        }
+                        else
+                        {
+                            result.DDATE = null;
+                        }
 
-                    // ENC_COUNT
-                    if (iEncounter.PartOf == null)
-                    {
+                        // PROVIDER
+                        result.PROVIDER = "UNKNOWN";
+                        if (iEncounter.ServiceProvider != null && iEncounter.ServiceProvider.Identifier != null)
+                        {
+                            string id = iEncounter.ServiceProvider.Identifier.ToString();
+                            Bundle provider = m_FhirClient.Search<Organization>(new string[] { "Identifier=" + id });
+                            result.PROVIDER = provider.Id;
+                        }
+
+                        // ENC_COUNT
                         result.ENC_COUNT = 1;
+                        if (iEncounter.PartOf != null)
+                        {
+                            result.ENC_COUNT = 1;
+                        }
+
+                        //DRG Information comes from the claim made from this encounter
+                        // DRG_VERSION
+                        result.DRG_VERSION = null;
+                        // DRG_VALUE
+                        result.DRG_VALUE = null;
+
+                        Bundle bClaims = m_FhirClient.Search<Claim>(new string[] { "encounter=" + iEncounter.Id });
+                        foreach (var item in  bClaims.Entry)
+                        {
+                            Claim tClaim = (Claim)item.Resource;
+
+                            foreach(var itemD in tClaim.Diagnosis)
+                            {
+                                //itemD.PackageCode.Coding.
+
+                                // DRG_VERSION
+                                result.DRG_VERSION = null;
+
+                                // DRG_VALUE
+                                result.DRG_VALUE = itemD.PackageCode.Text;
+
+                            }
+                        }
+
+                        // ENCTYPE
+                        foreach (var t in iEncounter.Type)
+                        {
+                            // 
+                            ;
+                        }
+                        //result.ENCTYPE = iEncounter.Type;
+
+                        // ENCOUNTER_SUBTYPE
+                        //result.ENCOUNTER_SUBTYPE = ;
+
+                        // FACILITY_CODE
+                        string fc = "UNK";
+                        foreach (var l in iEncounter.Location)
+                        {
+                            result.FACILITY_CODE = l.Location.Identifier.Value;
+                            //iEncounter.
+                        }
+                        result.FACILITY_CODE = fc;
+
+                        // DISCHARGE_DISPOSITION
+                        result.DISCHARGE_DISPOSITION = "U";
+
+                        // DISCHARGE_STATUS
+                        result.DISCHARGE_STATUS = "UN";
+
+                        // ADMITTING_SOURCE
+                        result.ADMITTING_SOURCE = "UN";
+
+                        // DEPARTMENT
+                        result.DEPARTMENT = "UNK";
+
                     }
                     else
                     {
-                        // get parent encounter to determine order number
-                        ;
+                        // error this date is required
+                        log.Info("Patient: " + iPatient.Id + " encounter id is missing.");
+                        result = null;
                     }
-
-                    // DRG_VERSION
-                    ;
-
-                    // DRG_VALUE
-                    ;
-
-                    // ENCTYPE
-                    //result.ENCTYPE = iEncounter.Type;
-
-                    // ENCOUNTER_SUBTYPE
-                    //result.ENCOUNTER_SUBTYPE = ;
-
-                    // FACILITY_CODE
-                    string fc = "UNK";
-                    foreach (var l in iEncounter.Location)
-                    {
-                        //if(l.Location.Identifier.;
-                        ;
-                    }
-                    result.FACILITY_CODE = fc;
-
-                    // DISCHARGE_DISPOSITION
-                    ;
-
-                    // DISCHARGE_STATUS
-                    ;
-
-                    // ADMITTING_SOURCE
-                    ;
-
-                    // DEPARTMENT
-                    ;
                 }
                 else
                 {
@@ -684,89 +687,98 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
                 client.BaseUrl = geocoder;
 
                 // use US Gov Census API to get Census Tract
-                var geographies_request = new RestRequest();
-                geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layer=14" + "&format=json";
-                IRestResponse geographies_response = client.Execute(geographies_request);
-
-                if(geographies_response.IsSuccessful)
+                try
                 {
-                    Census json = null;
-                    json = JsonConvert.DeserializeObject<Census>(geographies_response.Content);
+                    var geographies_request = new RestRequest();
+                    geographies_request.Resource = "/geocoder/geographies/address?street=" + street + "&city=" + city + "&state=" + state + "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layer=14" + "&format=json";
+                    IRestResponse geographies_response = client.Execute(geographies_request);
 
-
-                    // fill in CENSUS_LOCATION
-                    new_location.PERSON_ID = iPatient.Id;
-                    if (add.Period != null && add.Period.StartElement.ToDateTime().HasValue)
+                    if (geographies_response.IsSuccessful)
                     {
-                        new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
-                    }
-                    else
-                    {
-                        new_location.LOC_START = DateTime.Now;
-                    }
-
-                    if (add.Period != null && add.Period.EndElement.ToDateTime().HasValue)
-                    {
-                        new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
-                    }
-                    else
-                    {
-                        new_location.LOC_END = null;
-                    }
+                        Census json = null;
+                        json = JsonConvert.DeserializeObject<Census>(geographies_response.Content);
 
 
-                    // GEOCODE
-                    if (json != null && json.result != null && json.result.addressMatches != null && json.result.addressMatches.Count() > 0)
-                    {
-                        new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
-                        // CITY_GEOCODE - using lat/log determine the city
-                        ;
-
-                        // GEOCODE_BOUNDARY_YEAR
-                        new_location.GEOCODE_BOUNDARY_YEAR = 2010;
-
-                        // GEOLEVEL - should be based on the size of the GEOCODE
-                        new_location.GEOLEVEL = "T";
-
-                        // MATCH_STRENGTH
-                        new_location.MATCH_STRENGTH = null;
-
-                        // LATITUDE
-                        if (json != null)
+                        // fill in CENSUS_LOCATION
+                        new_location.PERSON_ID = iPatient.Id;
+                        if (add.Period != null && add.Period.StartElement.ToDateTime().HasValue)
                         {
-                            new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.x);
+                            new_location.LOC_START = add.Period.StartElement.ToDateTime().Value;
+                        }
+                        else
+                        {
+                            new_location.LOC_START = DateTime.Now;
                         }
 
-                        // LONGITUDE
-                        if (json != null)
+                        if (add.Period != null && add.Period.EndElement.ToDateTime().HasValue)
                         {
-                            new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
+                            new_location.LOC_END = add.Period.EndElement.ToDateTime().Value;
+                        }
+                        else
+                        {
+                            new_location.LOC_END = null;
                         }
 
-                        // GEOCODE_APP
-                        new_location.GEOCODE_APP = "US Census API";
 
-                        try
+                        // GEOCODE
+                        if (json != null && json.result != null && json.result.addressMatches != null && json.result.addressMatches.Count() > 0)
                         {
-                            result.Add(new_location);
+                            new_location.GEOCODE = json.result.addressMatches[0].geographies.censusblocks[0].GEOID;
+                            // CITY_GEOCODE - using lat/log determine the city
+                            ;
+
+                            // GEOCODE_BOUNDARY_YEAR
+                            // based on benchmark=Public_AR_Census2010 on Gov CENSUS Request
+                            new_location.GEOCODE_BOUNDARY_YEAR = 2010;
+
+                            // GEOLEVEL - should be based on the size of the GEOCODE
+                            new_location.GEOLEVEL = "T";
+
+                            // MATCH_STRENGTH
+                            new_location.MATCH_STRENGTH = null;
+
+                            // LATITUDE
+                            if (json != null)
+                            {
+                                new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.x);
+                            }
+
+                            // LONGITUDE
+                            if (json != null)
+                            {
+                                new_location.LATITUDE = Convert.ToDecimal(json.result.addressMatches[0].coordinates.y);
+                            }
+
+                            // GEOCODE_APP
+                            new_location.GEOCODE_APP = "US Census API";
+
+                            try
+                            {
+                                result.Add(new_location);
+                            }
+                            catch (Exception ex)
+                            {
+                                log.Info(ex.Message);
+                            }
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            log.Info(ex.Message);
+                            // not able to geocode location
+                            log.Info("Error: Patient (" + iPatient.Id + ") Not able to geocode '" + address + "'");
                         }
+
                     }
                     else
                     {
                         // not able to geocode location
-                        log.Info("Error: Patient (" + iPatient.Id + ") Not able to geocode '" + address + "'");
+                        log.Info("Error: Not able to geocode '" + address + "'");
                     }
-
                 }
-                else
+                catch (Exception ex)
                 {
-                    // not able to geocode location
-                    log.Info("Error: Not able to geocode '" + address + "'");
+                    log.Info("Error: "  + ex.Message);
                 }
+
             }
 
             return result;
@@ -797,6 +809,13 @@ namespace CHORDS_VDWBuilder.CHORDS.FHIRToVDW
             }
 
             return results;
+        }
+
+        private DIAGNOSES buildDiagnoses(DiagnosticReport iDR)
+        {
+            DIAGNOSES result = new DIAGNOSES();
+
+            return result;
         }
 
         // Helper methods
